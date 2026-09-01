@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Sensi & Live Device Info</title>
+    <style>
+        body {
+            background-color: #080808;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background-color: #121212;
+            border: 2px solid #00FF41;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.25);
+            position: relative;
+        }
+        .header {
+            background: linear-gradient(90deg, #00FF41, #00cc33);
+            color: #000000;
+            padding: 12px 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+        .body-content {
+            display: flex;
+            padding: 14px;
+        }
+        .sidebar {
+            width: 110px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sidebar button {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            text-align: left;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            transition: 0.2s;
+        }
+        .sidebar button.active, .sidebar button:hover {
+            background-color: #00FF41;
+            color: #000000;
+            font-weight: bold;
+        }
+        .main-panel {
+            flex: 1;
+            padding-left: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .title {
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #00FF41;
+            margin-bottom: 2px;
+        }
+        .panel-section {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .input-box input, .input-box select {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            color: #ffffff;
+            padding: 7px;
+            border-radius: 6px;
+            font-size: 11px;
+            outline: none;
+        }
+        .input-box input:focus, .input-box select:focus {
+            border-color: #00FF41;
+        }
+        .input-box button {
+            background-color: #00FF41;
+            color: #000000;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+        .card {
+            background-color: #1a1a1a;
+            padding: 7px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3px solid #00FF41;
+        }
+        .result-box {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+        .btn-go {
+            background-color: #00FF41;
+            color: #000000;
+            border: none;
+            padding: 9px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 2px;
+            font-size: 11px;
+        }
+        .admin-text {
+            text-align: center;
+            font-size: 10px;
+            color: #888;
+            margin-top: 2px;
+        }
+        .admin-text span {
+            color: #00FF41;
+            font-weight: bold;
+        }
+
+        #timerDisplay {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #ff4d4d;
+            background: #1a1a1a;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            margin-bottom: 5px;
+        }
+
+        #sensiLockOverlay {
+            background: #151515;
+            border: 1px dashed #00FF41;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        #sensiLockOverlay input {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 7px;
+            border-radius: 5px;
+            font-size: 11px;
+            text-align: center;
+            outline: none;
+        }
+        .pass-btn-group {
+            display: flex;
+            gap: 5px;
+        }
+        .pass-btn-group button {
+            flex: 1;
+            background: #00FF41;
+            color: #000;
+            border: none;
+            padding: 7px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .pass-btn-group button.copy-btn {
+            background: #222;
+            color: #00FF41;
+            border: 1px solid #00FF41;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 8px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 8px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 10px;
+        }
+        .message {
+            max-width: 85%;
+            padding: 6px 8px;
+            border-radius: 6px;
+            line-height: 1.3;
+        }
+        .message.bot { background: #1a2a1a; color: #fff; align-self: flex-start; border-left: 2px solid #00FF41; }
+        .message.user { background: #00FF41; color: #000; align-self: flex-end; font-weight: bold; }
+        .chat-input-area {
+            display: flex;
+            padding: 6px;
+            background: #111;
+            border-top: 1px solid #333;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 6px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 4px;
+            outline: none;
+            font-size: 10px;
+        }
+        .chat-input-area button {
+            background: #00FF41;
+            border: none;
+            color: #000;
+            font-weight: bold;
+            padding: 0 10px;
+            border-radius: 4px;
+            margin-left: 4px;
+            cursor: pointer;
+            font-size: 10px;
+        }
+        .admin-whatsapp {
+            text-align: center;
+            font-size: 9px;
+            color: #aaa;
+            background: #151515;
+            padding: 4px;
+            border-radius: 5px;
+            border: 1px solid #222;
+        }
+        .admin-whatsapp a {
+            color: #00FF41;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #loginOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(12, 12, 12, 0.98);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 290px;
+            background: linear-gradient(145deg, #161616, #101010);
+            border: 2px solid #00FF41;
+            padding: 22px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.35);
+        }
+        .login-header {
+            text-align: center;
+            color: #00FF41;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #222;
+            padding-bottom: 8px;
+        }
+        .login-hidden-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+        }
+        .login-card input {
+            background-color: #0a0a0a;
+            border: 1px solid #333;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            outline: none;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .login-card button {
+            background: linear-gradient(90deg, #00FF41, #00cc33);
+            color: #000000;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+        .login-footer {
+            text-align: center;
+            font-size: 9px;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loginOverlay">
+        <div class="login-card">
+            <div class="login-header">SECURITY ACCESS</div>
+            
+            <div class="login-hidden-group" id="loginFields">
+                <input type="password" id="loginPass" placeholder="Enter Password">
+                <button type="button" onclick="checkLogin()">LOGIN NOW</button>
+            </div>
+
+            <div class="login-footer">Protected by @ TURJO X USER</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <span>FREESTYLE PRO</span>
+            <span>⚡</span>
+        </div>
+
+        <div class="body-content">
+            <div class="sidebar">
+                <button class="active" id="btnSensi" onclick="switchTab('sensi')">Auto Sensi</button>
+                <button id="btnLive" onclick="switchTab('live')">Device Info</button>
+                <button id="btnBot" onclick="switchTab('bot')">TURJO BOT</button>
+                <button id="btnSecret" onclick="switchTab('secret')">Admin Panel</button>
+                <button onclick="window.open('https://t.me/turji', '_blank')">Telegram</button>
+                <button onclick="window.open('https://tiktok.com/@turjoxuser', '_blank')">TikTok</button>
+            </div>
+
+            <div class="main-panel">
+                
+                <div id="sensiPanel" class="panel-section">
+                    <div class="title">DEVICE & RAM SETUP</div>
+                    
+                    <div id="timerDisplay">Time Remaining: <span id="timeLeft">600</span>s</div>
+
+                    <div id="sensiLockOverlay">
+                        <span style="color: #00FF41; font-size: 11px; font-weight: bold;">🔒 Sensi is Locked!</span>
+                        <span style="font-size: 9px; color: #aaa;">Get password from <b>TURJO BOT</b> using <code>/ster</code> (Single use & changes every 10 mins)</span>
+                        <input type="password" id="sensiPassInput" placeholder="Enter Sensi Password">
+                        <div class="pass-btn-group">
+                            <button class="copy-btn" onclick="copyGeneratedPass()">View / Copy Pass</button>
+                            <button onclick="unlockSensi()">UNLOCK</button>
+                        </div>
+                    </div>
+
+                    <div id="sensiMainContent" class="hidden">
+                        <div class="input-box" id="inputSection">
+                            <input type="text" id="phoneName" placeholder="Phone Name (e.g. Redmi)">
+                            <input type="text" id="phoneModel" placeholder="Model (e.g. Note 10)">
+                            <select id="phoneRam">
+                                <option value="" disabled selected>Select RAM</option>
+                                <option value="3">3 GB RAM</option>
+                                <option value="4">4 GB RAM</option>
+                                <option value="6">6 GB RAM</option>
+                                <option value="8">8 GB RAM</option>
+                                <option value="12">12 GB RAM</option>
+                            </select>
+                            <button type="button" onclick="generateUniqueSensi()">GENERATE</button>
+                        </div>
+                        
+                        <div class="result-box" id="resultBox">
+                            <div class="card">
+                                <span>General Sensi</span>
+                                <span id="genVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>Red Dot</span>
+                                <span id="redVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>2X Scope</span>
+                                <span id="twoVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>4X Scope</span>
+                                <span id="fourVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>Desert Eagle 🦅</span>
+                                <span id="deagleVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>M1887 Shotgun 🎯</span>
+                                <span id="m1887Val" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>Spas-12 Shotgun 💥</span>
+                                <span id="spasVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>Fire Button</span>
+                                <span id="fireVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                            <div class="card">
+                                <span>DPI</span>
+                                <span id="dpiVal" style="color: #00FF41; font-weight: bold;">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="livePanel" class="panel-section hidden">
+                    <div class="title">CONNECTED DEVICE DETAILS</div>
+                    <div class="card">
+                        <span>Device Brand</span>
+                        <span id="liveBrand" style="color: #00FF41; font-weight: bold;">Detecting...</span>
+                    </div>
+                    <div class="card">
+                        <span>System / Model Info</span>
+                        <span id="liveSystem" style="color: #00FF41; font-weight: bold; font-size: 9px;">Detecting...</span>
+                    </div>
+                    <div class="card">
+                        <span>Screen Resolution</span>
+                        <span id="liveScreen" style="color: #00FF41; font-weight: bold;">--</span>
+                    </div>
+                    <div class="card">
+                        <span>CPU Cores</span>
+                        <span id="liveCpu" style="color: #00FF41; font-weight: bold;">--</span>
+                    </div>
+                    <div class="card">
+                        <span>Network Status</span>
+                        <span id="liveNet" style="color: #00FF41; font-weight: bold;">--</span>
+                    </div>
+                    <div class="card">
+                        <span>Battery Status</span>
+                        <span id="liveBattery" style="color: #00FF41; font-weight: bold;">Loading...</span>
+                    </div>
+                </div>
+
+                <div id="botPanel" class="panel-section hidden">
+                    <div class="title">TURJO AI BOT</div>
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message bot">হ্যালো! সেন্সি পাসের জন্য '/ster' লিখুন। পাসওয়ার্ড প্রতি ১০ মিনিটে রিসেট ও আপডেট হয় এবং একবারই ব্যবহার করা যায়!</div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chat-input" placeholder="কিছু একটা লিখুন..." onkeypress="handleChatPress(event)">
+                            <button onclick="sendChatMessage()">Send</button>
+                        </div>
+                    </div>
+                    <div class="admin-whatsapp">
+                        💬 Admin WhatsApp: <a href="https://wa.me/8801946730203" target="_blank">01946730203</a>
+                    </div>
+                </div>
+
+                <div id="secretPanel" class="panel-section hidden">
+                    <div class="title">ADMIN 🅿︎🅰︎🆂︎ 🆂︎🅴︎🅺︎🆁︎🅴︎🆁︎</div>
+                    
+                    <div id="adminLockOverlay" style="background: #151515; border: 1px dashed #00FF41; padding: 15px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 8px;">
+                        <span style="color: #00FF41; font-size: 11px; font-weight: bold;">🔒 Admin Panel Locked!</span>
+                        <span style="font-size: 9px; color: #aaa;">Enter Admin Password (<b>01923</b>)</span>
+                        <input type="password" id="adminPassInput" placeholder="Enter Admin Password" style="background: #0a0a0a; border: 1px solid #333; color: #fff; padding: 7px; border-radius: 5px; font-size: 11px; text-align: center; outline: none;">
+                        <button onclick="unlockAdmin()" style="background: #00FF41; color: #000; border: none; padding: 7px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 11px;">UNLOCK ADMIN</button>
+                        <span id="adminErrorMsg" style="color: #ff4d4d; font-size: 10px; font-weight: bold; display: none;">Wrong Password! Try again.</span>
+                    </div>
+
+                    <div id="adminMainContent" class="hidden" style="display: flex; flex-direction: column; gap: 6px;">
+                        <div class="card" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+                            <span style="color: #00FF41; font-weight: bold;">admin ᵃᵈᵐⁱⁿ ˢᵉᵏᵃⁿᵉ ᵗʰᵃᵏᵇᵉ</span>
+                            <span style="font-size: 10px; color: #ccc;">premium ˢᵒᵇ ˢᵉⁿˢⁱ ᵇᵒˢᵗ ᵃʳ ᶠᶠᵖˢ ᵃʳ ˢᵒᵇ ˡⁱᵛᵉ ʰᵒᵇᵉ</span>
+                        </div>
+                        <div class="card">
+                            <span>Current Dynamic Password</span>
+                            <span id="displaySecretPass" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        
+                        <div class="card" style="border-left-color: #00FF41; background: #151515;">
+                            <span style="color: #00FF41; font-weight: bold; font-size: 10px;">Location 📍 Panel</span>
+                            <button onclick="window.open('https://t.me/turji/23', '_blank')" style="background: #00FF41; color: #000; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">START</button>
+                        </div>
+
+                        <div class="card" style="border-left-color: #ff5500; background: #151515;">
+                            <span style="color: #ff5500; font-weight: bold; font-size: 10px;">Free Fire MAX 🎮</span>
+                            <button onclick="window.open('https://play.google.com/store/apps/details?id=com.dts.freefiremax', '_blank')" style="background: #ff5500; color: #fff; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">FF MAX</button>
+                        </div>
+
+                        <!-- Shizuka Section Added -->
+                        <div class="card" style="border-left-color: #00ffff; background: #151515;">
+                            <span style="color: #00ffff; font-weight: bold; font-size: 10px;">Shizuka 🚀</span>
+                            <button onclick="window.open('https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api', '_blank')" style="background: #00ffff; color: #000; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">DOWNLOAD</button>
+                        </div>
+
+                        <button class="btn-go" onclick="alert('সফলভাবে সমস্ত প্রিমিয়াম সেন্সি বুস্ট ও এফএফপিএস লাইভ মোড সক্রিয় করা হয়েছে!')">ACTIVATE ALL BOOST</button>
+                    </div>
+                </div>
+
+                <button class="btn-go" onclick="window.open('https://t.me/turji', '_blank')">JOIN TELEGRAM ↗</button>
+                <div class="admin-text">Admin: <span>@ TURJO X USER</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDynamicPass = "TURJO9991234";
+        let timeLeft = 600; // ১০ মিনিট (৬০০ সেকেন্ড)
+        let timerInterval;
+
+        function generateNewPassword() {
+            let randomNum = Math.floor(100000 + Math.random() * 900000);
+            currentDynamicPass = "TURJO999" + randomNum;
+        }
+
+        generateNewPassword();
+
+        setInterval(() => {
+            generateNewPassword();
+            timeLeft = 600; 
+            let timerSpan = document.getElementById('timeLeft');
+            if(timerSpan) timerSpan.innerText = timeLeft;
+            
+            clearInterval(timerInterval);
+            startTimer();
+        }, 600000);
+
+        function startTimer() {
+            let timerSpan = document.getElementById('timeLeft');
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    if(timerSpan) timerSpan.innerText = timeLeft;
+                } else {
+                    clearInterval(timerInterval);
+                    let sensiMain = document.getElementById('sensiMainContent');
+                    if (sensiMain && sensiMain.classList.contains('hidden')) {
+                        alert("সময় শেষ! পাসওয়ার্ডের মেয়াদ শেষ হয়ে গেছে। নতুন পাসওয়ার্ড নিন।");
+                    }
+                }
+            }, 1000);
+        }
+
+        window.onload = function() {
+            startTimer();
+        };
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function checkLogin() {
+            let pass = document.getElementById('loginPass').value;
+            if (pass === "TURJO X USER") {
+                speakText("Login Successful");
+                document.getElementById('loginOverlay').style.display = 'none';
+            } else {
+                speakText("Incorrect Password");
+                alert("ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।");
+            }
+        }
+
+        function unlockSensi() {
+            if (timeLeft <= 0) {
+                alert("সময় শেষ! দয়া করে বট থেকে নতুন পাসওয়ার্ড নিন।");
+                return;
+            }
+
+            let userPass = document.getElementById('sensiPassInput').value.trim();
+            if (userPass === currentDynamicPass) {
+                speakText("Sensi Unlocked Successfully");
+                document.getElementById('sensiLockOverlay').style.display = 'none';
+                document.getElementById('timerDisplay').style.display = 'none';
+                document.getElementById('sensiMainContent').classList.remove('hidden');
+                
+                currentDynamicPass = "USED_" + Math.random();
+                clearInterval(timerInterval);
+            } else {
+                speakText("Wrong Sensi Password");
+                alert("ভুল পাসওয়ার্ড বা পাসওয়ার্ড মেয়াদোত্তীর্ণ হয়েছে! 'TURJO BOT' থেকে নতুন পাসওয়ার্ড জেনে নিন।");
+            }
+        }
+
+        function unlockAdmin() {
+            let adminPass = document.getElementById('adminPassInput').value.trim();
+            let errorMsg = document.getElementById('adminErrorMsg');
+            
+            if (adminPass === "01923") {
+                speakText("Admin Unlocked Successfully");
+                document.getElementById('adminLockOverlay').style.display = 'none';
+                document.getElementById('adminMainContent').classList.remove('hidden');
+                errorMsg.style.display = 'none';
+            } else {
+                speakText("Wrong Admin Password");
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function copyGeneratedPass() {
+            let userInput = prompt("আপনার বর্তমান ডায়নামিক সেন্সি পাসওয়ার্ড (প্রতি ১০ মিনিটে রিসেট হয়):", currentDynamicPass);
+            if (userInput !== null) {
+                document.getElementById('sensiPassInput').value = currentDynamicPass;
+            }
+        }
+
+        function switchTab(tab) {
+            let sensiPanel = document.getElementById('sensiPanel');
+            let livePanel = document.getElementById('livePanel');
+            let botPanel = document.getElementById('botPanel');
+            let secretPanel = document.getElementById('secretPanel');
+            
+            let btnSensi = document.getElementById('btnSensi');
+            let btnLive = document.getElementById('btnLive');
+            let btnBot = document.getElementById('btnBot');
+            let btnSecret = document.getElementById('btnSecret');
+
+            if (!sensiPanel || !livePanel || !botPanel || !secretPanel) return;
+
+            sensiPanel.classList.add('hidden');
+            livePanel.classList.add('hidden');
+            botPanel.classList.add('hidden');
+            secretPanel.classList.add('hidden');
+
+            if(btnSensi) btnSensi.classList.remove('active');
+            if(btnLive) btnLive.classList.remove('active');
+            if(btnBot) btnBot.classList.remove('active');
+            if(btnSecret) btnSecret.classList.remove('active');
+
+            if (tab === 'sensi') {
+                sensiPanel.classList.remove('hidden');
+                if(btnSensi) btnSensi.classList.add('active');
+            } else if (tab === 'live') {
+                livePanel.classList.remove('hidden');
+                if(btnLive) btnLive.classList.add('active');
+                loadDeviceDetails();
+            } else if (tab === 'bot') {
+                botPanel.classList.remove('hidden');
+                if(btnBot) btnBot.classList.add('active');
+            } else if (tab === 'secret') {
+                secretPanel.classList.remove('hidden');
+                if(btnSecret) btnSecret.classList.add('active');
+                document.getElementById('displaySecretPass').innerText = currentDynamicPass;
+            }
+        }
+
+        function generateUniqueSensi() {
+            let nameField = document.getElementById('phoneName');
+            let modelField = document.getElementById('phoneModel');
+            let ramField = document.getElementById('phoneRam');
+
+            if (!nameField || !modelField || !ramField) return;
+
+            let name = nameField.value.trim();
+            let model = modelField.value.trim();
+            let ram = ramField.value;
+
+            if (name === "" || model === "" || ram === "") {
+                alert("দয়া করে ফোনের নাম, মডেল এবং র‍্যাম সিলেক্ট করুন!");
+                return;
+            }
+
+            let combinedString = (name + model + ram).toLowerCase();
+            let hash = 0;
+            for (let i = 0; i < combinedString.length; i++) {
+                hash = combinedString.charCodeAt(i) + ((hash << 5) - hash);
+            }
+
+            let gen = 180 + (Math.abs(hash) % 21);
+            let red = 175 + (Math.abs(hash >> 1) % 26);
+            let two = 160 + (Math.abs(hash >> 2) % 31);
+            let four = 150 + (Math.abs(hash >> 3) % 31);
+            let deagle = 170 + (Math.abs(hash >> 4) % 26);
+            let m1887 = 180 + (Math.abs(hash >> 5) % 21);
+            let spas = 160 + (Math.abs(hash >> 6) % 31);
+            let fire = 38 + (Math.abs(hash >> 7) % 10);
+            let dpi = 580 + (Math.abs(hash >> 8) % 101);
+
+            let setVal = (id, val) => {
+                let el = document.getElementById(id);
+                if(el) el.innerText = val;
+            };
+
+            setVal('genVal', gen);
+            setVal('redVal', red);
+            setVal('twoVal', two);
+            setVal('fourVal', four);
+            setVal('deagleVal', deagle);
+            setVal('m1887Val', m1887);
+            setVal('spasVal', spas);
+            setVal('fireVal', fire + "%");
+            setVal('dpiVal', dpi);
+
+            let resBox = document.getElementById('resultBox');
+            if(resBox) resBox.style.display = "flex";
+        }
+
+        function loadDeviceDetails() {
+            let ua = navigator.userAgent;
+            let brand = "Android / Mobile Device";
+            if (ua.indexOf("Samsung") !== -1 || ua.indexOf("SM-") !== -1) brand = "Samsung Galaxy";
+            else if (ua.indexOf("Xiaomi") !== -1 || ua.indexOf("Redmi") !== -1 || ua.indexOf("POCO") !== -1) brand = "Xiaomi / Redmi / Poco";
+            else if (ua.indexOf("OPPO") !== -1) brand = "OPPO";
+            else if (ua.indexOf("vivo") !== -1) brand = "Vivo";
+            else if (ua.indexOf("Realme") !== -1) brand = "Realme";
+            else if (ua.indexOf("OnePlus") !== -1) brand = "OnePlus";
+            else if (ua.indexOf("iPhone") !== -1) brand = "Apple iPhone";
+            else if (ua.indexOf("Windows") !== -1) brand = "Windows PC";
+            
+            document.getElementById('liveBrand').innerText = brand;
+
+            let systemInfo = "Standard Web Client";
+            let match = ua.match(/\(([^)]+)\)/);
+            if (match && match[1]) systemInfo = match[1];
+            document.getElementById('liveSystem').innerText = systemInfo;
+
+            document.getElementById('liveScreen').innerText = window.screen.width + " x " + window.screen.height;
+            document.getElementById('liveCpu').innerText = navigator.hardwareConcurrency ? navigator.hardwareConcurrency + " Cores" : "Not Available";
+            document.getElementById('liveNet').innerText = navigator.onLine ? "Online 🟢" : "Offline 🔴";
+
+            let batteryEl = document.getElementById('liveBattery');
+            if ('getBattery' in navigator) {
+                navigator.getBattery().then(function(battery) {
+                    let level = Math.round(battery.level * 100) + "%";
+                    let charging = battery.charging ? " (Charging ⚡)" : "";
+                    batteryEl.innerText = level + charging;
+                }).catch(function() {
+                    batteryEl.innerText = "Not Available";
+                });
+            } else {
+                batteryEl.innerText = "Not Supported";
+            }
+        }
+
+        function handleChatPress(event) {
+            if (event.key === 'Enter') sendChatMessage();
+        }
+
+        function sendChatMessage() {
+            let inputField = document.getElementById("chat-input");
+            let messageText = inputField.value.trim();
+            if (messageText === "") return;
+
+            let chatMessages = document.getElementById("chat-messages");
+            let userMsg = document.createElement("div");
+            userMsg.className = "message user";
+            userMsg.innerText = messageText;
+            chatMessages.appendChild(userMsg);
+
+            inputField.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                let replyText = getBotResponse(messageText);
+                let botMsg = document.createElement("div");
+                botMsg.className = "message bot";
+                botMsg.innerText = replyText;
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                speakText(replyText);
+            }, 500);
+        }
+
+        function getBotResponse(input) {
+            let text = input.toLowerCase().trim();
+            if (text === "/ster") {
+                return '⚡ [SYSTEM ALERT]: বর্তমান পাসওয়ার্ড: ' + currentDynamicPass;
+            } else if (text === "/status") {
+                return '🔥 সার্ভার ফুল স্পিড মোডে আছে!';
+            } else {
+                return "সাহায্যের জন্য '/ster' লিখুন।";
+            }
+        }
+    </script>
+</body>
+</html>
