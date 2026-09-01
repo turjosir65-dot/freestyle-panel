@@ -481,7 +481,7 @@
                     <div class="title">TURJO AI BOT</div>
                     <div class="chat-container">
                         <div class="chat-messages" id="chat-messages">
-                            <div class="message bot">হ্যালো! সেন্সি পাসের জন্য '/ster' লিখুন। পাসওয়ার্ড প্রতি ১০ মিনিটে রিসেট ও আপডেট হয় এবং একবারই ব্যবহার করা যায়!</div>
+                            <div class="message bot">হ্যালো! সেন্সি পাসের জন্য '/ster' লিখুন।</div>
                         </div>
                         <div class="chat-input-area">
                             <input type="text" id="chat-input" placeholder="কিছু একটা লিখুন..." onkeypress="handleChatPress(event)">
@@ -524,10 +524,17 @@
                             <button onclick="window.open('https://play.google.com/store/apps/details?id=com.dts.freefiremax', '_blank')" style="background: #ff5500; color: #fff; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">FF MAX</button>
                         </div>
 
-                        <!-- Shizuka Section Added -->
                         <div class="card" style="border-left-color: #00ffff; background: #151515;">
                             <span style="color: #00ffff; font-weight: bold; font-size: 10px;">Shizuka 🚀</span>
                             <button onclick="window.open('https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api', '_blank')" style="background: #00ffff; color: #000; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">DOWNLOAD</button>
+                        </div>
+
+                        <div class="card" style="border-left-color: #ff0055; background: #151515;">
+                            <span style="color: #ff0055; font-weight: bold; font-size: 10px;">PAID FAKE LAG ⚡</span>
+                            <div style="display: flex; gap: 3px;">
+                                <button onclick="window.open('https://t.me/turji/40', '_blank')" style="background: #ff0055; color: #fff; border: none; padding: 5px 8px; border-radius: 4px; font-weight: bold; font-size: 9px; cursor: pointer;">START</button>
+                                <button onclick="goToBotAndSearch()" style="background: #00FF41; color: #000; border: none; padding: 5px 8px; border-radius: 4px; font-weight: bold; font-size: 9px; cursor: pointer;">GET KEY</button>
+                            </div>
                         </div>
 
                         <button class="btn-go" onclick="alert('সফলভাবে সমস্ত প্রিমিয়াম সেন্সি বুস্ট ও এফএফপিএস লাইভ মোড সক্রিয় করা হয়েছে!')">ACTIVATE ALL BOOST</button>
@@ -542,7 +549,7 @@
 
     <script>
         let currentDynamicPass = "TURJO9991234";
-        let timeLeft = 600; // ১০ মিনিট (৬০০ সেকেন্ড)
+        let timeLeft = 600; 
         let timerInterval;
 
         function generateNewPassword() {
@@ -570,10 +577,6 @@
                     if(timerSpan) timerSpan.innerText = timeLeft;
                 } else {
                     clearInterval(timerInterval);
-                    let sensiMain = document.getElementById('sensiMainContent');
-                    if (sensiMain && sensiMain.classList.contains('hidden')) {
-                        alert("সময় শেষ! পাসওয়ার্ডের মেয়াদ শেষ হয়ে গেছে। নতুন পাসওয়ার্ড নিন।");
-                    }
                 }
             }, 1000);
         }
@@ -602,11 +605,6 @@
         }
 
         function unlockSensi() {
-            if (timeLeft <= 0) {
-                alert("সময় শেষ! দয়া করে বট থেকে নতুন পাসওয়ার্ড নিন।");
-                return;
-            }
-
             let userPass = document.getElementById('sensiPassInput').value.trim();
             if (userPass === currentDynamicPass) {
                 speakText("Sensi Unlocked Successfully");
@@ -618,7 +616,7 @@
                 clearInterval(timerInterval);
             } else {
                 speakText("Wrong Sensi Password");
-                alert("ভুল পাসওয়ার্ড বা পাসওয়ার্ড মেয়াদোত্তীর্ণ হয়েছে! 'TURJO BOT' থেকে নতুন পাসওয়ার্ড জেনে নিন।");
+                alert("ভুল পাসওয়ার্ড!");
             }
         }
 
@@ -638,10 +636,30 @@
         }
 
         function copyGeneratedPass() {
-            let userInput = prompt("আপনার বর্তমান ডায়নামিক সেন্সি পাসওয়ার্ড (প্রতি ১০ মিনিটে রিসেট হয়):", currentDynamicPass);
+            let userInput = prompt("আপনার বর্তমান ডায়নামিক সেন্সি পাসওয়ার্ড:", currentDynamicPass);
             if (userInput !== null) {
                 document.getElementById('sensiPassInput').value = currentDynamicPass;
             }
+        }
+
+        function goToBotAndSearch() {
+            switchTab('bot'); 
+            
+            let chatMessages = document.getElementById("chat-messages");
+            let userMsg = document.createElement("div");
+            userMsg.className = "message user";
+            userMsg.innerText = "get key paid fake lag";
+            chatMessages.appendChild(userMsg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                let botMsg = document.createElement("div");
+                botMsg.className = "message bot";
+                botMsg.innerText = "🔒 সিকিউরিটি কোড চ্যাটে শো করা নিষেধ।";
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                speakText("Security code is restricted");
+            }, 500);
         }
 
         function switchTab(tab) {
@@ -696,7 +714,7 @@
             let ram = ramField.value;
 
             if (name === "" || model === "" || ram === "") {
-                alert("দয়া করে ফোনের নাম, মডেল এবং র‍্যাম সিলেক্ট করুন!");
+                alert("দয়া করে সব তথ্য পূরণ করুন!");
                 return;
             }
 
@@ -805,11 +823,11 @@
         function getBotResponse(input) {
             let text = input.toLowerCase().trim();
             if (text === "/ster") {
-                return '⚡ [SYSTEM ALERT]: বর্তমান পাসওয়ার্ড: ' + currentDynamicPass;
-            } else if (text === "/status") {
-                return '🔥 সার্ভার ফুল স্পিড মোডে আছে!';
+                return '⚡ [SYSTEM ALERT]: পাসওয়ার্ড জেনারেট করতে প্যানেল চেক করুন।';
+            } else if (text === "01923" || text.includes("01923")) {
+                return 'PANKAJXAURA@123';
             } else {
-                return "সাহায্যের জন্য '/ster' লিখুন।";
+                return "সাহায্যের জন্য কোড বা '/ster' লিখুন।";
             }
         }
     </script>
