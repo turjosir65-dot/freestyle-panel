@@ -344,7 +344,7 @@
     <div class="container">
         <div class="header">
             <span>FREESTYLE PRO</span>
-            <span id="liveUserBadge" style="font-size: 11px; background: #000; padding: 2px 6px; border-radius: 4px; border: 1px solid #00FF41;">🟢 Live: <span id="activeUserCount">1</span></span>
+            <span id="liveUserBadge" style="font-size: 11px; background: #000; color: #00FF41; padding: 2px 6px; border-radius: 4px; border: 1px solid #00FF41; white-space: nowrap;">🟢 Live: <span id="activeUserCount" style="color:#00FF41;">0</span></span>
         </div>
 
         <div class="body-content">
@@ -573,9 +573,13 @@
         set(myUserRef, true);
 
         onValue(activeUsersRef, (snapshot) => {
-            if (snapshot.exists()) {
-                const count = snapshot.size;
-                document.getElementById('activeUserCount').innerText = count;
+            // Realtime Database snapshots use numChildren() for child count.
+            // snapshot.size is not reliable here, which caused Live to stay at 1.
+            const count = snapshot.exists() ? snapshot.numChildren() : 0;
+            const badge = document.getElementById('activeUserCount');
+            if (badge) {
+                badge.textContent = String(count);
+                badge.style.color = '#00FF41';
             }
         });
 
@@ -961,4 +965,4 @@
         }
     </script>
 </body>
-    </html>
+                        </html>
