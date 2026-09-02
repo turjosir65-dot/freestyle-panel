@@ -103,17 +103,6 @@
         .input-box input:focus, .input-box select:focus {
             border-color: #00FF41;
         }
-        .input-box button {
-            background-color: #00FF41;
-            color: #000000;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 11px;
-            margin-top: 2px;
-        }
         .card {
             background-color: #1a1a1a;
             padding: 7px 10px;
@@ -160,52 +149,11 @@
             font-weight: bold;
             color: #ff4d4d;
             background: #1a1a1a;
-            padding: 5px;
+            padding: 6px;
             border-radius: 5px;
             border: 1px solid #333;
             margin-bottom: 5px;
-        }
-
-        #sensiLockOverlay {
-            background: #151515;
-            border: 1px dashed #00FF41;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 5px;
-        }
-        #sensiLockOverlay input {
-            background: #0a0a0a;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 7px;
-            border-radius: 5px;
-            font-size: 11px;
-            text-align: center;
-            outline: none;
-        }
-        .pass-btn-group {
-            display: flex;
-            gap: 5px;
-        }
-        .pass-btn-group button {
-            flex: 1;
-            background: #00FF41;
-            color: #000;
-            border: none;
-            padding: 7px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 11px;
-        }
-        .pass-btn-group button.copy-btn {
-            background: #222;
-            color: #00FF41;
-            border: 1px solid #00FF41;
+            letter-spacing: 1px;
         }
 
         .chat-container {
@@ -288,6 +236,33 @@
             padding: 20px;
             box-sizing: border-box;
         }
+        
+        #updateOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(8, 8, 8, 0.96);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .update-card {
+            width: 100%;
+            max-width: 310px;
+            background: #151515;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 0 25px rgba(255, 77, 77, 0.35);
+        }
+
         .login-card {
             width: 100%;
             max-width: 290px;
@@ -350,20 +325,26 @@
     <div id="loginOverlay">
         <div class="login-card">
             <div class="login-header">SECURITY ACCESS</div>
-            
             <div class="login-hidden-group" id="loginFields">
                 <input type="password" id="loginPass" placeholder="Enter Password">
                 <button type="button" onclick="checkLogin()">LOGIN NOW</button>
             </div>
-
             <div class="login-footer">Protected by @ TURJO X USER</div>
+        </div>
+    </div>
+
+    <div id="updateOverlay">
+        <div class="update-card">
+            <div style="color: #ff4d4d; font-size: 15px; font-weight: bold;">⚠️ MANDATORY UPDATE!</div>
+            <div id="updateMessageText" style="font-size: 11px; color: #ccc; line-height: 1.4;">অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।</div>
+            <button onclick="window.location.reload(true)" style="background: #ff4d4d; color: #fff; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 11px;">UPDATE NOW 🔄</button>
         </div>
     </div>
 
     <div class="container">
         <div class="header">
             <span>FREESTYLE PRO</span>
-            <span>⚡</span>
+            <span id="liveUserBadge" style="font-size: 11px; background: #000; padding: 2px 6px; border-radius: 4px; border: 1px solid #00FF41;">🟢 Live: <span id="activeUserCount">1</span></span>
         </div>
 
         <div class="body-content">
@@ -371,80 +352,69 @@
                 <button class="active" id="btnSensi" onclick="switchTab('sensi')">Auto Sensi</button>
                 <button id="btnLive" onclick="switchTab('live')">Device Info</button>
                 <button id="btnBot" onclick="switchTab('bot')">TURJO BOT</button>
+                <button id="btnExtra" onclick="switchTab('extra')" style="background: #1a1a2a; border: 1px solid #0099ff; color: #0099ff; font-weight: bold;">Extra Section</button>
                 <button id="btnSecret" onclick="switchTab('secret')">Admin Panel</button>
                 <button onclick="window.open('https://t.me/turji', '_blank')">Telegram</button>
                 <button onclick="window.open('https://tiktok.com/@turjoxuser', '_blank')">TikTok</button>
+                <button id="btnRemote" onclick="switchTab('remote')" style="background: #1a2a1a; border: 1px solid #00FF41; color: #00FF41; font-weight: bold;">Remote Lock</button>
             </div>
 
             <div class="main-panel">
                 
                 <div id="sensiPanel" class="panel-section">
                     <div class="title">DEVICE & RAM SETUP</div>
+                    <div id="timerDisplay">⏳ Syncing Timer...</div>
                     
-                    <div id="timerDisplay">Time Remaining: <span id="timeLeft">600</span>s</div>
-
-                    <div id="sensiLockOverlay">
-                        <span style="color: #00FF41; font-size: 11px; font-weight: bold;">🔒 Sensi is Locked!</span>
-                        <span style="font-size: 9px; color: #aaa;">Get password from <b>TURJO BOT</b> using <code>/ster</code> (Single use & changes every 10 mins)</span>
-                        <input type="password" id="sensiPassInput" placeholder="Enter Sensi Password">
-                        <div class="pass-btn-group">
-                            <button class="copy-btn" onclick="copyGeneratedPass()">View / Copy Pass</button>
-                            <button onclick="unlockSensi()">UNLOCK</button>
-                        </div>
+                    <div class="input-box" id="inputSection">
+                        <input type="text" id="phoneName" placeholder="Phone Name (e.g. Redmi)">
+                        <input type="text" id="phoneModel" placeholder="Model (e.g. Note 10)">
+                        <select id="phoneRam">
+                            <option value="" disabled selected>Select RAM</option>
+                            <option value="3">3 GB RAM</option>
+                            <option value="4">4 GB RAM</option>
+                            <option value="6">6 GB RAM</option>
+                            <option value="8">8 GB RAM</option>
+                            <option value="12">12 GB RAM</option>
+                        </select>
+                        <button type="button" onclick="generateUniqueSensi()">GENERATE</button>
                     </div>
-
-                    <div id="sensiMainContent" class="hidden">
-                        <div class="input-box" id="inputSection">
-                            <input type="text" id="phoneName" placeholder="Phone Name (e.g. Redmi)">
-                            <input type="text" id="phoneModel" placeholder="Model (e.g. Note 10)">
-                            <select id="phoneRam">
-                                <option value="" disabled selected>Select RAM</option>
-                                <option value="3">3 GB RAM</option>
-                                <option value="4">4 GB RAM</option>
-                                <option value="6">6 GB RAM</option>
-                                <option value="8">8 GB RAM</option>
-                                <option value="12">12 GB RAM</option>
-                            </select>
-                            <button type="button" onclick="generateUniqueSensi()">GENERATE</button>
+                    
+                    <div class="result-box" id="resultBox">
+                        <div class="card">
+                            <span>General Sensi</span>
+                            <span id="genVal" style="color: #00FF41; font-weight: bold;">--</span>
                         </div>
-                        
-                        <div class="result-box" id="resultBox">
-                            <div class="card">
-                                <span>General Sensi</span>
-                                <span id="genVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>Red Dot</span>
-                                <span id="redVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>2X Scope</span>
-                                <span id="twoVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>4X Scope</span>
-                                <span id="fourVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>Desert Eagle 🦅</span>
-                                <span id="deagleVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>M1887 Shotgun 🎯</span>
-                                <span id="m1887Val" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>Spas-12 Shotgun 💥</span>
-                                <span id="spasVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>Fire Button</span>
-                                <span id="fireVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
-                            <div class="card">
-                                <span>DPI</span>
-                                <span id="dpiVal" style="color: #00FF41; font-weight: bold;">--</span>
-                            </div>
+                        <div class="card">
+                            <span>Red Dot</span>
+                            <span id="redVal" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        <div class="card">
+                            <span>2X Scope</span>
+                            <span id="twoVal" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        <div class="card">
+                            <span>4X Scope</span>
+                            <span id="fourVal" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        <div class="card">
+                            <span>Desert Eagle 🦅</span>
+                            <span id="deagleVal" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        <div class="card">
+                            <span>M1887 Shotgun 🎯</span>
+                            <span id="m1887Val" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        <div class="card">
+                            <span>Spas-12 Shotgun 💥</span>
+                            <span id="spasVal" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        <div class="card">
+                            <span>Fire Button</span>
+                            <span id="fireVal" style="color: #00FF41; font-weight: bold;">--</span>
+                        </div>
+                        <div class="card">
+                            <span>DPI</span>
+                            <span id="dpiVal" style="color: #00FF41; font-weight: bold;">--</span>
                         </div>
                     </div>
                 </div>
@@ -481,7 +451,7 @@
                     <div class="title">TURJO AI BOT</div>
                     <div class="chat-container">
                         <div class="chat-messages" id="chat-messages">
-                            <div class="message bot">হ্যালো! সেন্সি পাসের জন্য '/ster' লিখুন।</div>
+                            <div class="message bot">হ্যালো! রিমোট পাসওয়ার্ড পেতে অ্যাডমিনের সাথে যোগাযোগ করুন।</div>
                         </div>
                         <div class="chat-input-area">
                             <input type="text" id="chat-input" placeholder="কিছু একটা লিখুন..." onkeypress="handleChatPress(event)">
@@ -493,12 +463,28 @@
                     </div>
                 </div>
 
+                <div id="extraPanel" class="panel-section hidden">
+                    <div class="title" style="color: #0099ff;">EXTRA CUSTOM SECTION</div>
+                    <div class="card" style="border-left-color: #0099ff;">
+                        <span>Custom Notice</span>
+                        <span id="extraNoticeVal" style="color: #0099ff; font-weight: bold;">Loading...</span>
+                    </div>
+                    <div class="card" style="border-left-color: #0099ff;">
+                        <span>Active Hours</span>
+                        <span id="extraHoursVal" style="color: #0099ff; font-weight: bold;">Loading...</span>
+                    </div>
+                    <div class="card" style="border-left-color: #0099ff;">
+                        <span>Active Month</span>
+                        <span id="extraMonthVal" style="color: #0099ff; font-weight: bold;">Loading...</span>
+                    </div>
+                </div>
+
                 <div id="secretPanel" class="panel-section hidden">
-                    <div class="title">ADMIN 🅿︎🅰︎🆂︎ 🆂︎🅴︎🅺︎🆁︎🅴︎🆁︎</div>
+                    <div class="title">ADMIN PANEL</div>
                     
                     <div id="adminLockOverlay" style="background: #151515; border: 1px dashed #00FF41; padding: 15px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 8px;">
                         <span style="color: #00FF41; font-size: 11px; font-weight: bold;">🔒 Admin Panel Locked!</span>
-                        <span style="font-size: 9px; color: #aaa;">Enter Admin Password (<b>01923</b>)</span>
+                        <span style="font-size: 9px; color: #aaa;">Enter Admin Password (<b>4444</b>)</span>
                         <input type="password" id="adminPassInput" placeholder="Enter Admin Password" style="background: #0a0a0a; border: 1px solid #333; color: #fff; padding: 7px; border-radius: 5px; font-size: 11px; text-align: center; outline: none;">
                         <button onclick="unlockAdmin()" style="background: #00FF41; color: #000; border: none; padding: 7px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 11px;">UNLOCK ADMIN</button>
                         <span id="adminErrorMsg" style="color: #ff4d4d; font-size: 10px; font-weight: bold; display: none;">Wrong Password! Try again.</span>
@@ -506,38 +492,44 @@
 
                     <div id="adminMainContent" class="hidden" style="display: flex; flex-direction: column; gap: 6px;">
                         <div class="card" style="flex-direction: column; align-items: flex-start; gap: 4px;">
-                            <span style="color: #00FF41; font-weight: bold;">admin ᵃᵈᵐⁱⁿ ˢᵉᵏᵃⁿᵉ ᵗʰᵃᵏᵇᵉ</span>
-                            <span style="font-size: 10px; color: #ccc;">premium ˢᵒᵇ ˢᵉⁿˢⁱ ᵇᵒˢᵗ ᵃʳ ᶠᶠᵖˢ ᵃʳ ˢᵒᵇ ˡⁱᵛᵉ ʰᵒᵇᵉ</span>
+                            <span style="color: #00FF41; font-weight: bold;">Firebase Connected</span>
+                            <span style="font-size: 10px; color: #ccc;">অ্যাডমিন প্যানেল ফুল সিক্যুরড মোডে আছে</span>
                         </div>
-                        <div class="card">
-                            <span>Current Dynamic Password</span>
-                            <span id="displaySecretPass" style="color: #00FF41; font-weight: bold;">--</span>
-                        </div>
-                        
-                        <div class="card" style="border-left-color: #00FF41; background: #151515;">
-                            <span style="color: #00FF41; font-weight: bold; font-size: 10px;">Location 📍 Panel</span>
-                            <button onclick="window.open('https://t.me/turji/23', '_blank')" style="background: #00FF41; color: #000; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">START</button>
+                        <button class="btn-go" onclick="alert('সফলভাবে সমস্ত প্রিমিয়াম সেন্সি বুস্ট সক্রিয় করা হয়েছে!')">ACTIVATE ALL BOOST</button>
+                    </div>
+                </div>
+
+                <div id="remotePanel" class="panel-section hidden">
+                    <div class="title">TURJO REMOTE LOCK 😡</div>
+                    
+                    <div id="remoteLockOverlay" style="background: #151515; border: 1px dashed #ff4d4d; padding: 12px; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 6px;">
+                        <span style="color: #ff4d4d; font-size: 11px; font-weight: bold;">🔒 Remote Panel Locked!</span>
+                        <input type="password" id="remoteSecretPassInput" placeholder="Enter Secret #2" style="background: #0a0a0a; border: 1px solid #333; color: #fff; padding: 6px; border-radius: 5px; font-size: 10px; text-align: center; outline: none;">
+                        <button onclick="unlockRemoteSection()" style="background: #ff4d4d; color: #fff; border: none; padding: 6px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 10px;">UNLOCK PANEL</button>
+                        <span id="remoteErrorMsg" style="color: #ff4d4d; font-size: 9px; font-weight: bold; display: none;">Wrong Secret #2!</span>
+                    </div>
+
+                    <div id="remoteMainContent" class="hidden" style="display: flex; flex-direction: column; gap: 6px;">
+                        <div class="card" style="background: #1a1515; border-left: 3px solid #ff4d4d;">
+                            <span style="color: #ff4d4d; font-weight: bold;">MC PORE CELE PORE 😡</span>
                         </div>
 
-                        <div class="card" style="border-left-color: #ff5500; background: #151515;">
-                            <span style="color: #ff5500; font-weight: bold; font-size: 10px;">Free Fire MAX 🎮</span>
-                            <button onclick="window.open('https://play.google.com/store/apps/details?id=com.dts.freefiremax', '_blank')" style="background: #ff5500; color: #fff; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">FF MAX</button>
-                        </div>
+                        <div class="input-box" style="margin-top: 5px;">
+                            <input type="text" id="newPasswordInput" placeholder="Enter New App Password">
+                            <input type="text" id="extraNoticeInput" placeholder="Extra Notice Text">
+                            <input type="text" id="extraHoursInput" placeholder="Active Hours (e.g. 48 Hours)">
+                            <input type="text" id="extraMonthInput" placeholder="Active Month (e.g. March 2026)">
+                            
+                            <input type="datetime-local" id="remoteTargetTimeInput" style="background-color: #1a1a1a; border: 1px solid #333; color: #ffffff; padding: 7px; border-radius: 6px; font-size: 11px; outline: none;">
 
-                        <div class="card" style="border-left-color: #00ffff; background: #151515;">
-                            <span style="color: #00ffff; font-weight: bold; font-size: 10px;">Shizuka 🚀</span>
-                            <button onclick="window.open('https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api', '_blank')" style="background: #00ffff; color: #000; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 10px; cursor: pointer;">DOWNLOAD</button>
-                        </div>
+                            <select id="forceUpdateToggle" style="background-color: #1a1a1a; border: 1px solid #333; color: #ffffff; padding: 7px; border-radius: 6px; font-size: 11px; outline: none;">
+                                <option value="off">Force Update: OFF (Normal)</option>
+                                <option value="on">Force Update: ON (Lock App)</option>
+                            </select>
+                            <input type="text" id="customUpdateMsgInput" placeholder="Custom Update Message">
 
-                        <div class="card" style="border-left-color: #ff0055; background: #151515;">
-                            <span style="color: #ff0055; font-weight: bold; font-size: 10px;">PAID FAKE LAG ⚡</span>
-                            <div style="display: flex; gap: 3px;">
-                                <button onclick="window.open('https://t.me/turji/40', '_blank')" style="background: #ff0055; color: #fff; border: none; padding: 5px 8px; border-radius: 4px; font-weight: bold; font-size: 9px; cursor: pointer;">START</button>
-                                <button onclick="goToBotAndSearch()" style="background: #00FF41; color: #000; border: none; padding: 5px 8px; border-radius: 4px; font-weight: bold; font-size: 9px; cursor: pointer;">GET KEY</button>
-                            </div>
+                            <button type="button" onclick="updateRemotePassword()" style="background: #ff4d4d; color: #fff;">UPDATE & FORCE RELOAD ALL 😡</button>
                         </div>
-
-                        <button class="btn-go" onclick="alert('সফলভাবে সমস্ত প্রিমিয়াম সেন্সি বুস্ট ও এফএফপিএস লাইভ মোড সক্রিয় করা হয়েছে!')">ACTIVATE ALL BOOST</button>
                     </div>
                 </div>
 
@@ -547,84 +539,158 @@
         </div>
     </div>
 
-    <script>
-        let currentDynamicPass = "TURJO9991234";
-        let timeLeft = 600; 
-        let timerInterval;
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, onValue, set, push, onDisconnect } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        function generateNewPassword() {
-            let randomNum = Math.floor(100000 + Math.random() * 900000);
-            currentDynamicPass = "TURJO999" + randomNum;
-        }
+        const firebaseConfig = {
+            apiKey: "AIzaSyAE0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
+            authDomain: "mysensiapp.firebaseapp.com",
+            databaseURL: "https://mysensiapp-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "mysensiapp",
+            storageBucket: "mysensiapp.appspot.com",
+            messagingSenderId: "115975518263",
+            appId: "1:115975518263:web:1d08e768bb13c9fd2c67b2",
+            measurementId: "G-N68B2MLFH9"
+        };
 
-        generateNewPassword();
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-        setInterval(() => {
-            generateNewPassword();
-            timeLeft = 600; 
-            let timerSpan = document.getElementById('timeLeft');
-            if(timerSpan) timerSpan.innerText = timeLeft;
-            
-            clearInterval(timerInterval);
-            startTimer();
-        }, 600000);
+        let correctPassword = "10";
+        let countdownInterval = null;
 
-        function startTimer() {
-            let timerSpan = document.getElementById('timeLeft');
-            timerInterval = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    if(timerSpan) timerSpan.innerText = timeLeft;
+        const adminRef = ref(db, 'admin');
+        onValue(adminRef, (snapshot) => {
+            if (snapshot.exists()) {
+                correctPassword = String(snapshot.val()).trim();
+            }
+        });
+
+        const activeUsersRef = ref(db, 'activeUsers');
+        const myUserRef = push(activeUsersRef);
+        onDisconnect(myUserRef).remove();
+        set(myUserRef, true);
+
+        onValue(activeUsersRef, (snapshot) => {
+            if (snapshot.exists()) {
+                const count = snapshot.size;
+                document.getElementById('activeUserCount').innerText = count;
+            }
+        });
+
+        const extraSectionRef = ref(db, 'extraSection');
+        onValue(extraSectionRef, (snapshot) => {
+            if (snapshot.exists()) {
+                let data = snapshot.val();
+                document.getElementById('extraNoticeVal').innerText = data.notice || "100% Working";
+                document.getElementById('extraHoursVal').innerText = data.hours || "24 Hours";
+                document.getElementById('extraMonthVal').innerText = data.month || "March 2026";
+            } else {
+                document.getElementById('extraNoticeVal').innerText = "100% Working";
+                document.getElementById('extraHoursVal').innerText = "24 Hours";
+                document.getElementById('extraMonthVal').innerText = "March 2026";
+            }
+        });
+
+        const countdownRef = ref(db, 'countdownTimer');
+        onValue(countdownRef, (snapshot) => {
+            if (snapshot.exists()) {
+                let targetTimestamp = snapshot.val();
+                startLiveCountdown(targetTimestamp);
+            } else {
+                let defaultTarget = new Date().getTime() + (24 * 60 * 60 * 1000);
+                startLiveCountdown(defaultTarget);
+            }
+        });
+
+        function startLiveCountdown(targetTime) {
+            if (countdownInterval) clearInterval(countdownInterval);
+
+            countdownInterval = setInterval(() => {
+                let now = new Date().getTime();
+                let distance = targetTime - now;
+                let timerDisplay = document.getElementById('timerDisplay');
+
+                if (distance < 0) {
+                    timerDisplay.innerText = "EXPIRED / TIME UP! ⏳";
+                    clearInterval(countdownInterval);
                 } else {
-                    clearInterval(timerInterval);
+                    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    let timeString = "";
+                    if (days > 0) timeString += days + "d ";
+                    timeString += String(hours).padStart(2, '0') + "h ";
+                    timeString += String(minutes).padStart(2, '0') + "m ";
+                    timeString += String(seconds).padStart(2, '0') + "s";
+
+                    timerDisplay.innerText = "⏳ Live Countdown: " + timeString;
                 }
             }, 1000);
         }
 
-        window.onload = function() {
-            startTimer();
-        };
-
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                let utterance = new SpeechSynthesisUtterance(text);
-                utterance.rate = 1.0;
-                window.speechSynthesis.speak(utterance);
+        const forceUpdateRef = ref(db, 'forceUpdateConfig');
+        onValue(forceUpdateRef, (snapshot) => {
+            let updateOverlay = document.getElementById('updateOverlay');
+            let updateMsgText = document.getElementById('updateMessageText');
+            
+            if (snapshot.exists()) {
+                let config = snapshot.val();
+                let statusVal = config.status ? String(config.status).trim().toLowerCase() : "off";
+                
+                if (statusVal === "on" || statusVal === "true" || statusVal === "1") {
+                    if (config.message) {
+                        updateMsgText.innerText = config.message;
+                    }
+                    updateOverlay.style.display = "flex";
+                } else {
+                    updateOverlay.style.display = "none";
+                }
+            } else {
+                updateOverlay.style.display = "none";
             }
-        }
+        });
 
-        function checkLogin() {
-            let pass = document.getElementById('loginPass').value;
-            if (pass === "66") {
+        const updateSignalRef = ref(db, 'updateSignal');
+        onValue(updateSignalRef, (snapshot) => {
+            if (snapshot.exists()) {
+                let currentSignal = snapshot.val();
+                let lastKnownSignal = localStorage.getItem('lastAppSignal');
+                
+                if (lastKnownSignal === null) {
+                    localStorage.setItem('lastAppSignal', currentSignal);
+                } else if (lastKnownSignal !== currentSignal) {
+                    localStorage.setItem('lastAppSignal', currentSignal);
+                    speakText("New Update Available. Refreshing app.");
+                    alert("⚠️ নতুন আপডেট পাওয়া গেছে! সব ডিভাইসে অ্যাপ রিলোড হচ্ছে...");
+                    location.reload(true);
+                }
+            }
+        });
+
+        window.checkRemoteLogin = function() {
+            let userPass = document.getElementById('loginPass').value.trim();
+            if (userPass === correctPassword) {
                 speakText("Login Successful");
                 document.getElementById('loginOverlay').style.display = 'none';
             } else {
                 speakText("Incorrect Password");
                 alert("ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।");
             }
-        }
+        };
 
-        function unlockSensi() {
-            let userPass = document.getElementById('sensiPassInput').value.trim();
-            if (userPass === currentDynamicPass) {
-                speakText("Sensi Unlocked Successfully");
-                document.getElementById('sensiLockOverlay').style.display = 'none';
-                document.getElementById('timerDisplay').style.display = 'none';
-                document.getElementById('sensiMainContent').classList.remove('hidden');
-                
-                currentDynamicPass = "USED_" + Math.random();
-                clearInterval(timerInterval);
-            } else {
-                speakText("Wrong Sensi Password");
-                alert("ভুল পাসওয়ার্ড!");
-            }
-        }
+        window.checkLogin = function() {
+            window.checkRemoteLogin();
+        };
 
-        function unlockAdmin() {
+        window.unlockAdmin = function() {
             let adminPass = document.getElementById('adminPassInput').value.trim();
             let errorMsg = document.getElementById('adminErrorMsg');
             
-            if (adminPass === "01923") {
+            if (adminPass === "4444") {
                 speakText("Admin Unlocked Successfully");
                 document.getElementById('adminLockOverlay').style.display = 'none';
                 document.getElementById('adminMainContent').classList.remove('hidden');
@@ -633,57 +699,117 @@
                 speakText("Wrong Admin Password");
                 errorMsg.style.display = 'block';
             }
-        }
+        };
 
-        function copyGeneratedPass() {
-            let userInput = prompt("আপনার বর্তমান ডায়নামিক সেন্সি পাসওয়ার্ড:", currentDynamicPass);
-            if (userInput !== null) {
-                document.getElementById('sensiPassInput').value = currentDynamicPass;
-            }
-        }
-
-        function goToBotAndSearch() {
-            switchTab('bot'); 
+        window.unlockRemoteSection = function() {
+            let remotePass = document.getElementById('remoteSecretPassInput').value.trim().toLowerCase();
+            let errorMsg = document.getElementById('remoteErrorMsg');
             
-            let chatMessages = document.getElementById("chat-messages");
-            let userMsg = document.createElement("div");
-            userMsg.className = "message user";
-            userMsg.innerText = "get key paid fake lag";
-            chatMessages.appendChild(userMsg);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            if (remotePass === "secret #2") {
+                speakText("Remote Panel Unlocked");
+                document.getElementById('remoteLockOverlay').style.display = 'none';
+                document.getElementById('remoteMainContent').classList.remove('hidden');
+                errorMsg.style.display = 'none';
+            } else {
+                speakText("Wrong Secret Password");
+                errorMsg.style.display = 'block';
+            }
+        };
 
-            setTimeout(() => {
-                let botMsg = document.createElement("div");
-                botMsg.className = "message bot";
-                botMsg.innerText = "🔒 সিকিউরিটি কোড চ্যাটে শো করা নিষেধ।";
-                chatMessages.appendChild(botMsg);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                speakText("Security code is restricted");
-            }, 500);
+        window.updateRemotePassword = async function() {
+            let newPass = document.getElementById('newPasswordInput').value.trim();
+            let newNotice = document.getElementById('extraNoticeInput').value.trim();
+            let newHours = document.getElementById('extraHoursInput').value.trim();
+            let newMonth = document.getElementById('extraMonthInput').value.trim();
+            let targetTimeVal = document.getElementById('remoteTargetTimeInput').value;
+            let updateStatus = document.getElementById('forceUpdateToggle').value;
+            let customUpdateMsg = document.getElementById('customUpdateMsgInput').value.trim();
+
+            if (newPass === "") {
+                alert("দয়া করে নতুন পাসওয়ার্ড লিখুন!");
+                return;
+            }
+
+            try {
+                let timestamp = Date.now().toString();
+                
+                await set(ref(db, 'admin'), newPass);
+                
+                if (newNotice !== "" || newHours !== "" || newMonth !== "") {
+                    await set(ref(db, 'extraSection'), {
+                        notice: newNotice !== "" ? newNotice : "100% Working",
+                        hours: newHours !== "" ? newHours : "24 Hours",
+                        month: newMonth !== "" ? newMonth : "March 2026"
+                    });
+                }
+
+                if (targetTimeVal) {
+                    let selectedTimestamp = new Date(targetTimeVal).getTime();
+                    await set(ref(db, 'countdownTimer'), selectedTimestamp);
+                }
+
+                await set(ref(db, 'forceUpdateConfig'), {
+                    status: updateStatus,
+                    message: customUpdateMsg !== "" ? customUpdateMsg : "অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।"
+                });
+
+                await set(ref(db, 'updateSignal'), timestamp);
+
+                document.getElementById('newPasswordInput').value = "";
+                document.getElementById('extraNoticeInput').value = "";
+                document.getElementById('extraHoursInput').value = "";
+                document.getElementById('extraMonthInput').value = "";
+                document.getElementById('remoteTargetTimeInput').value = "";
+                document.getElementById('customUpdateMsgInput').value = "";
+
+                alert("সফলভাবে সমস্ত ডাটা এবং রিয়েল-টাইম কাউন্টডাউন আপডেট করা হয়েছে!");
+                speakText("Data Updated and Broadcasted");
+            } catch (error) {
+                console.error("আপডেট করতে সমস্যা হয়েছে:", error);
+                alert("ডেটা পরিবর্তন করা যায়নি!");
+            }
+        };
+    </script>
+
+    <script>
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
         }
 
         function switchTab(tab) {
             let sensiPanel = document.getElementById('sensiPanel');
             let livePanel = document.getElementById('livePanel');
             let botPanel = document.getElementById('botPanel');
+            let extraPanel = document.getElementById('extraPanel');
             let secretPanel = document.getElementById('secretPanel');
+            let remotePanel = document.getElementById('remotePanel');
             
             let btnSensi = document.getElementById('btnSensi');
             let btnLive = document.getElementById('btnLive');
             let btnBot = document.getElementById('btnBot');
+            let btnExtra = document.getElementById('btnExtra');
             let btnSecret = document.getElementById('btnSecret');
+            let btnRemote = document.getElementById('btnRemote');
 
-            if (!sensiPanel || !livePanel || !botPanel || !secretPanel) return;
+            if (!sensiPanel || !livePanel || !botPanel || !extraPanel || !secretPanel || !remotePanel) return;
 
             sensiPanel.classList.add('hidden');
             livePanel.classList.add('hidden');
             botPanel.classList.add('hidden');
+            extraPanel.classList.add('hidden');
             secretPanel.classList.add('hidden');
+            remotePanel.classList.add('hidden');
 
             if(btnSensi) btnSensi.classList.remove('active');
             if(btnLive) btnLive.classList.remove('active');
             if(btnBot) btnBot.classList.remove('active');
+            if(btnExtra) btnExtra.classList.remove('active');
             if(btnSecret) btnSecret.classList.remove('active');
+            if(btnRemote) btnRemote.classList.remove('active');
 
             if (tab === 'sensi') {
                 sensiPanel.classList.remove('hidden');
@@ -695,10 +821,15 @@
             } else if (tab === 'bot') {
                 botPanel.classList.remove('hidden');
                 if(btnBot) btnBot.classList.add('active');
+            } else if (tab === 'extra') {
+                extraPanel.classList.remove('hidden');
+                if(btnExtra) btnExtra.classList.add('active');
             } else if (tab === 'secret') {
                 secretPanel.classList.remove('hidden');
                 if(btnSecret) btnSecret.classList.add('active');
-                document.getElementById('displaySecretPass').innerText = currentDynamicPass;
+            } else if (tab === 'remote') {
+                remotePanel.classList.remove('hidden');
+                if(btnRemote) btnRemote.classList.add('active');
             }
         }
 
@@ -823,13 +954,11 @@
         function getBotResponse(input) {
             let text = input.toLowerCase().trim();
             if (text === "/ster") {
-                return '⚡ [SYSTEM ALERT]: পাসওয়ার্ড জেনারেট করতে প্যানেল চেক করুন।';
-            } else if (text === "01923" || text.includes("01923")) {
-                return 'PANKAJXAURA@123';
+                return '⚡ [SYSTEM ALERT]: বর্তমান পাসওয়ার্ড পেতে অ্যাডমিনের সাথে যোগাযোগ করুন।';
             } else {
-                return "সাহায্যের জন্য কোড বা '/ster' লিখুন।";
+                return "সাহায্যের জন্য সঠিক কমান্ড ব্যবহার করুন।";
             }
         }
     </script>
 </body>
-</html>
+    </html>
