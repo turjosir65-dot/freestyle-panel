@@ -541,7 +541,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, onValue, set, push, onDisconnect } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, onValue, set, onDisconnect } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAE0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
@@ -567,14 +567,14 @@
             }
         });
 
-        const activeUsersRef = ref(db, 'activeUsers');
-        const myUserRef = push(activeUsersRef);
-        onDisconnect(myUserRef).remove();
-        set(myUserRef, true);
+        // সেশন-ভিত্তিক ইউনিক আইডি দিয়ে ফায়ারবেস লাইভ ইউজার কাউন্ট ঠিক করা হলো
+        const sessionId = 'user_' + Math.random().toString(36).substring(2, 9);
+        const activeUsersRef = ref(db, 'activeUsers/' + sessionId);
+        onDisconnect(activeUsersRef).remove();
+        set(activeUsersRef, true);
 
-        onValue(activeUsersRef, (snapshot) => {
-            // Realtime Database snapshots use numChildren() for child count.
-            // snapshot.size is not reliable here, which caused Live to stay at 1.
+        const allUsersRef = ref(db, 'activeUsers');
+        onValue(allUsersRef, (snapshot) => {
             const count = snapshot.exists() ? snapshot.numChildren() : 0;
             const badge = document.getElementById('activeUserCount');
             if (badge) {
@@ -965,4 +965,4 @@
         }
     </script>
 </body>
-                        </html>
+</html>
