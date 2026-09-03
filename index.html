@@ -416,6 +416,17 @@
                         </div>
                         <div id="wodpikarHsStatus" style="text-align:center;font-size:10px;font-weight:bold;color:#ff4d4d;">Unsuccessful</div>
 
+                        <div class="card" style="margin-top:2px;">
+                            <span>UMP HS</span>
+                            <label style="position:relative;display:inline-block;width:44px;height:24px;">
+                                <input type="checkbox" id="umpHsToggle" onchange="updateUmpHsStatus()" style="opacity:0;width:0;height:0;">
+                                <span id="umpHsSlider" style="position:absolute;cursor:pointer;inset:0;background:#333;border-radius:24px;transition:.25s;">
+                                    <span style="position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div id="umpHsStatus" style="text-align:center;font-size:10px;font-weight:bold;color:#ff4d4d;">Unsuccessful</div>
+
                         <button type="button" class="btn-go" onclick="launchFreeFire()" style="width:100%; background: linear-gradient(135deg, #00ffff, #0080ff); color: #000; text-shadow: none;">APPLY FREE FIRE 🎮</button>
                     </div>
 
@@ -823,6 +834,27 @@
             }
         }
 
+        function updateUmpHsStatus() {
+            const toggle = document.getElementById('umpHsToggle');
+            const status = document.getElementById('umpHsStatus');
+            const slider = document.getElementById('umpHsSlider');
+            const knob = slider ? slider.querySelector('span') : null;
+
+            if (!toggle || !status) return;
+
+            if (toggle.checked) {
+                status.innerText = "Success";
+                status.style.color = "#00ff88";
+                if (slider) slider.style.background = "#00ff88";
+                if (knob) knob.style.transform = "translateX(20px)";
+            } else {
+                status.innerText = "Unsuccessful";
+                status.style.color = "#ff4d4d";
+                if (slider) slider.style.background = "#333";
+                if (knob) knob.style.transform = "translateX(0)";
+            }
+        }
+
         function launchFreeFire() {
             let hudStyle = document.getElementById('hudStyleSelect').value;
             if (!hudStyle) {
@@ -865,4 +897,4 @@
         }
     </script>
 </body>
-                                </html>
+</html>
