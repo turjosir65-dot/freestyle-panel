@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Sensi App - Ultimate Premium</title>
+    <title>VIP SENSI App - Ultimate Premium</title>
     <style>
         body {
             background-color: #030303;
@@ -17,6 +17,7 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
+
         .container {
             width: 100%;
             max-width: 420px;
@@ -30,6 +31,7 @@
             box-shadow: 0 0 35px rgba(255, 0, 255, 0.25), inset 0 0 20px rgba(255, 0, 255, 0.1);
             position: relative;
         }
+
         .header {
             background: linear-gradient(135deg, #ff00ff, #a020f0, #7000ff);
             color: #ffffff;
@@ -43,16 +45,19 @@
             box-shadow: 0 4px 20px rgba(255, 0, 255, 0.4);
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
+
         .body-content {
             display: flex;
             padding: 14px;
         }
+
         .sidebar {
             width: 110px;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
+
         .sidebar button {
             background: rgba(25, 25, 35, 0.7);
             backdrop-filter: blur(10px);
@@ -66,13 +71,16 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        .sidebar button.active, .sidebar button:hover {
+
+        .sidebar button.active,
+        .sidebar button:hover {
             background: linear-gradient(135deg, #ff00ff, #b000ff);
             color: #ffffff;
             border-color: #ff00ff;
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
             transform: translateX(3px);
         }
+
         .main-panel {
             flex: 1;
             padding-left: 12px;
@@ -80,6 +88,7 @@
             flex-direction: column;
             gap: 10px;
         }
+
         .title {
             text-align: center;
             font-size: 12px;
@@ -89,20 +98,25 @@
             letter-spacing: 1px;
             text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
         }
+
         .panel-section {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
+
         .hidden {
             display: none !important;
         }
+
         .input-box {
             display: flex;
             flex-direction: column;
             gap: 7px;
         }
-        .input-box input, .input-box select {
+
+        .input-box input,
+        .input-box select {
             background: rgba(15, 15, 20, 0.8);
             border: 1px solid rgba(255, 0, 255, 0.2);
             color: #ffffff;
@@ -112,11 +126,14 @@
             outline: none;
             transition: all 0.3s ease;
         }
-        .input-box input:focus, .input-box select:focus {
+
+        .input-box input:focus,
+        .input-box select:focus {
             border-color: #ff00ff;
             box-shadow: 0 0 12px rgba(255, 0, 255, 0.5);
             background: rgba(20, 20, 30, 0.9);
         }
+
         .card {
             background: rgba(20, 20, 28, 0.6);
             backdrop-filter: blur(5px);
@@ -131,10 +148,12 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             transition: 0.2s;
         }
+
         .card:hover {
             border-color: rgba(255, 0, 255, 0.4);
             transform: scale(1.02);
         }
+
         .result-box {
             display: none;
             flex-direction: column;
@@ -142,6 +161,7 @@
             max-height: 220px;
             overflow-y: auto;
         }
+
         .btn-go {
             background: linear-gradient(135deg, #ff00ff, #b000ff, #7000ff);
             color: #ffffff;
@@ -157,16 +177,19 @@
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
             transition: all 0.3s ease;
         }
+
         .btn-go:hover {
             box-shadow: 0 0 25px rgba(255, 0, 255, 0.9);
             transform: translateY(-2px);
         }
+
         .admin-text {
             text-align: center;
             font-size: 10px;
             color: #888;
             margin-top: 4px;
         }
+
         .admin-text span {
             color: #ff00ff;
             font-weight: bold;
@@ -188,10 +211,12 @@
             text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
         }
 
-        /* লগইন ওভারলে */
         #loginOverlay {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background: rgba(2, 2, 5, 0.96);
             backdrop-filter: blur(15px);
             z-index: 9999;
@@ -202,10 +227,13 @@
             padding: 20px;
             box-sizing: border-box;
         }
-        
+
         #updateOverlay {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background: rgba(3, 3, 5, 0.97);
             backdrop-filter: blur(15px);
             z-index: 10000;
@@ -216,6 +244,7 @@
             padding: 20px;
             box-sizing: border-box;
         }
+
         .update-card {
             width: 100%;
             max-width: 310px;
@@ -242,6 +271,7 @@
             gap: 18px;
             box-shadow: 0 0 45px rgba(255, 0, 255, 0.4), inset 0 0 20px rgba(255, 0, 255, 0.1);
         }
+
         .login-header {
             text-align: center;
             color: #ff00ff;
@@ -253,11 +283,13 @@
             padding-bottom: 10px;
             text-shadow: 0 0 12px rgba(255, 0, 255, 0.8);
         }
-        .login-hidden-group { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 14px; 
+
+        .login-hidden-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
+
         .login-card input {
             background-color: rgba(8, 8, 12, 0.9);
             border: 1px solid rgba(255, 0, 255, 0.3);
@@ -270,11 +302,13 @@
             letter-spacing: 1.5px;
             transition: all 0.3s ease;
         }
+
         .login-card input:focus {
             border-color: #ff00ff;
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
             background: rgba(15, 15, 22, 0.95);
         }
+
         .login-card button {
             background: linear-gradient(135deg, #ff00ff, #b000ff);
             color: #ffffff;
@@ -288,10 +322,12 @@
             box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
             transition: all 0.3s ease;
         }
+
         .login-card button:hover {
             box-shadow: 0 0 30px rgba(255, 0, 255, 0.9);
             transform: translateY(-2px);
         }
+
         .login-footer {
             text-align: center;
             font-size: 9px;
@@ -300,601 +336,1536 @@
         }
     </style>
 </head>
+
 <body>
 
-    <div id="loginOverlay">
-        <div class="login-card">
-            <div class="login-header">SECURITY ACCESS</div>
-            <div class="login-hidden-group" id="loginFields">
-                <input type="password" id="loginPass" placeholder="Enter Password">
-                <button type="button" onclick="checkLogin()">LOGIN NOW</button>
-            </div>
-            <div class="login-footer">Protected by @ TURJO X USER</div>
+<div id="loginOverlay">
+    <div class="login-card">
+        <div class="login-header">SECURITY ACCESS</div>
+
+        <div class="login-hidden-group" id="loginFields">
+            <input type="password" id="loginPass" placeholder="Enter Password">
+
+            <button type="button" onclick="checkLogin()">
+                LOGIN NOW
+            </button>
+        </div>
+
+        <div class="login-footer">
+            Protected by @ TURJO X USER
         </div>
     </div>
+</div>
 
-    <div id="updateOverlay">
-        <div class="update-card">
-            <div style="color: #ff4d4d; font-size: 15px; font-weight: bold; text-shadow: 0 0 8px rgba(255,77,77,0.6);">⚠️ MANDATORY UPDATE!</div>
-            <div id="updateMessageText" style="font-size: 11px; color: #ccc; line-height: 1.4;">অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।</div>
-            <button onclick="window.location.reload(true)" style="background: #ff4d4d; color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 11px; box-shadow: 0 0 12px rgba(255,77,77,0.5);">UPDATE NOW 🔄</button>
+<div id="updateOverlay">
+    <div class="update-card">
+        <div style="color:#ff4d4d;font-size:15px;font-weight:bold;text-shadow:0 0 8px rgba(255,77,77,0.6);">
+            ⚠️ MANDATORY UPDATE!
         </div>
+
+        <div id="updateMessageText" style="font-size:11px;color:#ccc;line-height:1.4;">
+            অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।
+        </div>
+
+        <button onclick="window.location.reload(true)"
+            style="background:#ff4d4d;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:11px;box-shadow:0 0 12px rgba(255,77,77,0.5);">
+            UPDATE NOW 🔄
+        </button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="header">
+        <span>FREESTYLE PRO</span>
+
+        <span id="liveUserBadge"
+            style="font-size:11px;background:rgba(0,0,0,0.5);color:#00ffff;padding:4px 10px;border-radius:8px;border:1px solid rgba(0,255,255,0.4);box-shadow:0 0 10px rgba(0,255,255,0.3);white-space:nowrap;">
+            ✨ Live:
+            <span id="activeUserCount" style="color:#00ffff;">0</span>
+        </span>
     </div>
 
-    <div class="container">
-        <div class="header">
-            <span>FREESTYLE PRO</span>
-            <span id="liveUserBadge" style="font-size: 11px; background: rgba(0,0,0,0.5); color: #00ffff; padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 10px rgba(0,255,255,0.3); white-space: nowrap;">✨ Live: <span id="activeUserCount" style="color:#00ffff;">0</span></span>
+    <div class="body-content">
+
+        <div class="sidebar">
+
+            <button class="active"
+                id="btnSensi"
+                onclick="switchTab('sensi')">
+                VIP SENSI
+            </button>
+
+            <button id="btnVipHud"
+                onclick="switchTab('viphud')"
+                style="background:rgba(35,15,45,0.7);border:1px solid rgba(255,0,255,0.3);color:#ff80ff;font-weight:bold;">
+                VIP HUD
+            </button>
+
+            <button id="btnSecret"
+                onclick="switchTab('secret')">
+                Admin Panel
+            </button>
+
+            <button onclick="window.open('https://t.me/turji','_blank')">
+                Telegram
+            </button>
+
+            <button onclick="window.open('https://tiktok.com/@turjoxuser','_blank')">
+                TikTok
+            </button>
+
+            <button id="btnRemote"
+                onclick="switchTab('remote')"
+                style="background:rgba(35,15,35,0.7);border:1px solid rgba(255,0,255,0.4);color:#ff00ff;font-weight:bold;">
+                Remote Lock
+            </button>
+
         </div>
 
-        <div class="body-content">
-            <div class="sidebar">
-                <button class="active" id="btnSensi" onclick="switchTab('sensi')">Auto Sensi</button>
-                <button id="btnVipHud" onclick="switchTab('viphud')" style="background: rgba(35, 15, 45, 0.7); border: 1px solid rgba(255,0,255,0.3); color: #ff80ff; font-weight: bold;">VIP HUD</button>
-                <button id="btnSecret" onclick="switchTab('secret')">Admin Panel</button>
-                <button onclick="window.open('https://t.me/turji', '_blank')">Telegram</button>
-                <button onclick="window.open('https://tiktok.com/@turjoxuser', '_blank')">TikTok</button>
-                <button id="btnRemote" onclick="switchTab('remote')" style="background: rgba(35, 15, 35, 0.7); border: 1px solid rgba(255,0,255,0.4); color: #ff00ff; font-weight: bold;">Remote Lock</button>
+        <div class="main-panel">
+
+            <!-- VIP SENSI -->
+
+            <div id="sensiPanel" class="panel-section">
+
+                <div class="title">
+                    DEVICE & RAM SETUP
+                </div>
+
+                <div id="timerDisplay">
+                    ⏳ Syncing Timer...
+                </div>
+
+                <div class="input-box" id="inputSection">
+
+                    <input type="text"
+                        id="phoneName"
+                        placeholder="Phone Name (e.g. Redmi)">
+
+                    <input type="text"
+                        id="phoneModel"
+                        placeholder="Model (e.g. Note 10)">
+
+                    <select id="phoneRam">
+                        <option value="" disabled selected>
+                            Select RAM
+                        </option>
+                        <option value="3">3 GB RAM</option>
+                        <option value="4">4 GB RAM</option>
+                        <option value="6">6 GB RAM</option>
+                        <option value="8">8 GB RAM</option>
+                        <option value="12">12 GB RAM</option>
+                    </select>
+
+                    <button type="button"
+                        class="btn-go"
+                        onclick="generateUniqueSensi()"
+                        style="width:100%;">
+                        GENERATE
+                    </button>
+
+                </div>
+
+                <div class="result-box" id="resultBox">
+
+                    <div class="card">
+                        <span>General Sensi</span>
+                        <span id="genVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Red Dot</span>
+                        <span id="redVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>2X Scope</span>
+                        <span id="twoVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>4X Scope</span>
+                        <span id="fourVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>AWM Scope 🎯</span>
+                        <span id="awmVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Free Camera 📷</span>
+                        <span id="freeCamVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Fire Button</span>
+                        <span id="fireVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>DPI</span>
+                        <span id="dpiVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="main-panel">
-                
-                <div id="sensiPanel" class="panel-section">
-                    <div class="title">DEVICE & RAM SETUP</div>
-                    <div id="timerDisplay">⏳ Syncing Timer...</div>
-                    
-                    <div class="input-box" id="inputSection">
-                        <input type="text" id="phoneName" placeholder="Phone Name (e.g. Redmi)">
-                        <input type="text" id="phoneModel" placeholder="Model (e.g. Note 10)">
-                        <select id="phoneRam">
-                            <option value="" disabled selected>Select RAM</option>
-                            <option value="3">3 GB RAM</option>
-                            <option value="4">4 GB RAM</option>
-                            <option value="6">6 GB RAM</option>
-                            <option value="8">8 GB RAM</option>
-                            <option value="12">12 GB RAM</option>
+            <!-- VIP HUD -->
+
+            <div id="viphudPanel" class="panel-section hidden">
+
+                <div class="title">
+                    VIP HUD LAYOUT CONFIG 👑
+                </div>
+
+                <div class="input-box">
+
+                    <select id="hudStyleSelect">
+                        <option value="" disabled selected>
+                            Select HUD Style
+                        </option>
+
+                        <option value="2finger">
+                            2 Finger Standard
+                        </option>
+
+                        <option value="3finger">
+                            3 Finger Claw (Fast)
+                        </option>
+
+                        <option value="4finger">
+                            4 Finger Pro Claw ⚡
+                        </option>
+                    </select>
+
+                    <!-- Wodpikar HS -->
+
+                    <div class="card" style="margin-top:2px;">
+
+                        <span>Wodpikar HS</span>
+
+                        <label style="position:relative;display:inline-block;width:44px;height:24px;">
+
+                            <input type="checkbox"
+                                id="wodpikarHsToggle"
+                                onchange="updateWodpikarHsStatus()"
+                                style="opacity:0;width:0;height:0;">
+
+                            <span id="wodpikarHsSlider"
+                                style="position:absolute;cursor:pointer;inset:0;background:#333;border-radius:24px;transition:.25s;">
+
+                                <span style="position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;"></span>
+
+                            </span>
+                        </label>
+                    </div>
+
+                    <div id="wodpikarHsStatus"
+                        style="text-align:center;font-size:10px;font-weight:bold;color:#ff4d4d;">
+                        Unsuccessful
+                    </div>
+
+                    <!-- UMP HS -->
+
+                    <div class="card" style="margin-top:2px;">
+
+                        <span>UMP HS</span>
+
+                        <label style="position:relative;display:inline-block;width:44px;height:24px;">
+
+                            <input type="checkbox"
+                                id="umpHsToggle"
+                                onchange="updateUmpHsStatus()"
+                                style="opacity:0;width:0;height:0;">
+
+                            <span id="umpHsSlider"
+                                style="position:absolute;cursor:pointer;inset:0;background:#333;border-radius:24px;transition:.25s;">
+
+                                <span style="position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;"></span>
+
+                            </span>
+                        </label>
+                    </div>
+
+                    <div id="umpHsStatus"
+                        style="text-align:center;font-size:10px;font-weight:bold;color:#ff4d4d;">
+                        Unsuccessful
+                    </div>
+
+                    <button type="button"
+                        class="btn-go"
+                        onclick="launchFreeFire()"
+                        style="width:100%;background:linear-gradient(135deg,#00ffff,#0080ff);color:#000;text-shadow:none;">
+                        APPLY FREE FIRE 🎮
+                    </button>
+
+                </div>
+
+                <div class="result-box"
+                    id="hudResultBox"
+                    style="display:none;max-height:240px;">
+
+                    <div class="card">
+                        <span>Layout Type</span>
+                        <span id="hudTypeVal" style="color:#00ffff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Fire Button Size</span>
+                        <span id="hudFireSizeVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Transparency (Opacity)</span>
+                        <span id="hudTransVal" style="color:#ff00ff;font-weight:bold;">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Custom HUD Position</span>
+                        <span id="hudPosVal" style="color:#ff00ff;font-weight:bold;">
+                            Optimized Pro
+                        </span>
+                    </div>
+
+                    <div class="card"
+                        style="background:rgba(25,15,35,0.8);border-left:4px solid #00ffff;">
+
+                        <span style="color:#00ffff;font-weight:bold;">
+                            Status:
+                        </span>
+
+                        <span style="color:#fff;font-size:10px;">
+                            Launching Free Fire...
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ADMIN PANEL -->
+
+            <div id="secretPanel" class="panel-section hidden">
+
+                <div class="title">
+                    ADMIN PANEL
+                </div>
+
+                <div id="adminLockOverlay"
+                    style="background:rgba(15,15,20,0.8);border:1px dashed rgba(255,0,255,0.4);padding:15px;border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:8px;box-shadow:0 0 15px rgba(255,0,255,0.15);">
+
+                    <span style="color:#ff00ff;font-size:11px;font-weight:bold;">
+                        🔒 Admin Panel Locked!
+                    </span>
+
+                    <span style="font-size:9px;color:#aaa;">
+                        Enter Admin Password (<b>4444</b>)
+                    </span>
+
+                    <input type="password"
+                        id="adminPassInput"
+                        placeholder="Enter Admin Password"
+                        style="background:rgba(8,8,12,0.9);border:1px solid rgba(255,0,255,0.3);color:#fff;padding:8px;border-radius:8px;font-size:11px;text-align:center;outline:none;">
+
+                    <button onclick="unlockAdmin()"
+                        class="btn-go"
+                        style="width:100%;margin-top:0;">
+                        UNLOCK ADMIN
+                    </button>
+
+                    <span id="adminErrorMsg"
+                        style="color:#ff4d4d;font-size:10px;font-weight:bold;display:none;">
+                        Wrong Password! Try again.
+                    </span>
+
+                </div>
+
+                <div id="adminMainContent"
+                    class="hidden"
+                    style="display:flex;flex-direction:column;gap:6px;">
+
+                    <div class="card"
+                        style="flex-direction:column;align-items:flex-start;gap:4px;">
+
+                        <span style="color:#ff00ff;font-weight:bold;">
+                            Firebase Connected
+                        </span>
+
+                        <span style="font-size:10px;color:#ccc;">
+                            অ্যাডমিন প্যানেল ফুল সিক্যুরড মোডে আছে
+                        </span>
+                    </div>
+
+                    <button class="btn-go"
+                        onclick="alert('সফলভাবে সমস্ত প্রিমিয়াম সেন্সি বুস্ট সক্রিয় করা হয়েছে!')">
+                        ACTIVATE ALL BOOST
+                    </button>
+
+                    <div class="card"
+                        style="flex-direction:column;align-items:center;gap:5px;margin-top:4px;">
+
+                        <span style="color:#ff00ff;font-size:13px;font-weight:bold;">
+                            ALL ISSUE
+                        </span>
+
+                        <span style="color:#00ffff;font-size:11px;">
+                            COMING SOON
+                        </span>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- REMOTE LOCK -->
+
+            <div id="remotePanel" class="panel-section hidden">
+
+                <div class="title">
+                    TURJO REMOTE LOCK 😡
+                </div>
+
+                <div id="remoteLockOverlay"
+                    style="background:rgba(15,15,20,0.8);border:1px dashed rgba(255,77,77,0.5);padding:12px;border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:6px;">
+
+                    <span style="color:#ff4d4d;font-size:11px;font-weight:bold;">
+                        🔒 Remote Panel Locked!
+                    </span>
+
+                    <input type="password"
+                        id="remoteSecretPassInput"
+                        placeholder="Enter Secret #2"
+                        style="background:rgba(8,8,12,0.9);border:1px solid rgba(255,77,77,0.3);color:#fff;padding:7px;border-radius:8px;font-size:10px;text-align:center;outline:none;">
+
+                    <button onclick="unlockRemoteSection()"
+                        style="background:#ff4d4d;color:#fff;border:none;padding:8px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:10px;box-shadow:0 0 12px rgba(255,77,77,0.4);">
+                        UNLOCK PANEL
+                    </button>
+
+                    <span id="remoteErrorMsg"
+                        style="color:#ff4d4d;font-size:9px;font-weight:bold;display:none;">
+                        Wrong Secret #2!
+                    </span>
+
+                </div>
+
+                <div id="remoteMainContent"
+                    class="hidden"
+                    style="display:flex;flex-direction:column;gap:6px;">
+
+                    <div class="card"
+                        style="background:rgba(25,15,15,0.8);border-left:3px solid #ff4d4d;">
+
+                        <span style="color:#ff4d4d;font-weight:bold;">
+                            MC PORE CELE PORE 😡
+                        </span>
+
+                    </div>
+
+                    <div class="input-box"
+                        style="margin-top:5px;">
+
+                        <input type="text"
+                            id="newPasswordInput"
+                            placeholder="Enter New App Password">
+
+                        <input type="datetime-local"
+                            id="remoteTargetTimeInput"
+                            style="background-color:rgba(15,15,20,0.8);border:1px solid rgba(255,255,255,0.1);color:#ffffff;padding:8px;border-radius:8px;font-size:11px;outline:none;">
+
+                        <select id="forceUpdateToggle"
+                            style="background-color:rgba(15,15,20,0.8);border:1px solid rgba(255,255,255,0.1);color:#ffffff;padding:8px;border-radius:8px;font-size:11px;outline:none;">
+
+                            <option value="off">
+                                Force Update: OFF (Normal)
+                            </option>
+
+                            <option value="on">
+                                Force Update: ON (Lock App)
+                            </option>
+
                         </select>
-                        <button type="button" class="btn-go" onclick="generateUniqueSensi()" style="width:100%;">GENERATE</button>
+
+                        <input type="text"
+                            id="customUpdateMsgInput"
+                            placeholder="Custom Update Message">
+
+                        <button type="button"
+                            onclick="updateRemotePassword()"
+                            style="background:#ff4d4d;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:bold;cursor:pointer;box-shadow:0 0 12px rgba(255,77,77,0.4);">
+                            UPDATE & FORCE RELOAD 😡
+                        </button>
+
                     </div>
-                    
-                    <div class="result-box" id="resultBox">
-                        <div class="card">
-                            <span>General Sensi</span>
-                            <span id="genVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>Red Dot</span>
-                            <span id="redVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>2X Scope</span>
-                            <span id="twoVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>4X Scope</span>
-                            <span id="fourVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>AWM Scope 🎯</span>
-                            <span id="awmVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>Free Camera 📷</span>
-                            <span id="freeCamVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>Fire Button</span>
-                            <span id="fireVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>DPI</span>
-                            <span id="dpiVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                    </div>
+
                 </div>
-
-                <!-- VIP HUD SECTION WITH LAUNCH FREE FIRE BUTTON -->
-                <div id="viphudPanel" class="panel-section hidden">
-                    <div class="title">VIP HUD LAYOUT CONFIG 👑</div>
-                    
-                    <div class="input-box">
-                        <select id="hudStyleSelect">
-                            <option value="" disabled selected>Select HUD Style</option>
-                            <option value="2finger">2 Finger Standard</option>
-                            <option value="3finger">3 Finger Claw (Fast)</option>
-                            <option value="4finger">4 Finger Pro Claw ⚡</option>
-                        </select>
-
-                        <div class="card" style="margin-top:2px;">
-                            <span>Wodpikar HS</span>
-                            <label style="position:relative;display:inline-block;width:44px;height:24px;">
-                                <input type="checkbox" id="wodpikarHsToggle" onchange="updateWodpikarHsStatus()" style="opacity:0;width:0;height:0;">
-                                <span id="wodpikarHsSlider" style="position:absolute;cursor:pointer;inset:0;background:#333;border-radius:24px;transition:.25s;">
-                                    <span style="position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;"></span>
-                                </span>
-                            </label>
-                        </div>
-                        <div id="wodpikarHsStatus" style="text-align:center;font-size:10px;font-weight:bold;color:#ff4d4d;">Unsuccessful</div>
-
-                        <div class="card" style="margin-top:2px;">
-                            <span>UMP HS</span>
-                            <label style="position:relative;display:inline-block;width:44px;height:24px;">
-                                <input type="checkbox" id="umpHsToggle" onchange="updateUmpHsStatus()" style="opacity:0;width:0;height:0;">
-                                <span id="umpHsSlider" style="position:absolute;cursor:pointer;inset:0;background:#333;border-radius:24px;transition:.25s;">
-                                    <span style="position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;"></span>
-                                </span>
-                            </label>
-                        </div>
-                        <div id="umpHsStatus" style="text-align:center;font-size:10px;font-weight:bold;color:#ff4d4d;">Unsuccessful</div>
-
-                        <button type="button" class="btn-go" onclick="launchFreeFire()" style="width:100%; background: linear-gradient(135deg, #00ffff, #0080ff); color: #000; text-shadow: none;">APPLY FREE FIRE 🎮</button>
-                    </div>
-
-                    <div class="result-box" id="hudResultBox" style="display:none; max-height: 240px;">
-                        <div class="card">
-                            <span>Layout Type</span>
-                            <span id="hudTypeVal" style="color: #00ffff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>Fire Button Size</span>
-                            <span id="hudFireSizeVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>Transparency (Opacity)</span>
-                            <span id="hudTransVal" style="color: #ff00ff; font-weight: bold;">--</span>
-                        </div>
-                        <div class="card">
-                            <span>Custom HUD Position</span>
-                            <span id="hudPosVal" style="color: #ff00ff; font-weight: bold;">Optimized Pro</span>
-                        </div>
-                        <div class="card" style="background: rgba(25,15,35,0.8); border-left: 4px solid #00ffff;">
-                            <span style="color: #00ffff; font-weight: bold;">Status: </span>
-                            <span style="color: #fff; font-size: 10px;">Launching Free Fire...</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="secretPanel" class="panel-section hidden">
-                    <div class="title">ADMIN PANEL</div>
-                    
-                    <div id="adminLockOverlay" style="background: rgba(15,15,20,0.8); border: 1px dashed rgba(255,0,255,0.4); padding: 15px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 0 15px rgba(255,0,255,0.15);">
-                        <span style="color: #ff00ff; font-size: 11px; font-weight: bold;">🔒 Admin Panel Locked!</span>
-                        <span style="font-size: 9px; color: #aaa;">Enter Admin Password (<b>4444</b>)</span>
-                        <input type="password" id="adminPassInput" placeholder="Enter Admin Password" style="background: rgba(8,8,12,0.9); border: 1px solid rgba(255,0,255,0.3); color: #fff; padding: 8px; border-radius: 8px; font-size: 11px; text-align: center; outline: none;">
-                        <button onclick="unlockAdmin()" class="btn-go" style="width:100%; margin-top:0;">UNLOCK ADMIN</button>
-                        <span id="adminErrorMsg" style="color: #ff4d4d; font-size: 10px; font-weight: bold; display: none;">Wrong Password! Try again.</span>
-                    </div>
-
-                    <div id="adminMainContent" class="hidden" style="display: flex; flex-direction: column; gap: 6px;">
-                        <div class="card" style="flex-direction: column; align-items: flex-start; gap: 4px;">
-                            <span style="color: #ff00ff; font-weight: bold;">Firebase Connected</span>
-                            <span style="font-size: 10px; color: #ccc;">অ্যাডমিন প্যানেল ফুল সিক্যুরড মোডে আছে</span>
-                        </div>
-                        <button class="btn-go" onclick="alert('সফলভাবে সমস্ত প্রিমিয়াম সেন্সি বুস্ট সক্রিয় করা হয়েছে!')">ACTIVATE ALL BOOST</button>
-                    </div>
-                </div>
-
-                <div id="remotePanel" class="panel-section hidden">
-                    <div class="title">TURJO REMOTE LOCK 😡</div>
-                    
-                    <div id="remoteLockOverlay" style="background: rgba(15,15,20,0.8); border: 1px dashed rgba(255,77,77,0.5); padding: 12px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; gap: 6px;">
-                        <span style="color: #ff4d4d; font-size: 11px; font-weight: bold;">🔒 Remote Panel Locked!</span>
-                        <input type="password" id="remoteSecretPassInput" placeholder="Enter Secret #2" style="background: rgba(8,8,12,0.9); border: 1px solid rgba(255,77,77,0.3); color: #fff; padding: 7px; border-radius: 8px; font-size: 10px; text-align: center; outline: none;">
-                        <button onclick="unlockRemoteSection()" style="background: #ff4d4d; color: #fff; border: none; padding: 8px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 10px; box-shadow: 0 0 12px rgba(255,77,77,0.4);">UNLOCK PANEL</button>
-                        <span id="remoteErrorMsg" style="color: #ff4d4d; font-size: 9px; font-weight: bold; display: none;">Wrong Secret #2!</span>
-                    </div>
-
-                    <div id="remoteMainContent" class="hidden" style="display: flex; flex-direction: column; gap: 6px;">
-                        <div class="card" style="background: rgba(25,15,15,0.8); border-left: 3px solid #ff4d4d;">
-                            <span style="color: #ff4d4d; font-weight: bold;">MC PORE CELE PORE 😡</span>
-                        </div>
-
-                        <div class="input-box" style="margin-top: 5px;">
-                            <input type="text" id="newPasswordInput" placeholder="Enter New App Password">
-                            <input type="datetime-local" id="remoteTargetTimeInput" style="background-color: rgba(15,15,20,0.8); border: 1px solid rgba(255,255,255,0.1); color: #ffffff; padding: 8px; border-radius: 8px; font-size: 11px; outline: none;">
-
-                            <select id="forceUpdateToggle" style="background-color: rgba(15,15,20,0.8); border: 1px solid rgba(255,255,255,0.1); color: #ffffff; padding: 8px; border-radius: 8px; font-size: 11px; outline: none;">
-                                <option value="off">Force Update: OFF (Normal)</option>
-                                <option value="on">Force Update: ON (Lock App)</option>
-                            </select>
-                            <input type="text" id="customUpdateMsgInput" placeholder="Custom Update Message">
-
-                            <button type="button" onclick="updateRemotePassword()" style="background: #ff4d4d; color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 0 12px rgba(255,77,77,0.4);">UPDATE & FORCE RELOAD 😡</button>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="btn-go" onclick="window.open('https://t.me/turji', '_blank')">JOIN TELEGRAM ↗</button>
-                <div class="admin-text">Admin: <span>@ TURJO X USER</span></div>
             </div>
+
+            <button class="btn-go"
+                onclick="window.open('https://t.me/turji','_blank')">
+                JOIN TELEGRAM ↗
+            </button>
+
+            <div class="admin-text">
+                Admin: <span>@ TURJO X USER</span>
+            </div>
+
         </div>
     </div>
+</div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, onValue, set, onDisconnect } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+<script type="module">
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAE0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
-            authDomain: "mysensiapp.firebaseapp.com",
-            databaseURL: "https://mysensiapp-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "mysensiapp",
-            storageBucket: "mysensiapp.appspot.com",
-            messagingSenderId: "115975518263",
-            appId: "1:115975518263:web:1d08e768bb13c9fd2c67b2",
-            measurementId: "G-N68B2MLFH9"
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    onValue,
+    set,
+    onDisconnect
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAE0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
+    authDomain: "mysensiapp.firebaseapp.com",
+    databaseURL: "https://mysensiapp-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "mysensiapp",
+    storageBucket: "mysensiapp.appspot.com",
+    messagingSenderId: "115975518263",
+    appId: "1:115975518263:web:1d08e768bb13c9fd2c67b2",
+    measurementId: "G-N68B2MLFH9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+let correctPassword = "10";
+let countdownInterval = null;
+
+const adminRef = ref(db, 'admin');
+
+onValue(adminRef, (snapshot) => {
+
+    if (snapshot.exists()) {
+        correctPassword = String(snapshot.val()).trim();
+    }
+
+});
+
+const sessionId =
+    'user_' + Math.random().toString(36).substring(2, 9);
+
+const activeUsersRef =
+    ref(db, 'activeUsers/' + sessionId);
+
+onDisconnect(activeUsersRef).remove();
+
+set(activeUsersRef, true);
+
+const allUsersRef =
+    ref(db, 'activeUsers');
+
+onValue(allUsersRef, (snapshot) => {
+
+    const count =
+        snapshot.exists()
+        ? snapshot.numChildren()
+        : 0;
+
+    const badge =
+        document.getElementById('activeUserCount');
+
+    if (badge) {
+        badge.textContent = String(count);
+        badge.style.color = '#00ffff';
+    }
+
+});
+
+const countdownRef =
+    ref(db, 'countdownTimer');
+
+onValue(countdownRef, (snapshot) => {
+
+    if (snapshot.exists()) {
+
+        let targetTimestamp = snapshot.val();
+
+        startLiveCountdown(targetTimestamp);
+
+    } else {
+
+        let defaultTarget =
+            new Date().getTime() +
+            (24 * 60 * 60 * 1000);
+
+        startLiveCountdown(defaultTarget);
+
+    }
+
+});
+
+function startLiveCountdown(targetTime) {
+
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+
+    countdownInterval = setInterval(() => {
+
+        let now =
+            new Date().getTime();
+
+        let distance =
+            targetTime - now;
+
+        let timerDisplay =
+            document.getElementById('timerDisplay');
+
+        if (distance < 0) {
+
+            timerDisplay.innerText =
+                "EXPIRED / TIME UP! ⏳";
+
+            clearInterval(countdownInterval);
+
+        } else {
+
+            let days =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                );
+
+            let hours =
+                Math.floor(
+                    (distance %
+                    (1000 * 60 * 60 * 24)) /
+                    (1000 * 60 * 60)
+                );
+
+            let minutes =
+                Math.floor(
+                    (distance %
+                    (1000 * 60 * 60)) /
+                    (1000 * 60)
+                );
+
+            let seconds =
+                Math.floor(
+                    (distance %
+                    (1000 * 60)) /
+                    1000
+                );
+
+            let timeString = "";
+
+            if (days > 0) {
+                timeString += days + "d ";
+            }
+
+            timeString +=
+                String(hours).padStart(2, '0') +
+                "h ";
+
+            timeString +=
+                String(minutes).padStart(2, '0') +
+                "m ";
+
+            timeString +=
+                String(seconds).padStart(2, '0') +
+                "s";
+
+            timerDisplay.innerText =
+                "⏳ Live Countdown: " +
+                timeString;
+        }
+
+    }, 1000);
+}
+
+const forceUpdateRef =
+    ref(db, 'forceUpdateConfig');
+
+onValue(forceUpdateRef, (snapshot) => {
+
+    let updateOverlay =
+        document.getElementById('updateOverlay');
+
+    let updateMsgText =
+        document.getElementById('updateMessageText');
+
+    if (snapshot.exists()) {
+
+        let config = snapshot.val();
+
+        let statusVal =
+            config.status
+            ? String(config.status).trim().toLowerCase()
+            : "off";
+
+        if (
+            statusVal === "on" ||
+            statusVal === "true" ||
+            statusVal === "1"
+        ) {
+
+            if (config.message) {
+                updateMsgText.innerText =
+                    config.message;
+            }
+
+            updateOverlay.style.display =
+                "flex";
+
+        } else {
+
+            updateOverlay.style.display =
+                "none";
+        }
+
+    } else {
+
+        updateOverlay.style.display =
+            "none";
+    }
+
+});
+
+const updateSignalRef =
+    ref(db, 'updateSignal');
+
+onValue(updateSignalRef, (snapshot) => {
+
+    if (snapshot.exists()) {
+
+        let currentSignal =
+            snapshot.val();
+
+        let lastKnownSignal =
+            localStorage.getItem(
+                'lastAppSignal'
+            );
+
+        if (lastKnownSignal === null) {
+
+            localStorage.setItem(
+                'lastAppSignal',
+                currentSignal
+            );
+
+        } else if (
+            lastKnownSignal !== currentSignal
+        ) {
+
+            localStorage.setItem(
+                'lastAppSignal',
+                currentSignal
+            );
+
+            speakText(
+                "New Update Available. Refreshing app."
+            );
+
+            alert(
+                "⚠️ নতুন আপডেট পাওয়া গেছে! সব ডিভাইসে অ্যাপ রিলোড হচ্ছে..."
+            );
+
+            location.reload(true);
+        }
+    }
+
+});
+
+window.checkRemoteLogin = function() {
+
+    let userPass =
+        document
+        .getElementById('loginPass')
+        .value
+        .trim();
+
+    if (userPass === correctPassword) {
+
+        // ONLY LOGIN VOICE CHANGED
+        loginWelcomeVoice();
+
+        document
+        .getElementById('loginOverlay')
+        .style.display = 'none';
+
+    } else {
+
+        speakText(
+            "Incorrect Password"
+        );
+
+        alert(
+            "ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।"
+        );
+    }
+
+};
+
+window.checkLogin = function() {
+    window.checkRemoteLogin();
+};
+
+window.unlockAdmin = function() {
+
+    let adminPass =
+        document
+        .getElementById('adminPassInput')
+        .value
+        .trim();
+
+    let errorMsg =
+        document
+        .getElementById('adminErrorMsg');
+
+    if (adminPass === "4444") {
+
+        speakText(
+            "Admin Unlocked Successfully"
+        );
+
+        document
+        .getElementById('adminLockOverlay')
+        .style.display = 'none';
+
+        document
+        .getElementById('adminMainContent')
+        .classList
+        .remove('hidden');
+
+        errorMsg.style.display =
+            'none';
+
+    } else {
+
+        speakText(
+            "Wrong Admin Password"
+        );
+
+        errorMsg.style.display =
+            'block';
+    }
+
+};
+
+window.unlockRemoteSection = function() {
+
+    let remotePass =
+        document
+        .getElementById('remoteSecretPassInput')
+        .value
+        .trim()
+        .toLowerCase();
+
+    let errorMsg =
+        document
+        .getElementById('remoteErrorMsg');
+
+    if (remotePass === "secret #2") {
+
+        speakText(
+            "Remote Panel Unlocked"
+        );
+
+        document
+        .getElementById('remoteLockOverlay')
+        .style.display = 'none';
+
+        document
+        .getElementById('remoteMainContent')
+        .classList
+        .remove('hidden');
+
+        errorMsg.style.display =
+            'none';
+
+    } else {
+
+        speakText(
+            "Wrong Secret Password"
+        );
+
+        errorMsg.style.display =
+            'block';
+    }
+
+};
+
+window.updateRemotePassword =
+async function() {
+
+    let newPass =
+        document
+        .getElementById('newPasswordInput')
+        .value
+        .trim();
+
+    let targetTimeVal =
+        document
+        .getElementById('remoteTargetTimeInput')
+        .value;
+
+    let updateStatus =
+        document
+        .getElementById('forceUpdateToggle')
+        .value;
+
+    let customUpdateMsg =
+        document
+        .getElementById('customUpdateMsgInput')
+        .value
+        .trim();
+
+    if (newPass === "") {
+
+        alert(
+            "দয়া করে নতুন পাসওয়ার্ড লিখুন!"
+        );
+
+        return;
+    }
+
+    try {
+
+        let timestamp =
+            Date.now().toString();
+
+        await set(
+            ref(db, 'admin'),
+            newPass
+        );
+
+        if (targetTimeVal) {
+
+            let selectedTimestamp =
+                new Date(
+                    targetTimeVal
+                ).getTime();
+
+            await set(
+                ref(db, 'countdownTimer'),
+                selectedTimestamp
+            );
+        }
+
+        await set(
+            ref(db, 'forceUpdateConfig'),
+            {
+                status: updateStatus,
+                message:
+                    customUpdateMsg !== ""
+                    ? customUpdateMsg
+                    : "অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।"
+            }
+        );
+
+        await set(
+            ref(db, 'updateSignal'),
+            timestamp
+        );
+
+        document
+        .getElementById('newPasswordInput')
+        .value = "";
+
+        document
+        .getElementById('remoteTargetTimeInput')
+        .value = "";
+
+        document
+        .getElementById('customUpdateMsgInput')
+        .value = "";
+
+        alert(
+            "সফলভাবে সমস্ত ডাটা এবং রিয়েল-টাইম কাউন্টডাউন আপডেট করা হয়েছে!"
+        );
+
+        speakText(
+            "Data Updated and Broadcasted"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "আপডেট করতে সমস্যা হয়েছে:",
+            error
+        );
+
+        alert(
+            "ডেটা পরিবর্তন করা যায়নি!"
+        );
+    }
+
+};
+
+</script>
+
+<script>
+
+/* ===============================
+   VOICE SYSTEM
+   =============================== */
+
+function speakText(text) {
+
+    if (!('speechSynthesis' in window)) {
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const voices =
+        window.speechSynthesis.getVoices();
+
+    const femaleVoice =
+        voices.find(v =>
+            /female|zira|samantha|karen|susan|google.*english/i
+            .test(v.name)
+        );
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+    utterance.rate = 0.9;
+    utterance.pitch = 1.35;
+    utterance.volume = 1.0;
+
+    if (femaleVoice) {
+        utterance.voice = femaleVoice;
+    }
+
+    window.speechSynthesis.speak(
+        utterance
+    );
+}
+
+
+/* ===============================
+   LOGIN WELCOME FEMALE VOICE
+   =============================== */
+
+function loginWelcomeVoice() {
+
+    if (!('speechSynthesis' in window)) {
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const voices =
+        window.speechSynthesis.getVoices();
+
+    const femaleVoice =
+        voices.find(v =>
+            /female|zira|samantha|karen|susan|google.*english/i
+            .test(v.name)
+        );
+
+    const voice1 =
+        new SpeechSynthesisUtterance(
+            "WELCOME"
+        );
+
+    const voice2 =
+        new SpeechSynthesisUtterance(
+            "TURJO I LOVE YOU"
+        );
+
+    [voice1, voice2].forEach(v => {
+
+        v.rate = 0.9;
+        v.pitch = 1.35;
+        v.volume = 1.0;
+
+        if (femaleVoice) {
+            v.voice = femaleVoice;
+        }
+
+    });
+
+    window.speechSynthesis.speak(
+        voice1
+    );
+
+    window.speechSynthesis.speak(
+        voice2
+    );
+}
+
+
+/* ===============================
+   TAB SWITCH
+   =============================== */
+
+function switchTab(tab) {
+
+    let sensiPanel =
+        document.getElementById(
+            'sensiPanel'
+        );
+
+    let viphudPanel =
+        document.getElementById(
+            'viphudPanel'
+        );
+
+    let secretPanel =
+        document.getElementById(
+            'secretPanel'
+        );
+
+    let remotePanel =
+        document.getElementById(
+            'remotePanel'
+        );
+
+    let btnSensi =
+        document.getElementById(
+            'btnSensi'
+        );
+
+    let btnVipHud =
+        document.getElementById(
+            'btnVipHud'
+        );
+
+    let btnSecret =
+        document.getElementById(
+            'btnSecret'
+        );
+
+    let btnRemote =
+        document.getElementById(
+            'btnRemote'
+        );
+
+    if (
+        !sensiPanel ||
+        !viphudPanel ||
+        !secretPanel ||
+        !remotePanel
+    ) {
+        return;
+    }
+
+    sensiPanel.classList.add('hidden');
+    viphudPanel.classList.add('hidden');
+    secretPanel.classList.add('hidden');
+    remotePanel.classList.add('hidden');
+
+    if (btnSensi)
+        btnSensi.classList.remove('active');
+
+    if (btnVipHud)
+        btnVipHud.classList.remove('active');
+
+    if (btnSecret)
+        btnSecret.classList.remove('active');
+
+    if (btnRemote)
+        btnRemote.classList.remove('active');
+
+    if (tab === 'sensi') {
+
+        sensiPanel.classList.remove('hidden');
+
+        if (btnSensi)
+            btnSensi.classList.add('active');
+
+    } else if (tab === 'viphud') {
+
+        viphudPanel.classList.remove('hidden');
+
+        if (btnVipHud)
+            btnVipHud.classList.add('active');
+
+    } else if (tab === 'secret') {
+
+        secretPanel.classList.remove('hidden');
+
+        if (btnSecret)
+            btnSecret.classList.add('active');
+
+    } else if (tab === 'remote') {
+
+        remotePanel.classList.remove('hidden');
+
+        if (btnRemote)
+            btnRemote.classList.add('active');
+    }
+
+}
+
+
+/* ===============================
+   SENSI GENERATOR
+   =============================== */
+
+function generateUniqueSensi() {
+
+    let nameField =
+        document.getElementById(
+            'phoneName'
+        );
+
+    let modelField =
+        document.getElementById(
+            'phoneModel'
+        );
+
+    let ramField =
+        document.getElementById(
+            'phoneRam'
+        );
+
+    if (
+        !nameField ||
+        !modelField ||
+        !ramField
+    ) {
+        return;
+    }
+
+    let name =
+        nameField.value.trim();
+
+    let model =
+        modelField.value.trim();
+
+    let ram =
+        ramField.value;
+
+    if (
+        name === "" ||
+        model === "" ||
+        ram === ""
+    ) {
+
+        alert(
+            "দয়া করে সব তথ্য পূরণ করুন!"
+        );
+
+        return;
+    }
+
+    let combinedString =
+        (
+            name +
+            model +
+            ram
+        ).toLowerCase();
+
+    let hash = 0;
+
+    for (
+        let i = 0;
+        i < combinedString.length;
+        i++
+    ) {
+
+        hash =
+            combinedString.charCodeAt(i) +
+            ((hash << 5) - hash);
+    }
+
+    let gen =
+        180 +
+        (Math.abs(hash) % 20);
+
+    let red =
+        175 +
+        (Math.abs(hash >> 1) % 21);
+
+    let two =
+        170 +
+        (Math.abs(hash >> 2) % 26);
+
+    let four =
+        165 +
+        (Math.abs(hash >> 3) % 26);
+
+    let awm =
+        160 +
+        (Math.abs(hash >> 4) % 31);
+
+    let freeCam =
+        170 +
+        (Math.abs(hash >> 5) % 26);
+
+    let fire =
+        40 +
+        (Math.abs(hash >> 6) % 10);
+
+    let dpi =
+        555 +
+        (Math.abs(hash >> 7) % 101);
+
+    let setVal =
+        (id, val) => {
+
+            let el =
+                document.getElementById(id);
+
+            if (el)
+                el.innerText = val;
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+    setVal('genVal', gen);
+    setVal('redVal', red);
+    setVal('twoVal', two);
+    setVal('fourVal', four);
+    setVal('awmVal', awm);
+    setVal('freeCamVal', freeCam);
+    setVal('fireVal', fire + "%");
+    setVal('dpiVal', dpi);
 
-        let correctPassword = "10";
-        let countdownInterval = null;
+    let resBox =
+        document.getElementById(
+            'resultBox'
+        );
 
-        const adminRef = ref(db, 'admin');
-        onValue(adminRef, (snapshot) => {
-            if (snapshot.exists()) {
-                correctPassword = String(snapshot.val()).trim();
-            }
-        });
+    if (resBox)
+        resBox.style.display = "flex";
+}
 
-        const sessionId = 'user_' + Math.random().toString(36).substring(2, 9);
-        const activeUsersRef = ref(db, 'activeUsers/' + sessionId);
-        onDisconnect(activeUsersRef).remove();
-        set(activeUsersRef, true);
 
-        const allUsersRef = ref(db, 'activeUsers');
-        onValue(allUsersRef, (snapshot) => {
-            const count = snapshot.exists() ? snapshot.numChildren() : 0;
-            const badge = document.getElementById('activeUserCount');
-            if (badge) {
-                badge.textContent = String(count);
-                badge.style.color = '#00ffff';
-            }
-        });
+/* ===============================
+   WODPIKAR HS
+   =============================== */
 
-        const countdownRef = ref(db, 'countdownTimer');
-        onValue(countdownRef, (snapshot) => {
-            if (snapshot.exists()) {
-                let targetTimestamp = snapshot.val();
-                startLiveCountdown(targetTimestamp);
-            } else {
-                let defaultTarget = new Date().getTime() + (24 * 60 * 60 * 1000);
-                startLiveCountdown(defaultTarget);
-            }
-        });
+function updateWodpikarHsStatus() {
 
-        function startLiveCountdown(targetTime) {
-            if (countdownInterval) clearInterval(countdownInterval);
+    const toggle =
+        document.getElementById(
+            'wodpikarHsToggle'
+        );
 
-            countdownInterval = setInterval(() => {
-                let now = new Date().getTime();
-                let distance = targetTime - now;
-                let timerDisplay = document.getElementById('timerDisplay');
+    const status =
+        document.getElementById(
+            'wodpikarHsStatus'
+        );
 
-                if (distance < 0) {
-                    timerDisplay.innerText = "EXPIRED / TIME UP! ⏳";
-                    clearInterval(countdownInterval);
-                } else {
-                    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const slider =
+        document.getElementById(
+            'wodpikarHsSlider'
+        );
 
-                    let timeString = "";
-                    if (days > 0) timeString += days + "d ";
-                    timeString += String(hours).padStart(2, '0') + "h ";
-                    timeString += String(minutes).padStart(2, '0') + "m ";
-                    timeString += String(seconds).padStart(2, '0') + "s";
+    const knob =
+        slider
+        ? slider.querySelector('span')
+        : null;
 
-                    timerDisplay.innerText = "⏳ Live Countdown: " + timeString;
-                }
-            }, 1000);
-        }
+    if (!toggle || !status)
+        return;
 
-        const forceUpdateRef = ref(db, 'forceUpdateConfig');
-        onValue(forceUpdateRef, (snapshot) => {
-            let updateOverlay = document.getElementById('updateOverlay');
-            let updateMsgText = document.getElementById('updateMessageText');
-            
-            if (snapshot.exists()) {
-                let config = snapshot.val();
-                let statusVal = config.status ? String(config.status).trim().toLowerCase() : "off";
-                
-                if (statusVal === "on" || statusVal === "true" || statusVal === "1") {
-                    if (config.message) {
-                        updateMsgText.innerText = config.message;
-                    }
-                    updateOverlay.style.display = "flex";
-                } else {
-                    updateOverlay.style.display = "none";
-                }
-            } else {
-                updateOverlay.style.display = "none";
-            }
-        });
+    if (toggle.checked) {
 
-        const updateSignalRef = ref(db, 'updateSignal');
-        onValue(updateSignalRef, (snapshot) => {
-            if (snapshot.exists()) {
-                let currentSignal = snapshot.val();
-                let lastKnownSignal = localStorage.getItem('lastAppSignal');
-                
-                if (lastKnownSignal === null) {
-                    localStorage.setItem('lastAppSignal', currentSignal);
-                } else if (lastKnownSignal !== currentSignal) {
-                    localStorage.setItem('lastAppSignal', currentSignal);
-                    speakText("New Update Available. Refreshing app.");
-                    alert("⚠️ নতুন আপডেট পাওয়া গেছে! সব ডিভাইসে অ্যাপ রিলোড হচ্ছে...");
-                    location.reload(true);
-                }
-            }
-        });
+        status.innerText =
+            "Success";
 
-        window.checkRemoteLogin = function() {
-            let userPass = document.getElementById('loginPass').value.trim();
-            if (userPass === correctPassword) {
-                speakText("Login Successful");
-                document.getElementById('loginOverlay').style.display = 'none';
-            } else {
-                speakText("Incorrect Password");
-                alert("ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।");
-            }
-        };
+        status.style.color =
+            "#00ff88";
 
-        window.checkLogin = function() {
-            window.checkRemoteLogin();
-        };
+        if (slider)
+            slider.style.background =
+                "#00ff88";
 
-        window.unlockAdmin = function() {
-            let adminPass = document.getElementById('adminPassInput').value.trim();
-            let errorMsg = document.getElementById('adminErrorMsg');
-            
-            if (adminPass === "4444") {
-                speakText("Admin Unlocked Successfully");
-                document.getElementById('adminLockOverlay').style.display = 'none';
-                document.getElementById('adminMainContent').classList.remove('hidden');
-                errorMsg.style.display = 'none';
-            } else {
-                speakText("Wrong Admin Password");
-                errorMsg.style.display = 'block';
-            }
-        };
+        if (knob)
+            knob.style.transform =
+                "translateX(20px)";
 
-        window.unlockRemoteSection = function() {
-            let remotePass = document.getElementById('remoteSecretPassInput').value.trim().toLowerCase();
-            let errorMsg = document.getElementById('remoteErrorMsg');
-            
-            if (remotePass === "secret #2") {
-                speakText("Remote Panel Unlocked");
-                document.getElementById('remoteLockOverlay').style.display = 'none';
-                document.getElementById('remoteMainContent').classList.remove('hidden');
-                errorMsg.style.display = 'none';
-            } else {
-                speakText("Wrong Secret Password");
-                errorMsg.style.display = 'block';
-            }
-        };
+    } else {
 
-        window.updateRemotePassword = async function() {
-            let newPass = document.getElementById('newPasswordInput').value.trim();
-            let targetTimeVal = document.getElementById('remoteTargetTimeInput').value;
-            let updateStatus = document.getElementById('forceUpdateToggle').value;
-            let customUpdateMsg = document.getElementById('customUpdateMsgInput').value.trim();
+        status.innerText =
+            "Unsuccessful";
 
-            if (newPass === "") {
-                alert("দয়া করে নতুন পাসওয়ার্ড লিখুন!");
-                return;
-            }
+        status.style.color =
+            "#ff4d4d";
 
-            try {
-                let timestamp = Date.now().toString();
-                
-                await set(ref(db, 'admin'), newPass);
+        if (slider)
+            slider.style.background =
+                "#333";
 
-                if (targetTimeVal) {
-                    let selectedTimestamp = new Date(targetTimeVal).getTime();
-                    await set(ref(db, 'countdownTimer'), selectedTimestamp);
-                }
+        if (knob)
+            knob.style.transform =
+                "translateX(0)";
+    }
+}
 
-                await set(ref(db, 'forceUpdateConfig'), {
-                    status: updateStatus,
-                    message: customUpdateMsg !== "" ? customUpdateMsg : "অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।"
-                });
 
-                await set(ref(db, 'updateSignal'), timestamp);
+/* ===============================
+   UMP HS
+   =============================== */
 
-                document.getElementById('newPasswordInput').value = "";
-                document.getElementById('remoteTargetTimeInput').value = "";
-                document.getElementById('customUpdateMsgInput').value = "";
+function updateUmpHsStatus() {
 
-                alert("সফলভাবে সমস্ত ডাটা এবং রিয়েল-টাইম কাউন্টডাউন আপডেট করা হয়েছে!");
-                speakText("Data Updated and Broadcasted");
-            } catch (error) {
-                console.error("আপডেট করতে সমস্যা হয়েছে:", error);
-                alert("ডেটা পরিবর্তন করা যায়নি!");
-            }
-        };
-    </script>
+    const toggle =
+        document.getElementById(
+            'umpHsToggle'
+        );
 
-    <script>
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                let utterance = new SpeechSynthesisUtterance(text);
-                utterance.rate = 1.0;
-                window.speechSynthesis.speak(utterance);
-            }
-        }
+    const status =
+        document.getElementById(
+            'umpHsStatus'
+        );
 
-        function switchTab(tab) {
-            let sensiPanel = document.getElementById('sensiPanel');
-            let viphudPanel = document.getElementById('viphudPanel');
-            let secretPanel = document.getElementById('secretPanel');
-            let remotePanel = document.getElementById('remotePanel');
-            
-            let btnSensi = document.getElementById('btnSensi');
-            let btnVipHud = document.getElementById('btnVipHud');
-            let btnSecret = document.getElementById('btnSecret');
-            let btnRemote = document.getElementById('btnRemote');
+    const slider =
+        document.getElementById(
+            'umpHsSlider'
+        );
 
-            if (!sensiPanel || !viphudPanel || !secretPanel || !remotePanel) return;
+    const knob =
+        slider
+        ? slider.querySelector('span')
+        : null;
 
-            sensiPanel.classList.add('hidden');
-            viphudPanel.classList.add('hidden');
-            secretPanel.classList.add('hidden');
-            remotePanel.classList.add('hidden');
+    if (!toggle || !status)
+        return;
 
-            if(btnSensi) btnSensi.classList.remove('active');
-            if(btnVipHud) btnVipHud.classList.remove('active');
-            if(btnSecret) btnSecret.classList.remove('active');
-            if(btnRemote) btnRemote.classList.remove('active');
+    if (toggle.checked) {
 
-            if (tab === 'sensi') {
-                sensiPanel.classList.remove('hidden');
-                if(btnSensi) btnSensi.classList.add('active');
-            } else if (tab === 'viphud') {
-                viphudPanel.classList.remove('hidden');
-                if(btnVipHud) btnVipHud.classList.add('active');
-            } else if (tab === 'secret') {
-                secretPanel.classList.remove('hidden');
-                if(btnSecret) btnSecret.classList.add('active');
-            } else if (tab === 'remote') {
-                remotePanel.classList.remove('hidden');
-                if(btnRemote) btnRemote.classList.add('active');
-            }
-        }
+        status.innerText =
+            "Success";
 
-        function generateUniqueSensi() {
-            let nameField = document.getElementById('phoneName');
-            let modelField = document.getElementById('phoneModel');
-            let ramField = document.getElementById('phoneRam');
+        status.style.color =
+            "#00ff88";
 
-            if (!nameField || !modelField || !ramField) return;
+        if (slider)
+            slider.style.background =
+                "#00ff88";
 
-            let name = nameField.value.trim();
-            let model = modelField.value.trim();
-            let ram = ramField.value;
+        if (knob)
+            knob.style.transform =
+                "translateX(20px)";
 
-            if (name === "" || model === "" || ram === "") {
-                alert("দয়া করে সব তথ্য পূরণ করুন!");
-                return;
-            }
+    } else {
 
-            let combinedString = (name + model + ram).toLowerCase();
-            let hash = 0;
-            for (let i = 0; i < combinedString.length; i++) {
-                hash = combinedString.charCodeAt(i) + ((hash << 5) - hash);
-            }
+        status.innerText =
+            "Unsuccessful";
 
-            let gen = 180 + (Math.abs(hash) % 20);       
-            let red = 175 + (Math.abs(hash >> 1) % 21);    
-            let two = 170 + (Math.abs(hash >> 2) % 26);    
-            let four = 165 + (Math.abs(hash >> 3) % 26);   
-            let awm = 160 + (Math.abs(hash >> 4) % 31);    
-            let freeCam = 170 + (Math.abs(hash >> 5) % 26); 
-            let fire = 40 + (Math.abs(hash >> 6) % 10);   
-            let dpi = 555 + (Math.abs(hash >> 7) % 101); 
+        status.style.color =
+            "#ff4d4d";
 
-            let setVal = (id, val) => {
-                let el = document.getElementById(id);
-                if(el) el.innerText = val;
-            };
+        if (slider)
+            slider.style.background =
+                "#333";
 
-            setVal('genVal', gen);
-            setVal('redVal', red);
-            setVal('twoVal', two);
-            setVal('fourVal', four);
-            setVal('awmVal', awm);
-            setVal('freeCamVal', freeCam);
-            setVal('fireVal', fire + "%");
-            setVal('dpiVal', dpi);
+        if (knob)
+            knob.style.transform =
+                "translateX(0)";
+    }
+}
 
-            let resBox = document.getElementById('resultBox');
-            if(resBox) resBox.style.display = "flex";
-        }
 
-        function updateWodpikarHsStatus() {
-            const toggle = document.getElementById('wodpikarHsToggle');
-            const status = document.getElementById('wodpikarHsStatus');
-            const slider = document.getElementById('wodpikarHsSlider');
-            const knob = slider ? slider.querySelector('span') : null;
+/* ===============================
+   FREE FIRE LAUNCH
+   =============================== */
 
-            if (!toggle || !status) return;
+function launchFreeFire() {
 
-            if (toggle.checked) {
-                status.innerText = "Success";
-                status.style.color = "#00ff88";
-                if (slider) slider.style.background = "#00ff88";
-                if (knob) knob.style.transform = "translateX(20px)";
-            } else {
-                status.innerText = "Unsuccessful";
-                status.style.color = "#ff4d4d";
-                if (slider) slider.style.background = "#333";
-                if (knob) knob.style.transform = "translateX(0)";
-            }
-        }
+    let hudStyle =
+        document.getElementById(
+            'hudStyleSelect'
+        ).value;
 
-        function updateUmpHsStatus() {
-            const toggle = document.getElementById('umpHsToggle');
-            const status = document.getElementById('umpHsStatus');
-            const slider = document.getElementById('umpHsSlider');
-            const knob = slider ? slider.querySelector('span') : null;
+    if (!hudStyle) {
 
-            if (!toggle || !status) return;
+        alert(
+            "দয়া করে একটি HUD স্টাইল সিলেক্ট করুন!"
+        );
 
-            if (toggle.checked) {
-                status.innerText = "Success";
-                status.style.color = "#00ff88";
-                if (slider) slider.style.background = "#00ff88";
-                if (knob) knob.style.transform = "translateX(20px)";
-            } else {
-                status.innerText = "Unsuccessful";
-                status.style.color = "#ff4d4d";
-                if (slider) slider.style.background = "#333";
-                if (knob) knob.style.transform = "translateX(0)";
-            }
-        }
+        return;
+    }
 
-        function launchFreeFire() {
-            let hudStyle = document.getElementById('hudStyleSelect').value;
-            if (!hudStyle) {
-                alert("দয়া করে একটি HUD স্টাইল সিলেক্ট করুন!");
-                return;
-            }
+    let typeText =
+        "2 Finger Standard";
 
-            let typeText = "2 Finger Standard";
-            let fireSize = "48%";
-            let trans = "35%";
+    let fireSize =
+        "48%";
 
-            if (hudStyle === "3finger") {
-                typeText = "3 Finger Claw ⚡";
-                fireSize = "42%";
-                trans = "25%";
-            } else if (hudStyle === "4finger") {
-                typeText = "4 Finger Pro Claw 🔥";
-                fireSize = "38%";
-                trans = "20%";
-            }
+    let trans =
+        "35%";
 
-            document.getElementById('hudTypeVal').innerText = typeText;
-            document.getElementById('hudFireSizeVal').innerText = fireSize;
-            document.getElementById('hudTransVal').innerText = trans;
+    if (hudStyle === "3finger") {
 
-            let hudResBox = document.getElementById('hudResultBox');
-            if (hudResBox) hudResBox.style.display = "flex";
-            
-            speakText("Applying HUD and launching Free Fire");
+        typeText =
+            "3 Finger Claw ⚡";
 
-            // Try to open Free Fire via Deep Link scheme
-            setTimeout(() => {
-                window.location.href = "freefire://";
-            }, 1000);
+        fireSize =
+            "42%";
 
-            // Fallback if deep link doesn't trigger immediately
-            setTimeout(() => {
-                window.location.href = "intent://#Intent;package=com.dts.freefireth;scheme=freefire;end;";
-            }, 2500);
-        }
-    </script>
+        trans =
+            "25%";
+
+    } else if (
+        hudStyle === "4finger"
+    ) {
+
+        typeText =
+            "4 Finger Pro Claw 🔥";
+
+        fireSize =
+            "38%";
+
+        trans =
+            "20%";
+    }
+
+    document
+    .getElementById(
+        'hudTypeVal'
+    )
+    .innerText = typeText;
+
+    document
+    .getElementById(
+        'hudFireSizeVal'
+    )
+    .innerText = fireSize;
+
+    document
+    .getElementById(
+        'hudTransVal'
+    )
+    .innerText = trans;
+
+    let hudResBox =
+        document.getElementById(
+            'hudResultBox'
+        );
+
+    if (hudResBox)
+        hudResBox.style.display =
+            "flex";
+
+    speakText(
+        "Applying HUD and launching Free Fire"
+    );
+
+    setTimeout(() => {
+
+        window.location.href =
+            "freefire://";
+
+    }, 1000);
+
+    setTimeout(() => {
+
+        window.location.href =
+            "intent://#Intent;package=com.dts.freefireth;scheme=freefire;end;";
+
+    }, 2500);
+}
+
+</script>
+
 </body>
-</html>
+                                             </html>
