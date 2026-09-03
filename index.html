@@ -286,6 +286,38 @@ body{
     color:#888;
     letter-spacing:1px;
 }
+
+/* ===============================
+   VIP PAID PANEL
+================================ */
+
+.panel-card{
+    background:linear-gradient(145deg,#15151d,#0b0b10);
+    border:1px solid rgba(255,0,255,.35);
+    border-radius:14px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(255,0,255,.15);
+}
+
+.panel-card h2{
+    margin:0 0 10px;
+    color:#ff00ff;
+    font-size:15px;
+    letter-spacing:1px;
+}
+
+.panel-card p{
+    margin:0 0 12px;
+    color:#00ffff;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.panel-card .btn-go{
+    width:100%;
+}
+
 </style>
 </head>
 
@@ -293,27 +325,44 @@ body{
 
 <!-- LOGIN -->
 <div id="loginOverlay">
+
     <div class="login-card">
-        <div class="login-header">SECURITY ACCESS</div>
+
+        <div class="login-header">
+            SECURITY ACCESS
+        </div>
 
         <div class="login-hidden-group">
-            <input type="password" id="loginPass"
+
+            <input type="password"
+                   id="loginPass"
                    placeholder="Enter Password">
 
-            <button type="button" onclick="checkLogin()">
+            <button type="button"
+                    onclick="checkLogin()">
                 LOGIN NOW
             </button>
+
         </div>
 
         <div class="login-footer">
             Protected by @ TURJO X USER
         </div>
+
     </div>
+
 </div>
+
+<!-- LOGIN BACKGROUND MUSIC -->
+<audio id="loginBgMusic" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <!-- FORCE UPDATE -->
 <div id="updateOverlay">
+
     <div class="update-card">
+
         <div style="color:#ff4d4d;font-size:15px;font-weight:bold;">
             ⚠️ MANDATORY UPDATE!
         </div>
@@ -328,14 +377,19 @@ body{
                 padding:10px;border-radius:8px;font-weight:bold;">
             UPDATE NOW 🔄
         </button>
+
     </div>
+
 </div>
 
 <!-- REMOTE APP LOCK -->
 <div id="remoteAppLockOverlay">
+
     <div class="remote-lock-card">
 
-        <div style="font-size:38px;">🔒</div>
+        <div style="font-size:38px;">
+            🔒
+        </div>
 
         <div style="color:#ff3333;font-size:18px;font-weight:bold;">
             APP LOCKED
@@ -347,394 +401,451 @@ body{
         </div>
 
     </div>
+
 </div>
 
 <div class="container">
 
-<div class="header">
-    <span>FREESTYLE PRO</span>
-
-    <span style="font-size:11px;background:rgba(0,0,0,.5);
-                 color:#00ffff;padding:4px 10px;border-radius:8px;">
-        ✨ Live:
-        <span id="activeUserCount">0</span>
-    </span>
-</div>
-
-<div class="body-content">
-
-<div class="sidebar">
-
-<button id="btnSensi"
-        class="active"
-        onclick="switchTab('sensi')">
-    VIP SENSI
-</button>
-
-<button id="btnVipHud"
-        onclick="switchTab('viphud')">
-    VIP HUD
-</button>
-
-<button id="btnSecret"
-        onclick="switchTab('secret')">
-    Admin Panel
-</button>
-
-<button onclick="window.open('https://t.me/turji','_blank')">
-    Telegram
-</button>
-
-<button onclick="window.open('https://tiktok.com/@turjoxuser','_blank')">
-    TikTok
-</button>
-
-<button id="btnRemote"
-        onclick="switchTab('remote')">
-    Remote Lock
-</button>
-
-</div>
-
-<div class="main-panel">
-
-<!-- VIP SENSI -->
-<div id="sensiPanel" class="panel-section">
-
-<div class="title">DEVICE & RAM SETUP</div>
-
-<div id="timerDisplay">
-    ⏳ Syncing Timer...
-</div>
-
-<div class="input-box">
-
-<input type="text"
-       id="phoneName"
-       placeholder="Phone Name (e.g. Redmi)">
-
-<input type="text"
-       id="phoneModel"
-       placeholder="Model (e.g. Note 10)">
-
-<select id="phoneRam">
-    <option value="" disabled selected>
-        Select RAM
-    </option>
-    <option value="3">3 GB RAM</option>
-    <option value="4">4 GB RAM</option>
-    <option value="6">6 GB RAM</option>
-    <option value="8">8 GB RAM</option>
-    <option value="12">12 GB RAM</option>
-</select>
-
-<button class="btn-go"
-        onclick="generateUniqueSensi()">
-    GENERATE
-</button>
-
-</div>
-
-<div class="result-box" id="resultBox">
-
-<div class="card">
-<span>General Sensi</span>
-<span id="genVal">--</span>
-</div>
-
-<div class="card">
-<span>Red Dot</span>
-<span id="redVal">--</span>
-</div>
-
-<div class="card">
-<span>2X Scope</span>
-<span id="twoVal">--</span>
-</div>
-
-<div class="card">
-<span>4X Scope</span>
-<span id="fourVal">--</span>
-</div>
-
-<div class="card">
-<span>AWM Scope 🎯</span>
-<span id="awmVal">--</span>
-</div>
-
-<div class="card">
-<span>Free Camera 📷</span>
-<span id="freeCamVal">--</span>
-</div>
-
-<div class="card">
-<span>Fire Button</span>
-<span id="fireVal">--</span>
-</div>
-
-<div class="card">
-<span>DPI</span>
-<span id="dpiVal">--</span>
-</div>
-
-</div>
-</div>
-
-<!-- VIP HUD -->
-<div id="viphudPanel" class="panel-section hidden">
-
-<div class="title">
-    VIP HUD LAYOUT CONFIG 👑
-</div>
-
-<div class="input-box">
-
-<select id="hudStyleSelect">
-<option value="" disabled selected>
-    Select HUD Style
-</option>
-<option value="2finger">2 Finger Standard</option>
-<option value="3finger">3 Finger Claw (Fast)</option>
-<option value="4finger">4 Finger Pro Claw ⚡</option>
-</select>
-
-<div class="card">
-<span>Wodpikar HS</span>
-<label>
-<input type="checkbox"
-       id="wodpikarHsToggle"
-       onchange="updateWodpikarHsStatus()">
-</label>
-</div>
-
-<div id="wodpikarHsStatus"
-     style="text-align:center;color:#ff4d4d;
-     font-size:10px;font-weight:bold;">
-    Unsuccessful
-</div>
-
-<div class="card">
-<span>UMP HS</span>
-<label>
-<input type="checkbox"
-       id="umpHsToggle"
-       onchange="updateUmpHsStatus()">
-</label>
-</div>
-
-<div id="umpHsStatus"
-     style="text-align:center;color:#ff4d4d;
-     font-size:10px;font-weight:bold;">
-    Unsuccessful
-</div>
-
-<button class="btn-go"
-        onclick="launchFreeFire()"
-        style="background:linear-gradient(135deg,#00ffff,#0080ff);
-        color:#000;">
-    APPLY FREE FIRE 🎮
-</button>
-
-</div>
-
-<div class="result-box"
-     id="hudResultBox">
-
-<div class="card">
-<span>Layout Type</span>
-<span id="hudTypeVal">--</span>
-</div>
-
-<div class="card">
-<span>Fire Button Size</span>
-<span id="hudFireSizeVal">--</span>
-</div>
-
-<div class="card">
-<span>Transparency</span>
-<span id="hudTransVal">--</span>
-</div>
-
-<div class="card">
-<span>Custom HUD Position</span>
-<span id="hudPosVal">Optimized Pro</span>
-</div>
-
-</div>
-</div>
-
-<!-- ADMIN -->
-<div id="secretPanel" class="panel-section hidden">
-
-<div class="title">ADMIN PANEL</div>
-
-<div id="adminLockOverlay"
-     style="background:rgba(15,15,20,.8);
-     border:1px dashed rgba(255,0,255,.4);
-     padding:15px;border-radius:12px;
-     text-align:center;display:flex;
-     flex-direction:column;gap:8px;">
-
-<span style="color:#ff00ff;font-size:11px;font-weight:bold;">
-🔒 Admin Panel Locked!
-</span>
-
-<span style="font-size:9px;color:#aaa;">
-Enter Admin Password
-</span>
-
-<input type="password"
-       id="adminPassInput"
-       placeholder="Enter Admin Password"
-       style="padding:8px;text-align:center;">
-
-<button onclick="unlockAdmin()" class="btn-go">
-UNLOCK ADMIN
-</button>
-
-<span id="adminErrorMsg"
-      style="color:#ff4d4d;font-size:10px;display:none;">
-Wrong Password! Try again.
-</span>
-
-</div>
-
-<div id="adminMainContent"
-     class="hidden"
-     style="display:flex;flex-direction:column;gap:6px;">
-
-<div class="card"
-     style="flex-direction:column;align-items:flex-start;gap:4px;">
-
-<span style="color:#ff00ff;font-weight:bold;">
-Firebase Connected
-</span>
-
-<span style="font-size:10px;color:#ccc;">
-অ্যাডমিন প্যানেল ফুল সিকিউরড মোডে আছে
-</span>
-
-</div>
-
-<button class="btn-go"
-onclick="alert('সফলভাবে সমস্ত প্রিমিয়াম সেন্সি বুস্ট সক্রিয় করা হয়েছে!')">
-ACTIVATE ALL BOOST
-</button>
-
-</div>
-</div>
-
-<!-- REMOTE LOCK -->
-<div id="remotePanel" class="panel-section hidden">
-
-<div class="title">
-TURJO REMOTE LOCK 😡
-</div>
-
-<div id="remoteLockOverlay"
-     style="background:rgba(15,15,20,.8);
-     border:1px dashed rgba(255,77,77,.5);
-     padding:12px;border-radius:12px;
-     text-align:center;display:flex;
-     flex-direction:column;gap:6px;">
-
-<span style="color:#ff4d4d;font-size:11px;font-weight:bold;">
-🔒 Remote Panel Locked!
-</span>
-
-<input type="password"
-       id="remoteSecretPassInput"
-       placeholder="Enter Secret #2"
-       style="padding:7px;text-align:center;">
-
-<button onclick="unlockRemoteSection()"
-        style="background:#ff4d4d;color:#fff;
-        border:none;padding:8px;border-radius:8px;
-        font-weight:bold;">
-UNLOCK PANEL
-</button>
-
-<span id="remoteErrorMsg"
-      style="color:#ff4d4d;font-size:9px;display:none;">
-Wrong Secret #2!
-</span>
-
-</div>
-
-<div id="remoteMainContent"
-     class="hidden"
-     style="display:flex;flex-direction:column;gap:7px;">
-
-<div class="card"
-     style="background:rgba(25,15,15,.8);
-     border-left:3px solid #ff4d4d;">
-
-<span style="color:#ff4d4d;font-weight:bold;">
-MC PORE CELE PORE 😡
-</span>
-
-</div>
-
-<div class="input-box">
-
-<input type="text"
-       id="newPasswordInput"
-       placeholder="Enter New App Password">
-
-<input type="datetime-local"
-       id="remoteTargetTimeInput">
-
-<select id="forceUpdateToggle">
-
-<option value="off">
-Force Update: OFF (Normal)
-</option>
-
-<option value="on">
-Force Update: ON (Lock App)
-</option>
-
-</select>
-
-<!-- NEW REMOTE APP LOCK -->
-<select id="remoteAppLockToggle">
-
-<option value="off">
-Remote App Lock: OFF
-</option>
-
-<option value="on">
-Remote App Lock: ON
-</option>
-
-</select>
-
-<input type="text"
-       id="customUpdateMsgInput"
-       placeholder="Custom Update Message">
-
-<button onclick="updateRemotePassword()"
-        style="background:#ff4d4d;color:#fff;
-        border:none;padding:10px;border-radius:8px;
-        font-weight:bold;">
-UPDATE & FORCE RELOAD 😡
-</button>
-
-</div>
-</div>
-</div>
-
-<button class="btn-go"
-onclick="window.open('https://t.me/turji','_blank')">
-JOIN TELEGRAM ↗
-</button>
-
-<div class="admin-text">
-Admin: <span>@ TURJO X USER</span>
-</div>
-
-</div>
-</div>
+    <div class="header">
+
+        <span>
+            FREESTYLE PRO
+        </span>
+
+        <span style="font-size:11px;background:rgba(0,0,0,.5);
+                     color:#00ffff;padding:4px 10px;border-radius:8px;">
+
+            ✨ Live:
+            <span id="activeUserCount">
+                0
+            </span>
+
+        </span>
+
+    </div>
+
+    <div class="body-content">
+
+        <div class="sidebar">
+
+            <button id="btnSensi"
+                    class="active"
+                    onclick="switchTab('sensi')">
+                VIP SENSI
+            </button>
+
+            <button id="btnVipHud"
+                    onclick="switchTab('viphud')">
+                VIP HUD
+            </button>
+
+            <button id="btnPaidPanel"
+                    onclick="switchTab('paidpanel')">
+                VIP PAID PANEL
+            </button>
+
+            <button onclick="window.open('https://tiktok.com/@turjoxuser','_blank')">
+                TikTok
+            </button>
+
+            <button id="btnRemote"
+                    onclick="switchTab('remote')">
+                Remote Lock
+            </button>
+
+        </div>
+
+        <div class="main-panel">
+
+            <!-- VIP SENSI -->
+            <div id="sensiPanel"
+                 class="panel-section">
+
+                <div class="title">
+                    DEVICE & RAM SETUP
+                </div>
+
+                <div id="timerDisplay">
+                    ⏳ Syncing Timer...
+                </div>
+
+                <div class="input-box">
+
+                    <input type="text"
+                           id="phoneName"
+                           placeholder="Phone Name (e.g. Redmi)">
+
+                    <input type="text"
+                           id="phoneModel"
+                           placeholder="Model (e.g. Note 10)">
+
+                    <select id="phoneRam">
+
+                        <option value=""
+                                disabled
+                                selected>
+                            Select RAM
+                        </option>
+
+                        <option value="3">
+                            3 GB RAM
+                        </option>
+
+                        <option value="4">
+                            4 GB RAM
+                        </option>
+
+                        <option value="6">
+                            6 GB RAM
+                        </option>
+
+                        <option value="8">
+                            8 GB RAM
+                        </option>
+
+                        <option value="12">
+                            12 GB RAM
+                        </option>
+
+                    </select>
+
+                    <button class="btn-go"
+                            onclick="generateUniqueSensi()">
+                        GENERATE
+                    </button>
+
+                </div>
+
+                <div class="result-box"
+                     id="resultBox">
+
+                    <div class="card">
+                        <span>General Sensi</span>
+                        <span id="genVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Red Dot</span>
+                        <span id="redVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>2X Scope</span>
+                        <span id="twoVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>4X Scope</span>
+                        <span id="fourVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>AWM Scope 🎯</span>
+                        <span id="awmVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Free Camera 📷</span>
+                        <span id="freeCamVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Fire Button</span>
+                        <span id="fireVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>DPI</span>
+                        <span id="dpiVal">--</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- VIP HUD -->
+            <div id="viphudPanel"
+                 class="panel-section hidden">
+
+                <div class="title">
+                    VIP HUD LAYOUT CONFIG 👑
+                </div>
+
+                <div class="input-box">
+
+                    <select id="hudStyleSelect">
+
+                        <option value=""
+                                disabled
+                                selected>
+                            Select HUD Style
+                        </option>
+
+                        <option value="2finger">
+                            2 Finger Standard
+                        </option>
+
+                        <option value="3finger">
+                            3 Finger Claw (Fast)
+                        </option>
+
+                        <option value="4finger">
+                            4 Finger Pro Claw ⚡
+                        </option>
+
+                    </select>
+
+                    <div class="card">
+
+                        <span>
+                            Wodpikar HS
+                        </span>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="wodpikarHsToggle"
+                                   onchange="updateWodpikarHsStatus()">
+                        </label>
+
+                    </div>
+
+                    <div id="wodpikarHsStatus"
+                         style="text-align:center;color:#ff4d4d;
+                         font-size:10px;font-weight:bold;">
+                        Unsuccessful
+                    </div>
+
+                    <div class="card">
+
+                        <span>
+                            UMP HS
+                        </span>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="umpHsToggle"
+                                   onchange="updateUmpHsStatus()">
+                        </label>
+
+                    </div>
+
+                    <div id="umpHsStatus"
+                         style="text-align:center;color:#ff4d4d;
+                         font-size:10px;font-weight:bold;">
+                        Unsuccessful
+                    </div>
+
+                    <div class="card">
+
+                        <span>
+                            M1887 HS
+                        </span>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="m1887HsToggle"
+                                   onchange="updateM1887HsStatus()">
+                        </label>
+
+                    </div>
+
+                    <div id="m1887HsStatus"
+                         style="text-align:center;color:#ff4d4d;
+                         font-size:10px;font-weight:bold;">
+                        Unsuccessful
+                    </div>
+
+                    <button class="btn-go"
+                            onclick="launchFreeFire()"
+                            style="background:linear-gradient(135deg,#00ffff,#0080ff);
+                            color:#000;">
+
+                        APPLY FREE FIRE 🎮
+
+                    </button>
+
+                </div>
+
+                <div class="result-box"
+                     id="hudResultBox">
+
+                    <div class="card">
+                        <span>Layout Type</span>
+                        <span id="hudTypeVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Fire Button Size</span>
+                        <span id="hudFireSizeVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Transparency</span>
+                        <span id="hudTransVal">--</span>
+                    </div>
+
+                    <div class="card">
+                        <span>Custom HUD Position</span>
+                        <span id="hudPosVal">
+                            Optimized Pro
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- VIP PAID PANEL -->
+            <div id="paidpanel"
+                 class="panel-section hidden">
+
+                <div class="title">
+                    VIP PAID PANEL 👑
+                </div>
+
+                <div class="panel-card">
+
+                    <h2>
+                        VIP PAID PANEL
+                    </h2>
+
+                    <p>
+                        FF TOOLS
+                    </p>
+
+                    <button class="btn-go"
+                            onclick="window.open('https://t.me/turji/40','_blank')">
+
+                        DOWNLOAD ⬇️
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- REMOTE LOCK -->
+            <div id="remotePanel"
+                 class="panel-section hidden">
+
+                <div class="title">
+                    TURJO REMOTE LOCK 😡
+                </div>
+
+                <div id="remoteLockOverlay"
+                     style="background:rgba(15,15,20,.8);
+                     border:1px dashed rgba(255,77,77,.5);
+                     padding:12px;border-radius:12px;
+                     text-align:center;display:flex;
+                     flex-direction:column;gap:6px;">
+
+                    <span style="color:#ff4d4d;font-size:11px;font-weight:bold;">
+                        🔒 Remote Panel Locked!
+                    </span>
+
+                    <input type="password"
+                           id="remoteSecretPassInput"
+                           placeholder="Enter Secret #2"
+                           style="padding:7px;text-align:center;">
+
+                    <button onclick="unlockRemoteSection()"
+                            style="background:#ff4d4d;color:#fff;
+                            border:none;padding:8px;border-radius:8px;
+                            font-weight:bold;">
+
+                        UNLOCK PANEL
+
+                    </button>
+
+                    <span id="remoteErrorMsg"
+                          style="color:#ff4d4d;font-size:9px;display:none;">
+                        Wrong Secret #2!
+                    </span>
+
+                </div>
+
+                <div id="remoteMainContent"
+                     class="hidden"
+                     style="display:flex;flex-direction:column;gap:7px;">
+
+                    <div class="card"
+                         style="background:rgba(25,15,15,.8);
+                         border-left:3px solid #ff4d4d;">
+
+                        <span style="color:#ff4d4d;font-weight:bold;">
+                            MC PORE CELE PORE 😡
+                        </span>
+
+                    </div>
+
+                    <div class="input-box">
+
+                        <input type="text"
+                               id="newPasswordInput"
+                               placeholder="Enter New App Password">
+
+                        <input type="datetime-local"
+                               id="remoteTargetTimeInput">
+
+                        <select id="forceUpdateToggle">
+
+                            <option value="off">
+                                Force Update: OFF (Normal)
+                            </option>
+
+                            <option value="on">
+                                Force Update: ON (Lock App)
+                            </option>
+
+                        </select>
+
+                        <select id="remoteAppLockToggle">
+
+                            <option value="off">
+                                Remote App Lock: OFF
+                            </option>
+
+                            <option value="on">
+                                Remote App Lock: ON
+                            </option>
+
+                        </select>
+
+                        <input type="text"
+                               id="customUpdateMsgInput"
+                               placeholder="Custom Update Message">
+
+                        <button onclick="updateRemotePassword()"
+                                style="background:#ff4d4d;color:#fff;
+                                border:none;padding:10px;border-radius:8px;
+                                font-weight:bold;">
+
+                            UPDATE & FORCE RELOAD 😡
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="btn-go"
+                    onclick="window.open('https://t.me/turji','_blank')">
+
+                JOIN TELEGRAM ↗
+
+            </button>
+
+            <div class="admin-text">
+                Admin:
+                <span>@ TURJO X USER</span>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 <script type="module">
@@ -751,603 +862,598 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-
 /* ===============================
    FIREBASE CONFIG
 ================================ */
 
 const firebaseConfig = {
 
-apiKey:"AIzaSyAE0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
+    apiKey:"AIzaSyAEU0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
 
-authDomain:"mysensiapp.firebaseapp.com",
+    authDomain:"mysensiapp.firebaseapp.com",
 
-databaseURL:
-"https://mysensiapp-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL:
+    "https://mysensiapp-default-rtdb.europe-west1.firebasedatabase.app",
 
-projectId:"mysensiapp",
+    projectId:"mysensiapp",
 
-storageBucket:"mysensiapp.appspot.com",
+    storageBucket:"mysensiapp.appspot.com",
 
-messagingSenderId:"115975518263",
+    messagingSenderId:"115975518263",
 
-appId:"1:115975518263:web:1d08e768bb13c9fd2c67b2",
+    appId:"1:115975518263:web:1d08e768bb13c9fd2c67b2",
 
-measurementId:"G-N68B2MLFH9"
+    measurementId:"G-N68B2MLFH9"
 
 };
 
-const app=initializeApp(firebaseConfig);
-const db=getDatabase(app);
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getDatabase(app);
 
 let correctPassword="10";
-let countdownInterval=null;
 
+let countdownInterval=null;
 
 /* ===============================
    ADMIN PASSWORD
 ================================ */
 
-const adminRef=ref(db,"admin");
+const adminRef =
+ref(db,"admin");
 
 onValue(adminRef,(snapshot)=>{
 
-if(snapshot.exists()){
-correctPassword=
-String(snapshot.val()).trim();
-}
+    if(snapshot.exists()){
+
+        correctPassword =
+        String(snapshot.val()).trim();
+
+    }
 
 });
-
 
 /* ===============================
    LIVE USERS
 ================================ */
 
-const sessionId=
+const sessionId =
 "user_"+Math.random()
 .toString(36)
 .substring(2,9);
 
-const activeUsersRef=
+const activeUsersRef =
 ref(db,"activeUsers/"+sessionId);
 
-onDisconnect(activeUsersRef).remove();
+onDisconnect(activeUsersRef)
+.remove();
 
 set(activeUsersRef,true);
 
-const allUsersRef=
+const allUsersRef =
 ref(db,"activeUsers");
 
 onValue(allUsersRef,(snapshot)=>{
 
-const count=
-snapshot.exists()
-?snapshot.numChildren()
-:0;
+    const count =
+    snapshot.exists()
+    ? snapshot.numChildren()
+    : 0;
 
-const badge=
-document.getElementById("activeUserCount");
+    const badge =
+    document.getElementById(
+        "activeUserCount"
+    );
 
-if(badge){
-badge.textContent=String(count);
-}
+    if(badge){
+
+        badge.textContent =
+        String(count);
+
+    }
 
 });
-
 
 /* ===============================
    COUNTDOWN
 ================================ */
 
-const countdownRef=
+const countdownRef =
 ref(db,"countdownTimer");
 
 onValue(countdownRef,(snapshot)=>{
 
-if(snapshot.exists()){
+    if(snapshot.exists()){
 
-startLiveCountdown(
-Number(snapshot.val())
-);
+        startLiveCountdown(
+            Number(snapshot.val())
+        );
 
-}else{
+    }else{
 
-startLiveCountdown(
-Date.now()+86400000
-);
+        startLiveCountdown(
+            Date.now()+86400000
+        );
 
-}
+    }
 
 });
 
-
 function startLiveCountdown(targetTime){
 
-if(countdownInterval){
-clearInterval(countdownInterval);
+    if(countdownInterval){
+
+        clearInterval(
+            countdownInterval
+        );
+
+    }
+
+    countdownInterval =
+    setInterval(()=>{
+
+        const distance =
+        targetTime-Date.now();
+
+        const display =
+        document.getElementById(
+            "timerDisplay"
+        );
+
+        if(!display)return;
+
+        if(distance<=0){
+
+            display.innerText =
+            "EXPIRED / TIME UP! ⏳";
+
+            clearInterval(
+                countdownInterval
+            );
+
+            return;
+
+        }
+
+        const days =
+        Math.floor(
+            distance/86400000
+        );
+
+        const hours =
+        Math.floor(
+            (distance%86400000)/3600000
+        );
+
+        const minutes =
+        Math.floor(
+            (distance%3600000)/60000
+        );
+
+        const seconds =
+        Math.floor(
+            (distance%60000)/1000
+        );
+
+        display.innerText =
+        "⏳ Live Countdown: "+
+        (days>0?days+"d ":"")+
+        String(hours).padStart(2,"0")+"h "+
+        String(minutes).padStart(2,"0")+"m "+
+        String(seconds).padStart(2,"0")+"s";
+
+    },1000);
+
 }
-
-countdownInterval=setInterval(()=>{
-
-const distance=
-targetTime-Date.now();
-
-const display=
-document.getElementById("timerDisplay");
-
-if(!display)return;
-
-if(distance<=0){
-
-display.innerText=
-"EXPIRED / TIME UP! ⏳";
-
-clearInterval(countdownInterval);
-return;
-
-}
-
-const days=
-Math.floor(distance/86400000);
-
-const hours=
-Math.floor(
-(distance%86400000)/3600000
-);
-
-const minutes=
-Math.floor(
-(distance%3600000)/60000
-);
-
-const seconds=
-Math.floor(
-(distance%60000)/1000
-);
-
-display.innerText=
-"⏳ Live Countdown: "+
-(days>0?days+"d ":"")+
-String(hours).padStart(2,"0")+"h "+
-String(minutes).padStart(2,"0")+"m "+
-String(seconds).padStart(2,"0")+"s";
-
-},1000);
-
-}
-
 
 /* ===============================
    FORCE UPDATE
 ================================ */
 
-const forceUpdateRef=
+const forceUpdateRef =
 ref(db,"forceUpdateConfig");
 
 onValue(forceUpdateRef,(snapshot)=>{
 
-const overlay=
-document.getElementById("updateOverlay");
+    const overlay =
+    document.getElementById(
+        "updateOverlay"
+    );
 
-const message=
-document.getElementById("updateMessageText");
+    const message =
+    document.getElementById(
+        "updateMessageText"
+    );
 
-if(!overlay)return;
+    if(!overlay)return;
 
-if(snapshot.exists()){
+    if(snapshot.exists()){
 
-const config=snapshot.val();
+        const config =
+        snapshot.val();
 
-const status=
-config.status
-?String(config.status)
-.trim()
-.toLowerCase()
-:"off";
+        const status =
+        config.status
+        ? String(config.status)
+          .trim()
+          .toLowerCase()
+        : "off";
 
-if(
-status==="on"||
-status==="true"||
-status==="1"
-){
+        if(
+            status==="on"||
+            status==="true"||
+            status==="1"
+        ){
 
-if(config.message){
-message.innerText=
-String(config.message);
-}
+            if(config.message){
 
-overlay.style.display="flex";
+                message.innerText =
+                String(config.message);
 
-}else{
+            }
 
-overlay.style.display="none";
+            overlay.style.display =
+            "flex";
 
-}
+        }else{
 
-}else{
+            overlay.style.display =
+            "none";
 
-overlay.style.display="none";
+        }
 
-}
+    }else{
+
+        overlay.style.display =
+        "none";
+
+    }
 
 });
 
-
 /* ===============================
-   NEW REMOTE APP LOCK
+   REMOTE APP LOCK
 ================================ */
 
-const remoteAppLockRef=
+const remoteAppLockRef =
 ref(db,"remoteAppLock");
 
 onValue(remoteAppLockRef,(snapshot)=>{
 
-const overlay=
-document.getElementById(
-"remoteAppLockOverlay"
-);
+    const overlay =
+    document.getElementById(
+        "remoteAppLockOverlay"
+    );
 
-const message=
-document.getElementById(
-"remoteLockMessage"
-);
+    const message =
+    document.getElementById(
+        "remoteLockMessage"
+    );
 
-if(!overlay)return;
+    if(!overlay)return;
 
-if(snapshot.exists()){
+    if(snapshot.exists()){
 
-const config=snapshot.val();
+        const config =
+        snapshot.val();
 
-const status=
-config.status
-?String(config.status)
-.trim()
-.toLowerCase()
-:"off";
+        const status =
+        config.status
+        ? String(config.status)
+          .trim()
+          .toLowerCase()
+        : "off";
 
-if(
-status==="on"||
-status==="true"||
-status==="1"
-){
+        if(
+            status==="on"||
+            status==="true"||
+            status==="1"
+        ){
 
-if(config.message){
-message.innerText=
-String(config.message);
-}
+            if(config.message){
 
-overlay.style.display="flex";
+                message.innerText =
+                String(config.message);
 
-}else{
+            }
 
-overlay.style.display="none";
+            overlay.style.display =
+            "flex";
 
-}
+        }else{
 
-}else{
+            overlay.style.display =
+            "none";
 
-overlay.style.display="none";
+        }
 
-}
+    }else{
+
+        overlay.style.display =
+        "none";
+
+    }
 
 });
-
 
 /* ===============================
    UPDATE SIGNAL
 ================================ */
 
-const updateSignalRef=
+const updateSignalRef =
 ref(db,"updateSignal");
 
 onValue(updateSignalRef,(snapshot)=>{
 
-if(!snapshot.exists())return;
+    if(!snapshot.exists())return;
 
-const signal=
-String(snapshot.val());
+    const signal =
+    String(snapshot.val());
 
-const old=
-localStorage.getItem("lastAppSignal");
+    const old =
+    localStorage.getItem(
+        "lastAppSignal"
+    );
 
-if(old===null){
+    if(old===null){
 
-localStorage.setItem(
-"lastAppSignal",
-signal
-);
+        localStorage.setItem(
+            "lastAppSignal",
+            signal
+        );
 
-}else if(old!==signal){
+    }else if(old!==signal){
 
-localStorage.setItem(
-"lastAppSignal",
-signal
-);
+        localStorage.setItem(
+            "lastAppSignal",
+            signal
+        );
 
-alert(
-"⚠️ নতুন আপডেট পাওয়া গেছে!"
-);
+        alert(
+            "⚠️ নতুন আপডেট পাওয়া গেছে!"
+        );
 
-location.reload();
+        location.reload();
 
-}
+    }
 
 });
-
 
 /* ===============================
    LOGIN
 ================================ */
 
-window.checkRemoteLogin=function(){
+window.checkRemoteLogin =
+function(){
 
-const pass=
-document.getElementById("loginPass")
-.value.trim();
+    const pass =
+    document.getElementById(
+        "loginPass"
+    ).value.trim();
 
-if(pass===correctPassword){
+    if(pass===correctPassword){
 
-loginWelcomeVoice();
+        const music =
+        document.getElementById(
+            "loginBgMusic"
+        );
 
-document.getElementById(
-"loginOverlay"
-).style.display="none";
+        if(music){
 
-}else{
+            music.currentTime=0;
 
-speakText("Incorrect Password");
+            music.play().catch(
+                ()=>{}
+            );
 
-alert(
-"ভুল পাসওয়ার্ড!"
-);
+        }
 
-}
+        loginWelcomeVoice();
+
+        document.getElementById(
+            "loginOverlay"
+        ).style.display =
+        "none";
+
+    }else{
+
+        speakText(
+            "Incorrect Password"
+        );
+
+        alert(
+            "ভুল পাসওয়ার্ড!"
+        );
+
+    }
 
 };
 
-window.checkLogin=
+window.checkLogin =
 window.checkRemoteLogin;
-
-
-/* ===============================
-   ADMIN UNLOCK
-================================ */
-
-window.unlockAdmin=function(){
-
-const pass=
-document.getElementById(
-"adminPassInput"
-).value.trim();
-
-const error=
-document.getElementById(
-"adminErrorMsg"
-);
-
-if(pass==="4444"){
-
-document.getElementById(
-"adminLockOverlay"
-).style.display="none";
-
-document.getElementById(
-"adminMainContent"
-).classList.remove("hidden");
-
-error.style.display="none";
-
-speakText(
-"Admin Unlocked Successfully"
-);
-
-}else{
-
-error.style.display="block";
-
-speakText(
-"Wrong Admin Password"
-);
-
-}
-
-};
-
 
 /* ===============================
    REMOTE PANEL UNLOCK
 ================================ */
 
-window.unlockRemoteSection=function(){
+window.unlockRemoteSection =
+function(){
 
-const pass=
-document.getElementById(
-"remoteSecretPassInput"
-).value
-.trim()
-.toLowerCase();
+    const pass =
+    document.getElementById(
+        "remoteSecretPassInput"
+    ).value
+    .trim()
+    .toLowerCase();
 
-const error=
-document.getElementById(
-"remoteErrorMsg"
-);
+    const error =
+    document.getElementById(
+        "remoteErrorMsg"
+    );
 
-if(pass==="secret #2"){
+    if(pass==="secret #2"){
 
-document.getElementById(
-"remoteLockOverlay"
-).style.display="none";
+        document.getElementById(
+            "remoteLockOverlay"
+        ).style.display =
+        "none";
 
-document.getElementById(
-"remoteMainContent"
-).classList.remove("hidden");
+        document.getElementById(
+            "remoteMainContent"
+        ).classList.remove(
+            "hidden"
+        );
 
-error.style.display="none";
+        error.style.display =
+        "none";
 
-speakText(
-"Remote Panel Unlocked"
-);
+        speakText(
+            "Remote Panel Unlocked"
+        );
 
-}else{
+    }else{
 
-error.style.display="block";
+        error.style.display =
+        "block";
 
-speakText(
-"Wrong Secret Password"
-);
+        speakText(
+            "Wrong Secret Password"
+        );
 
-}
+    }
 
 };
-
 
 /* ===============================
    REMOTE CONTROL UPDATE
 ================================ */
 
-window.updateRemotePassword=
+window.updateRemotePassword =
 async function(){
 
-const newPass=
-document.getElementById(
-"newPasswordInput"
-).value.trim();
+    const newPass =
+    document.getElementById(
+        "newPasswordInput"
+    ).value.trim();
 
-const targetTime=
-document.getElementById(
-"remoteTargetTimeInput"
-).value;
+    const targetTime =
+    document.getElementById(
+        "remoteTargetTimeInput"
+    ).value;
 
-const forceStatus=
-document.getElementById(
-"forceUpdateToggle"
-).value;
+    const forceStatus =
+    document.getElementById(
+        "forceUpdateToggle"
+    ).value;
 
-const remoteLockStatus=
-document.getElementById(
-"remoteAppLockToggle"
-).value;
+    const remoteLockStatus =
+    document.getElementById(
+        "remoteAppLockToggle"
+    ).value;
 
-const customMessage=
-document.getElementById(
-"customUpdateMsgInput"
-).value.trim();
+    const customMessage =
+    document.getElementById(
+        "customUpdateMsgInput"
+    ).value.trim();
 
-if(newPass===""){
+    if(newPass===""){
 
-alert(
-"দয়া করে নতুন পাসওয়ার্ড লিখুন!"
-);
+        alert(
+            "দয়া করে নতুন পাসওয়ার্ড লিখুন!"
+        );
 
-return;
+        return;
 
-}
+    }
 
-try{
+    try{
 
-/* APP PASSWORD */
+        await set(
+            ref(db,"admin"),
+            newPass
+        );
 
-await set(
-ref(db,"admin"),
-newPass
-);
+        if(targetTime){
 
+            const timestamp =
+            new Date(targetTime)
+            .getTime();
 
-/* COUNTDOWN */
+            await set(
+                ref(db,"countdownTimer"),
+                timestamp
+            );
 
-if(targetTime){
+        }
 
-const timestamp=
-new Date(targetTime).getTime();
+        await set(
+            ref(db,"forceUpdateConfig"),
+            {
 
-await set(
-ref(db,"countdownTimer"),
-timestamp
-);
+                status:forceStatus,
 
-}
+                message:
+                customMessage!==""?
+                customMessage:
+                "অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।"
 
+            }
+        );
 
-/* FORCE UPDATE */
+        await set(
+            ref(db,"remoteAppLock"),
+            {
 
-await set(
-ref(db,"forceUpdateConfig"),
-{
+                status:remoteLockStatus,
 
-status:forceStatus,
+                message:
+                customMessage!==""?
+                customMessage:
+                "অ্যাডমিন বর্তমানে অ্যাপটি লক করে রেখেছেন।"
 
-message:
-customMessage!==""?
-customMessage:
-"অ্যাপের নতুন ভার্সন রিলিজ হয়েছে। দয়া করে আপডেট করুন।"
+            }
+        );
 
-}
-);
+        await set(
+            ref(db,"updateSignal"),
+            String(Date.now())
+        );
 
+        document.getElementById(
+            "newPasswordInput"
+        ).value="";
 
-/* REMOTE APP LOCK */
+        document.getElementById(
+            "remoteTargetTimeInput"
+        ).value="";
 
-await set(
-ref(db,"remoteAppLock"),
-{
+        document.getElementById(
+            "customUpdateMsgInput"
+        ).value="";
 
-status:remoteLockStatus,
+        alert(
+            "Remote Control সফলভাবে Firebase-এ আপডেট হয়েছে!"
+        );
 
-message:
-customMessage!==""?
-customMessage:
-"অ্যাডমিন বর্তমানে অ্যাপটি লক করে রেখেছেন।"
+        speakText(
+            "Remote Control Updated Successfully"
+        );
 
-}
-);
+    }catch(error){
 
+        console.error(error);
 
-/* UPDATE SIGNAL */
+        alert(
+            "Firebase ডাটা আপডেট করা যায়নি!"
+        );
 
-await set(
-ref(db,"updateSignal"),
-String(Date.now())
-);
-
-
-/* CLEAR */
-
-document.getElementById(
-"newPasswordInput"
-).value="";
-
-document.getElementById(
-"remoteTargetTimeInput"
-).value="";
-
-document.getElementById(
-"customUpdateMsgInput"
-).value="";
-
-
-alert(
-"Remote Control সফলভাবে Firebase-এ আপডেট হয়েছে!"
-);
-
-speakText(
-"Remote Control Updated Successfully"
-);
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Firebase ডাটা আপডেট করা যায়নি!"
-);
-
-}
+    }
 
 };
 
 </script>
-
 
 <script>
 
@@ -1357,75 +1463,79 @@ alert(
 
 function speakText(text){
 
-if(!("speechSynthesis" in window))
-return;
+    if(!("speechSynthesis" in window))
+    return;
 
-speechSynthesis.cancel();
+    speechSynthesis.cancel();
 
-const voices=
-speechSynthesis.getVoices();
+    const voices =
+    speechSynthesis.getVoices();
 
-const femaleVoice=
-voices.find(v=>
-/female|zira|samantha|karen|susan|google.*english/i
-.test(v.name)
-);
+    const femaleVoice =
+    voices.find(v=>
+        /female|zira|samantha|karen|susan|google.*english/i
+        .test(v.name)
+    );
 
-const utterance=
-new SpeechSynthesisUtterance(text);
+    const utterance =
+    new SpeechSynthesisUtterance(text);
 
-utterance.rate=.9;
-utterance.pitch=1.35;
-utterance.volume=1;
+    utterance.rate=.9;
+    utterance.pitch=1.35;
+    utterance.volume=1;
 
-if(femaleVoice)
-utterance.voice=femaleVoice;
+    if(femaleVoice)
+    utterance.voice =
+    femaleVoice;
 
-speechSynthesis.speak(utterance);
+    speechSynthesis.speak(
+        utterance
+    );
 
 }
-
 
 function loginWelcomeVoice(){
 
-if(!("speechSynthesis" in window))
-return;
+    if(!("speechSynthesis" in window))
+    return;
 
-speechSynthesis.cancel();
+    speechSynthesis.cancel();
 
-const voices=
-speechSynthesis.getVoices();
+    const voices =
+    speechSynthesis.getVoices();
 
-const femaleVoice=
-voices.find(v=>
-/female|zira|samantha|karen|susan|google.*english/i
-.test(v.name)
-);
+    const femaleVoice =
+    voices.find(v=>
+        /female|zira|samantha|karen|susan|google.*english/i
+        .test(v.name)
+    );
 
-const one=
-new SpeechSynthesisUtterance("WELCOME");
+    const one =
+    new SpeechSynthesisUtterance(
+        "WELCOME"
+    );
 
-const two=
-new SpeechSynthesisUtterance(
-"TURJO I LOVE YOU"
-);
+    const two =
+    new SpeechSynthesisUtterance(
+        "TURJO I LOVE YOU"
+    );
 
-[one,two].forEach(v=>{
+    [one,two].forEach(v=>{
 
-v.rate=.9;
-v.pitch=1.35;
-v.volume=1;
+        v.rate=.9;
+        v.pitch=1.35;
+        v.volume=1;
 
-if(femaleVoice)
-v.voice=femaleVoice;
+        if(femaleVoice)
+        v.voice =
+        femaleVoice;
 
-});
+    });
 
-speechSynthesis.speak(one);
-speechSynthesis.speak(two);
+    speechSynthesis.speak(one);
+    speechSynthesis.speak(two);
 
 }
-
 
 /* ===============================
    TAB SWITCH
@@ -1433,36 +1543,76 @@ speechSynthesis.speak(two);
 
 function switchTab(tab){
 
-const panels={
-sensi:document.getElementById("sensiPanel"),
-viphud:document.getElementById("viphudPanel"),
-secret:document.getElementById("secretPanel"),
-remote:document.getElementById("remotePanel")
-};
+    const panels = {
 
-const buttons={
-sensi:document.getElementById("btnSensi"),
-viphud:document.getElementById("btnVipHud"),
-secret:document.getElementById("btnSecret"),
-remote:document.getElementById("btnRemote")
-};
+        sensi:
+        document.getElementById(
+            "sensiPanel"
+        ),
 
-Object.values(panels).forEach(
-p=>p.classList.add("hidden")
-);
+        viphud:
+        document.getElementById(
+            "viphudPanel"
+        ),
 
-Object.values(buttons).forEach(
-b=>b.classList.remove("active")
-);
+        paidpanel:
+        document.getElementById(
+            "paidpanel"
+        ),
 
-if(panels[tab])
-panels[tab].classList.remove("hidden");
+        remote:
+        document.getElementById(
+            "remotePanel"
+        )
 
-if(buttons[tab])
-buttons[tab].classList.add("active");
+    };
+
+    const buttons = {
+
+        sensi:
+        document.getElementById(
+            "btnSensi"
+        ),
+
+        viphud:
+        document.getElementById(
+            "btnVipHud"
+        ),
+
+        paidpanel:
+        document.getElementById(
+            "btnPaidPanel"
+        ),
+
+        remote:
+        document.getElementById(
+            "btnRemote"
+        )
+
+    };
+
+    Object.values(panels).forEach(
+        p=>p.classList.add("hidden")
+    );
+
+    Object.values(buttons).forEach(
+        b=>{
+            if(b)
+            b.classList.remove("active");
+        }
+    );
+
+    if(panels[tab])
+    panels[tab].classList.remove(
+        "hidden"
+    );
+
+    if(buttons[tab])
+    buttons[tab].classList.add(
+        "active"
+    );
 
 }
-
 
 /* ===============================
    SENSI GENERATOR
@@ -1470,93 +1620,121 @@ buttons[tab].classList.add("active");
 
 function generateUniqueSensi(){
 
-const name=
-document.getElementById("phoneName")
-.value.trim();
+    const name =
+    document.getElementById(
+        "phoneName"
+    ).value.trim();
 
-const model=
-document.getElementById("phoneModel")
-.value.trim();
+    const model =
+    document.getElementById(
+        "phoneModel"
+    ).value.trim();
 
-const ram=
-document.getElementById("phoneRam")
-.value;
+    const ram =
+    document.getElementById(
+        "phoneRam"
+    ).value;
 
-if(!name||!model||!ram){
+    if(!name||!model||!ram){
 
-alert(
-"দয়া করে সব তথ্য পূরণ করুন!"
-);
+        alert(
+            "দয়া করে সব তথ্য পূরণ করুন!"
+        );
 
-return;
+        return;
+
+    }
+
+    const text =
+    (name+model+ram).toLowerCase();
+
+    let hash=0;
+
+    for(let i=0;i<text.length;i++){
+
+        hash =
+        text.charCodeAt(i)+
+        ((hash<<5)-hash);
+
+    }
+
+    const abs =
+    Math.abs(hash);
+
+    const values = {
+
+        gen:
+        180+(abs%20),
+
+        red:
+        175+((abs>>1)%21),
+
+        two:
+        170+((abs>>2)%26),
+
+        four:
+        165+((abs>>3)%26),
+
+        awm:
+        160+((abs>>4)%31),
+
+        free:
+        170+((abs>>5)%26),
+
+        fire:
+        40+((abs>>6)%10),
+
+        dpi:
+        555+((abs>>7)%101)
+
+    };
+
+    document.getElementById(
+        "genVal"
+    ).innerText =
+    values.gen;
+
+    document.getElementById(
+        "redVal"
+    ).innerText =
+    values.red;
+
+    document.getElementById(
+        "twoVal"
+    ).innerText =
+    values.two;
+
+    document.getElementById(
+        "fourVal"
+    ).innerText =
+    values.four;
+
+    document.getElementById(
+        "awmVal"
+    ).innerText =
+    values.awm;
+
+    document.getElementById(
+        "freeCamVal"
+    ).innerText =
+    values.free;
+
+    document.getElementById(
+        "fireVal"
+    ).innerText =
+    values.fire+"%";
+
+    document.getElementById(
+        "dpiVal"
+    ).innerText =
+    values.dpi;
+
+    document.getElementById(
+        "resultBox"
+    ).style.display =
+    "flex";
 
 }
-
-const text=
-(name+model+ram).toLowerCase();
-
-let hash=0;
-
-for(let i=0;i<text.length;i++){
-
-hash=
-text.charCodeAt(i)+
-((hash<<5)-hash);
-
-}
-
-const abs=Math.abs(hash);
-
-const values={
-
-gen:180+(abs%20),
-
-red:175+((abs>>1)%21),
-
-two:170+((abs>>2)%26),
-
-four:165+((abs>>3)%26),
-
-awm:160+((abs>>4)%31),
-
-free:170+((abs>>5)%26),
-
-fire:40+((abs>>6)%10),
-
-dpi:555+((abs>>7)%101)
-
-};
-
-document.getElementById("genVal").innerText=
-values.gen;
-
-document.getElementById("redVal").innerText=
-values.red;
-
-document.getElementById("twoVal").innerText=
-values.two;
-
-document.getElementById("fourVal").innerText=
-values.four;
-
-document.getElementById("awmVal").innerText=
-values.awm;
-
-document.getElementById("freeCamVal").innerText=
-values.free;
-
-document.getElementById("fireVal").innerText=
-values.fire+"%";
-
-document.getElementById("dpiVal").innerText=
-values.dpi;
-
-document.getElementById(
-"resultBox"
-).style.display="flex";
-
-}
-
 
 /* ===============================
    WODPIKAR HS
@@ -1564,30 +1742,35 @@ document.getElementById(
 
 function updateWodpikarHsStatus(){
 
-const toggle=
-document.getElementById(
-"wodpikarHsToggle"
-);
+    const toggle =
+    document.getElementById(
+        "wodpikarHsToggle"
+    );
 
-const status=
-document.getElementById(
-"wodpikarHsStatus"
-);
+    const status =
+    document.getElementById(
+        "wodpikarHsStatus"
+    );
 
-if(toggle.checked){
+    if(toggle.checked){
 
-status.innerText="Success";
-status.style.color="#00ff88";
+        status.innerText =
+        "Success";
 
-}else{
+        status.style.color =
+        "#00ff88";
 
-status.innerText="Unsuccessful";
-status.style.color="#ff4d4d";
+    }else{
+
+        status.innerText =
+        "Unsuccessful";
+
+        status.style.color =
+        "#ff4d4d";
+
+    }
 
 }
-
-}
-
 
 /* ===============================
    UMP HS
@@ -1595,30 +1778,71 @@ status.style.color="#ff4d4d";
 
 function updateUmpHsStatus(){
 
-const toggle=
-document.getElementById(
-"umpHsToggle"
-);
+    const toggle =
+    document.getElementById(
+        "umpHsToggle"
+    );
 
-const status=
-document.getElementById(
-"umpHsStatus"
-);
+    const status =
+    document.getElementById(
+        "umpHsStatus"
+    );
 
-if(toggle.checked){
+    if(toggle.checked){
 
-status.innerText="Success";
-status.style.color="#00ff88";
+        status.innerText =
+        "Success";
 
-}else{
+        status.style.color =
+        "#00ff88";
 
-status.innerText="Unsuccessful";
-status.style.color="#ff4d4d";
+    }else{
+
+        status.innerText =
+        "Unsuccessful";
+
+        status.style.color =
+        "#ff4d4d";
+
+    }
 
 }
 
-}
+/* ===============================
+   M1887 HS
+================================ */
 
+function updateM1887HsStatus(){
+
+    const toggle =
+    document.getElementById(
+        "m1887HsToggle"
+    );
+
+    const status =
+    document.getElementById(
+        "m1887HsStatus"
+    );
+
+    if(toggle.checked){
+
+        status.innerText =
+        "Success";
+
+        status.style.color =
+        "#00ff88";
+
+    }else{
+
+        status.innerText =
+        "Unsuccessful";
+
+        status.style.color =
+        "#ff4d4d";
+
+    }
+
+}
 
 /* ===============================
    FREE FIRE
@@ -1626,77 +1850,89 @@ status.style.color="#ff4d4d";
 
 function launchFreeFire(){
 
-const style=
-document.getElementById(
-"hudStyleSelect"
-).value;
+    const style =
+    document.getElementById(
+        "hudStyleSelect"
+    ).value;
 
-if(!style){
+    if(!style){
 
-alert(
-"দয়া করে একটি HUD স্টাইল সিলেক্ট করুন!"
-);
+        alert(
+            "দয়া করে একটি HUD স্টাইল সিলেক্ট করুন!"
+        );
 
-return;
+        return;
 
-}
+    }
 
-let type="2 Finger Standard";
-let fire="48%";
-let trans="35%";
+    let type =
+    "2 Finger Standard";
 
-if(style==="3finger"){
+    let fire="48%";
 
-type="3 Finger Claw ⚡";
-fire="42%";
-trans="25%";
+    let trans="35%";
 
-}
+    if(style==="3finger"){
 
-if(style==="4finger"){
+        type =
+        "3 Finger Claw ⚡";
 
-type="4 Finger Pro Claw 🔥";
-fire="38%";
-trans="20%";
+        fire="42%";
+        trans="25%";
 
-}
+    }
 
-document.getElementById(
-"hudTypeVal"
-).innerText=type;
+    if(style==="4finger"){
 
-document.getElementById(
-"hudFireSizeVal"
-).innerText=fire;
+        type =
+        "4 Finger Pro Claw 🔥";
 
-document.getElementById(
-"hudTransVal"
-).innerText=trans;
+        fire="38%";
+        trans="20%";
 
-document.getElementById(
-"hudResultBox"
-).style.display="flex";
+    }
 
-speakText(
-"Applying HUD and launching Free Fire"
-);
+    document.getElementById(
+        "hudTypeVal"
+    ).innerText =
+    type;
 
-setTimeout(()=>{
+    document.getElementById(
+        "hudFireSizeVal"
+    ).innerText =
+    fire;
 
-window.location.href="freefire://";
+    document.getElementById(
+        "hudTransVal"
+    ).innerText =
+    trans;
 
-},1000);
+    document.getElementById(
+        "hudResultBox"
+    ).style.display =
+    "flex";
 
-setTimeout(()=>{
+    speakText(
+        "Applying HUD and launching Free Fire"
+    );
 
-window.location.href=
-"intent://#Intent;package=com.dts.freefireth;scheme=freefire;end;";
+    setTimeout(()=>{
 
-},2500);
+        window.location.href =
+        "freefire://";
+
+    },1000);
+
+    setTimeout(()=>{
+
+        window.location.href =
+        "intent://#Intent;package=com.dts.freefireth;scheme=freefire;end;";
+
+    },2500);
 
 }
 
 </script>
 
 </body>
-</html>
+    </html>
