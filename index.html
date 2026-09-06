@@ -318,6 +318,61 @@ body{
     width:100%;
 }
 
+/* ===============================
+   HUD TOGGLE
+================================ */
+
+.hud-toggle{
+    position:relative;
+    width:42px;
+    height:22px;
+    display:inline-block;
+}
+
+.hud-toggle input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.hud-slider{
+    position:absolute;
+    inset:0;
+    cursor:pointer;
+    background:#333;
+    border-radius:30px;
+    transition:.3s;
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.hud-slider:before{
+    content:"";
+    position:absolute;
+    width:16px;
+    height:16px;
+    left:2px;
+    top:2px;
+    background:#fff;
+    border-radius:50%;
+    transition:.3s;
+}
+
+.hud-toggle input:checked + .hud-slider{
+    background:linear-gradient(135deg,#00ff88,#00cc66);
+    box-shadow:0 0 12px rgba(0,255,136,.6);
+}
+
+.hud-toggle input:checked + .hud-slider:before{
+    transform:translateX(20px);
+}
+
+.hud-gun-status{
+    text-align:center;
+    color:#ff4d4d;
+    font-size:10px;
+    font-weight:bold;
+}
+
 </style>
 </head>
 
@@ -353,7 +408,6 @@ body{
 
 </div>
 
-<!-- LOGIN BACKGROUND MUSIC -->
 <audio id="loginBgMusic" loop preload="auto">
     <source src="song.mp3" type="audio/mpeg">
 </audio>
@@ -487,25 +541,11 @@ body{
                             Select RAM
                         </option>
 
-                        <option value="3">
-                            3 GB RAM
-                        </option>
-
-                        <option value="4">
-                            4 GB RAM
-                        </option>
-
-                        <option value="6">
-                            6 GB RAM
-                        </option>
-
-                        <option value="8">
-                            8 GB RAM
-                        </option>
-
-                        <option value="12">
-                            12 GB RAM
-                        </option>
+                        <option value="3">3 GB RAM</option>
+                        <option value="4">4 GB RAM</option>
+                        <option value="6">6 GB RAM</option>
+                        <option value="8">8 GB RAM</option>
+                        <option value="12">12 GB RAM</option>
 
                     </select>
 
@@ -595,63 +635,123 @@ body{
 
                     </select>
 
+                    <!-- WODPIKAR HS -->
                     <div class="card">
 
                         <span>
-                            Wodpikar HS
+                            Wodpikar HS 🔫
                         </span>
 
-                        <label>
+                        <label class="hud-toggle">
+
                             <input type="checkbox"
                                    id="wodpikarHsToggle"
                                    onchange="updateWodpikarHsStatus()">
+
+                            <span class="hud-slider"></span>
+
                         </label>
 
                     </div>
 
                     <div id="wodpikarHsStatus"
-                         style="text-align:center;color:#ff4d4d;
-                         font-size:10px;font-weight:bold;">
+                         class="hud-gun-status">
                         Unsuccessful
                     </div>
 
+                    <!-- UMP HS -->
                     <div class="card">
 
                         <span>
-                            UMP HS
+                            UMP HS 🔫
                         </span>
 
-                        <label>
+                        <label class="hud-toggle">
+
                             <input type="checkbox"
                                    id="umpHsToggle"
                                    onchange="updateUmpHsStatus()">
+
+                            <span class="hud-slider"></span>
+
                         </label>
 
                     </div>
 
                     <div id="umpHsStatus"
-                         style="text-align:center;color:#ff4d4d;
-                         font-size:10px;font-weight:bold;">
+                         class="hud-gun-status">
                         Unsuccessful
                     </div>
 
+                    <!-- M1887 HS -->
                     <div class="card">
 
                         <span>
-                            M1887 HS
+                            M1887 HS 🔫
                         </span>
 
-                        <label>
+                        <label class="hud-toggle">
+
                             <input type="checkbox"
                                    id="m1887HsToggle"
                                    onchange="updateM1887HsStatus()">
+
+                            <span class="hud-slider"></span>
+
                         </label>
 
                     </div>
 
                     <div id="m1887HsStatus"
-                         style="text-align:center;color:#ff4d4d;
-                         font-size:10px;font-weight:bold;">
+                         class="hud-gun-status">
+                        Unsuccessful
+                    </div>
+
+                    <!-- DEGAR EGOOL -->
+                    <div class="card">
+
+                        <span>
+                            DEGAR EGOOL 🔫
+                        </span>
+
+                        <label class="hud-toggle">
+
+                            <input type="checkbox"
+                                   id="degarEgoolToggle"
+                                   onchange="updateDegarEgoolStatus()">
+
+                            <span class="hud-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                    <div id="degarEgoolStatus"
+                         class="hud-gun-status">
+                        Unsuccessful
+                    </div>
+
+                    <!-- M1014 -->
+                    <div class="card">
+
+                        <span>
+                            M1014 🔫
+                        </span>
+
+                        <label class="hud-toggle">
+
+                            <input type="checkbox"
+                                   id="m1014Toggle"
+                                   onchange="updateM1014Status()">
+
+                            <span class="hud-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                    <div id="m1014Status"
+                         class="hud-gun-status">
                         Unsuccessful
                     </div>
 
@@ -862,10 +962,6 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-/* ===============================
-   FIREBASE CONFIG
-================================ */
-
 const firebaseConfig = {
 
     apiKey:"AIzaSyAEU0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
@@ -897,10 +993,6 @@ let correctPassword="10";
 
 let countdownInterval=null;
 
-/* ===============================
-   ADMIN PASSWORD
-================================ */
-
 const adminRef =
 ref(db,"admin");
 
@@ -914,10 +1006,6 @@ onValue(adminRef,(snapshot)=>{
     }
 
 });
-
-/* ===============================
-   LIVE USERS
-================================ */
 
 const sessionId =
 "user_"+Math.random()
@@ -955,10 +1043,6 @@ onValue(allUsersRef,(snapshot)=>{
     }
 
 });
-
-/* ===============================
-   COUNTDOWN
-================================ */
 
 const countdownRef =
 ref(db,"countdownTimer");
@@ -1048,10 +1132,6 @@ function startLiveCountdown(targetTime){
 
 }
 
-/* ===============================
-   FORCE UPDATE
-================================ */
-
 const forceUpdateRef =
 ref(db,"forceUpdateConfig");
 
@@ -1112,10 +1192,6 @@ onValue(forceUpdateRef,(snapshot)=>{
     }
 
 });
-
-/* ===============================
-   REMOTE APP LOCK
-================================ */
 
 const remoteAppLockRef =
 ref(db,"remoteAppLock");
@@ -1178,10 +1254,6 @@ onValue(remoteAppLockRef,(snapshot)=>{
 
 });
 
-/* ===============================
-   UPDATE SIGNAL
-================================ */
-
 const updateSignalRef =
 ref(db,"updateSignal");
 
@@ -1220,10 +1292,6 @@ onValue(updateSignalRef,(snapshot)=>{
     }
 
 });
-
-/* ===============================
-   LOGIN
-================================ */
 
 window.checkRemoteLogin =
 function(){
@@ -1274,10 +1342,6 @@ function(){
 window.checkLogin =
 window.checkRemoteLogin;
 
-/* ===============================
-   REMOTE PANEL UNLOCK
-================================ */
-
 window.unlockRemoteSection =
 function(){
 
@@ -1325,10 +1389,6 @@ function(){
     }
 
 };
-
-/* ===============================
-   REMOTE CONTROL UPDATE
-================================ */
 
 window.updateRemotePassword =
 async function(){
@@ -1458,7 +1518,7 @@ async function(){
 <script>
 
 /* ===============================
-   VOICE
+   GENERAL VOICE
 ================================ */
 
 function speakText(text){
@@ -1471,9 +1531,9 @@ function speakText(text){
     const voices =
     speechSynthesis.getVoices();
 
-    const femaleVoice =
-    voices.find(v=>
-        /female|zira|samantha|karen|susan|google.*english/i
+    const maleVoice =
+    voices.find(v =>
+        /male|david|mark|daniel|alex|james|michael|george|fred|tom|google.*english.*male/i
         .test(v.name)
     );
 
@@ -1481,18 +1541,21 @@ function speakText(text){
     new SpeechSynthesisUtterance(text);
 
     utterance.rate=.9;
-    utterance.pitch=1.35;
+    utterance.pitch=.9;
     utterance.volume=1;
 
-    if(femaleVoice)
-    utterance.voice =
-    femaleVoice;
+    if(maleVoice)
+    utterance.voice=maleVoice;
 
     speechSynthesis.speak(
         utterance
     );
 
 }
+
+/* ===============================
+   LOGIN WELCOME VOICE
+================================ */
 
 function loginWelcomeVoice(){
 
@@ -1501,45 +1564,61 @@ function loginWelcomeVoice(){
 
     speechSynthesis.cancel();
 
+    const speakWelcome = () => {
+
+        const voices =
+        speechSynthesis.getVoices();
+
+        const maleVoice =
+        voices.find(v =>
+            /male|david|mark|daniel|alex|james|michael|george|fred|tom|google.*english.*male/i
+            .test(v.name)
+        );
+
+        const utterance =
+        new SpeechSynthesisUtterance(
+            "Welcome to Turjo Freestyle PRO"
+        );
+
+        utterance.rate=.9;
+        utterance.pitch=.9;
+        utterance.volume=1;
+
+        if(maleVoice){
+
+            utterance.voice =
+            maleVoice;
+
+        }
+
+        speechSynthesis.speak(
+            utterance
+        );
+
+    };
+
     const voices =
     speechSynthesis.getVoices();
 
-    const femaleVoice =
-    voices.find(v=>
-        /female|zira|samantha|karen|susan|google.*english/i
-        .test(v.name)
-    );
+    if(voices.length){
 
-    const one =
-    new SpeechSynthesisUtterance(
-        "WELCOME"
-    );
+        speakWelcome();
 
-    const two =
-    new SpeechSynthesisUtterance(
-        "TURJO I LOVE YOU"
-    );
+    }else{
 
-    [one,two].forEach(v=>{
+        speechSynthesis.onvoiceschanged =
+        function(){
 
-        v.rate=.9;
-        v.pitch=1.35;
-        v.volume=1;
+            speechSynthesis.onvoiceschanged =
+            null;
 
-        if(femaleVoice)
-        v.voice =
-        femaleVoice;
+            speakWelcome();
 
-    });
+        };
 
-    speechSynthesis.speak(one);
-    speechSynthesis.speak(two);
+    }
 
 }
-
-/* ===============================
-   TAB SWITCH
-================================ */
 
 function switchTab(tab){
 
@@ -1614,10 +1693,6 @@ function switchTab(tab){
 
 }
 
-/* ===============================
-   SENSI GENERATOR
-================================ */
-
 function generateUniqueSensi(){
 
     const name =
@@ -1663,81 +1738,34 @@ function generateUniqueSensi(){
 
     const values = {
 
-        gen:
-        180+(abs%20),
-
-        red:
-        175+((abs>>1)%21),
-
-        two:
-        170+((abs>>2)%26),
-
-        four:
-        165+((abs>>3)%26),
-
-        awm:
-        160+((abs>>4)%31),
-
-        free:
-        170+((abs>>5)%26),
-
-        fire:
-        40+((abs>>6)%10),
-
-        dpi:
-        555+((abs>>7)%101)
+        gen:180+(abs%20),
+        red:175+((abs>>1)%21),
+        two:170+((abs>>2)%26),
+        four:165+((abs>>3)%26),
+        awm:160+((abs>>4)%31),
+        free:170+((abs>>5)%26),
+        fire:40+((abs>>6)%10),
+        dpi:555+((abs>>7)%101)
 
     };
 
-    document.getElementById(
-        "genVal"
-    ).innerText =
-    values.gen;
-
-    document.getElementById(
-        "redVal"
-    ).innerText =
-    values.red;
-
-    document.getElementById(
-        "twoVal"
-    ).innerText =
-    values.two;
-
-    document.getElementById(
-        "fourVal"
-    ).innerText =
-    values.four;
-
-    document.getElementById(
-        "awmVal"
-    ).innerText =
-    values.awm;
-
-    document.getElementById(
-        "freeCamVal"
-    ).innerText =
-    values.free;
-
-    document.getElementById(
-        "fireVal"
-    ).innerText =
-    values.fire+"%";
-
-    document.getElementById(
-        "dpiVal"
-    ).innerText =
-    values.dpi;
+    document.getElementById("genVal").innerText=values.gen;
+    document.getElementById("redVal").innerText=values.red;
+    document.getElementById("twoVal").innerText=values.two;
+    document.getElementById("fourVal").innerText=values.four;
+    document.getElementById("awmVal").innerText=values.awm;
+    document.getElementById("freeCamVal").innerText=values.free;
+    document.getElementById("fireVal").innerText=values.fire+"%";
+    document.getElementById("dpiVal").innerText=values.dpi;
 
     document.getElementById(
         "resultBox"
-    ).style.display =
-    "flex";
+    ).style.display="flex";
 
 }
 
 /* ===============================
-   WODPIKAR HS
+   GUN STATUS FUNCTIONS
 ================================ */
 
 function updateWodpikarHsStatus(){
@@ -1754,27 +1782,17 @@ function updateWodpikarHsStatus(){
 
     if(toggle.checked){
 
-        status.innerText =
-        "Success";
-
-        status.style.color =
-        "#00ff88";
+        status.innerText="Success";
+        status.style.color="#00ff88";
 
     }else{
 
-        status.innerText =
-        "Unsuccessful";
-
-        status.style.color =
-        "#ff4d4d";
+        status.innerText="Unsuccessful";
+        status.style.color="#ff4d4d";
 
     }
 
 }
-
-/* ===============================
-   UMP HS
-================================ */
 
 function updateUmpHsStatus(){
 
@@ -1790,27 +1808,17 @@ function updateUmpHsStatus(){
 
     if(toggle.checked){
 
-        status.innerText =
-        "Success";
-
-        status.style.color =
-        "#00ff88";
+        status.innerText="Success";
+        status.style.color="#00ff88";
 
     }else{
 
-        status.innerText =
-        "Unsuccessful";
-
-        status.style.color =
-        "#ff4d4d";
+        status.innerText="Unsuccessful";
+        status.style.color="#ff4d4d";
 
     }
 
 }
-
-/* ===============================
-   M1887 HS
-================================ */
 
 function updateM1887HsStatus(){
 
@@ -1826,26 +1834,76 @@ function updateM1887HsStatus(){
 
     if(toggle.checked){
 
-        status.innerText =
-        "Success";
-
-        status.style.color =
-        "#00ff88";
+        status.innerText="Success";
+        status.style.color="#00ff88";
 
     }else{
 
-        status.innerText =
-        "Unsuccessful";
+        status.innerText="Unsuccessful";
+        status.style.color="#ff4d4d";
 
-        status.style.color =
-        "#ff4d4d";
+    }
+
+}
+
+function updateDegarEgoolStatus(){
+
+    const toggle =
+    document.getElementById(
+        "degarEgoolToggle"
+    );
+
+    const status =
+    document.getElementById(
+        "degarEgoolStatus"
+    );
+
+    if(toggle.checked){
+
+        status.innerText="Success";
+        status.style.color="#00ff88";
+
+    }else{
+
+        status.innerText="Unsuccessful";
+        status.style.color="#ff4d4d";
 
     }
 
 }
 
 /* ===============================
-   FREE FIRE
+   M1014 TOGGLE
+================================ */
+
+function updateM1014Status(){
+
+    const toggle =
+    document.getElementById(
+        "m1014Toggle"
+    );
+
+    const status =
+    document.getElementById(
+        "m1014Status"
+    );
+
+    if(toggle.checked){
+
+        status.innerText="Success";
+        status.style.color="#00ff88";
+
+    }else{
+
+        status.innerText="Unsuccessful";
+        status.style.color="#ff4d4d";
+
+    }
+
+}
+
+/* ===============================
+   APPLY HUD
 ================================ */
 
 function launchFreeFire(){
@@ -1865,18 +1923,13 @@ function launchFreeFire(){
 
     }
 
-    let type =
-    "2 Finger Standard";
-
+    let type="2 Finger Standard";
     let fire="48%";
-
     let trans="35%";
 
     if(style==="3finger"){
 
-        type =
-        "3 Finger Claw ⚡";
-
+        type="3 Finger Claw ⚡";
         fire="42%";
         trans="25%";
 
@@ -1884,9 +1937,7 @@ function launchFreeFire(){
 
     if(style==="4finger"){
 
-        type =
-        "4 Finger Pro Claw 🔥";
-
+        type="4 Finger Pro Claw 🔥";
         fire="38%";
         trans="20%";
 
@@ -1894,23 +1945,19 @@ function launchFreeFire(){
 
     document.getElementById(
         "hudTypeVal"
-    ).innerText =
-    type;
+    ).innerText=type;
 
     document.getElementById(
         "hudFireSizeVal"
-    ).innerText =
-    fire;
+    ).innerText=fire;
 
     document.getElementById(
         "hudTransVal"
-    ).innerText =
-    trans;
+    ).innerText=trans;
 
     document.getElementById(
         "hudResultBox"
-    ).style.display =
-    "flex";
+    ).style.display="flex";
 
     speakText(
         "Applying HUD and launching Free Fire"
