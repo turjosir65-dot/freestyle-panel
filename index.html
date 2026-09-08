@@ -145,8 +145,7 @@ body::after{
             rgba(255,40,30,.12) 45%,
             transparent 72%
         );
-    animation:
-        orbOne 7s ease-in-out infinite;
+    animation:orbOne 7s ease-in-out infinite;
 }
 
 .orb2{
@@ -161,8 +160,7 @@ body::after{
             rgba(255,174,0,.10) 45%,
             transparent 72%
         );
-    animation:
-        orbTwo 9s ease-in-out infinite;
+    animation:orbTwo 9s ease-in-out infinite;
 }
 
 .orb3{
@@ -177,8 +175,7 @@ body::after{
             rgba(255,23,68,.08) 45%,
             transparent 72%
         );
-    animation:
-        orbThree 6s ease-in-out infinite;
+    animation:orbThree 6s ease-in-out infinite;
 }
 
 @keyframes orbOne{
@@ -231,8 +228,7 @@ body::after{
     opacity:.55;
     z-index:-1;
 
-    animation:
-        floatLight 7s ease-in-out infinite;
+    animation:floatLight 7s ease-in-out infinite;
 }
 
 .l1{left:8%;top:80%;animation-delay:0s}
@@ -243,9 +239,7 @@ body::after{
 
 @keyframes floatLight{
     0%,100%{
-        transform:
-            translate3d(0,0,0)
-            scale(.7);
+        transform:translate3d(0,0,0) scale(.7);
         opacity:.20;
     }
 
@@ -254,9 +248,7 @@ body::after{
     }
 
     50%{
-        transform:
-            translate3d(-25px,-60px,0)
-            scale(1.8);
+        transform:translate3d(-25px,-60px,0) scale(1.8);
         opacity:.85;
     }
 
@@ -293,16 +285,12 @@ body::after{
 @keyframes appEnter{
     from{
         opacity:0;
-        transform:
-            translateY(18px)
-            scale(.98);
+        transform:translateY(18px) scale(.98);
     }
 
     to{
         opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
 }
 
@@ -341,8 +329,7 @@ body::after{
 
     background-size:400% 400%;
 
-    animation:
-        borderFlow 3s linear infinite;
+    animation:borderFlow 3s linear infinite;
 
     -webkit-mask:
         linear-gradient(#000 0 0) content-box,
@@ -355,17 +342,9 @@ body::after{
 }
 
 @keyframes borderFlow{
-    0%{
-        background-position:0% 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0% 50%;
-    }
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 /* HEADER */
@@ -387,8 +366,7 @@ body::after{
 
     border:1px solid rgba(255,255,255,.10);
 
-    animation:
-        headerGlow 3s ease-in-out infinite;
+    animation:headerGlow 3s ease-in-out infinite;
 }
 
 .header::after{
@@ -409,24 +387,17 @@ body::after{
 
     transform:rotate(20deg);
 
-    animation:
-        headerShine 3s linear infinite;
+    animation:headerShine 3s linear infinite;
 }
 
 @keyframes headerShine{
-    0%{
-        left:-120px;
-    }
-
-    55%,100%{
-        left:120%;
-    }
+    0%{left:-120px}
+    55%,100%{left:120%}
 }
 
 @keyframes headerGlow{
     0%,100%{
-        box-shadow:
-            0 0 0 rgba(255,59,48,0);
+        box-shadow:0 0 0 rgba(255,59,48,0);
     }
 
     50%{
@@ -445,15 +416,13 @@ body::after{
     letter-spacing:2px;
     color:#fff;
 
-    animation:
-        logoPulse 2.5s ease-in-out infinite;
+    animation:logoPulse 2.5s ease-in-out infinite;
 }
 
 @keyframes logoPulse{
     0%,100%{
         transform:scale(1);
-        text-shadow:
-            0 0 8px rgba(255,59,48,.25);
+        text-shadow:0 0 8px rgba(255,59,48,.25);
     }
 
     50%{
@@ -488,19 +457,16 @@ body::after{
     background:rgba(53,255,136,.07);
     border:1px solid rgba(53,255,136,.35);
 
-    animation:
-        liveBadge 2s ease-in-out infinite;
+    animation:liveBadge 2s ease-in-out infinite;
 }
 
 @keyframes liveBadge{
     0%,100%{
-        box-shadow:
-            0 0 0 rgba(53,255,136,0);
+        box-shadow:0 0 0 rgba(53,255,136,0);
     }
 
     50%{
-        box-shadow:
-            0 0 14px rgba(53,255,136,.16);
+        box-shadow:0 0 14px rgba(53,255,136,.16);
     }
 }
 
@@ -511,11 +477,9 @@ body::after{
 
     background:var(--green);
 
-    box-shadow:
-        0 0 10px var(--green);
+    box-shadow:0 0 10px var(--green);
 
-    animation:
-        livePulse 1.3s ease-in-out infinite;
+    animation:livePulse 1.3s ease-in-out infinite;
 }
 
 @keyframes livePulse{
@@ -569,8 +533,7 @@ body::after{
 .nav button.active{
     color:#fff;
 
-    border-color:
-        rgba(255,174,0,.45);
+    border-color:rgba(255,174,0,.45);
 
     background:
         linear-gradient(
@@ -579,8 +542,7 @@ body::after{
             rgba(255,174,0,.11)
         );
 
-    box-shadow:
-        0 0 15px rgba(255,59,48,.12);
+    box-shadow:0 0 15px rgba(255,59,48,.12);
 }
 
 .nav button::after{
@@ -605,18 +567,12 @@ body::after{
 }
 
 .nav button.active::after{
-    animation:
-        navShine 1.1s ease infinite;
+    animation:navShine 1.1s ease infinite;
 }
 
 @keyframes navShine{
-    from{
-        left:-100%;
-    }
-
-    to{
-        left:150%;
-    }
+    from{left:-100%}
+    to{left:150%}
 }
 
 /* PANELS */
@@ -628,8 +584,6 @@ body::after{
 .panel.active{
     display:block;
 }
-
-/* JS TRIGGERED PANEL ANIMATION */
 
 .panel.panelAnimate .section{
     animation:
@@ -643,16 +597,12 @@ body::after{
 @keyframes sectionIn{
     from{
         opacity:0;
-        transform:
-            translateY(18px)
-            scale(.97);
+        transform:translateY(18px) scale(.97);
     }
 
     to{
         opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
 }
 
@@ -668,11 +618,9 @@ body::after{
 
     border:1px solid rgba(255,255,255,.08);
 
-    background:
-        rgba(18,7,7,.84);
+    background:rgba(18,7,7,.84);
 
-    box-shadow:
-        0 12px 32px rgba(0,0,0,.25);
+    box-shadow:0 12px 32px rgba(0,0,0,.25);
 
     overflow:hidden;
 }
@@ -696,18 +644,12 @@ body::after{
             transparent 70%
         );
 
-    animation:
-        sectionGlow 4s ease-in-out infinite;
+    animation:sectionGlow 4s ease-in-out infinite;
 }
 
 @keyframes sectionGlow{
-    0%,100%{
-        transform:translate(0,0);
-    }
-
-    50%{
-        transform:translate(-45px,55px);
-    }
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(-45px,55px)}
 }
 
 .title{
@@ -752,8 +694,7 @@ input:focus,
 select:focus{
     border-color:#ffb300;
 
-    box-shadow:
-        0 0 14px rgba(255,174,0,.16);
+    box-shadow:0 0 14px rgba(255,174,0,.16);
 
     transform:translateY(-1px);
 }
@@ -789,8 +730,7 @@ select option{
 
     background-size:300% 100%;
 
-    box-shadow:
-        0 8px 22px rgba(255,59,48,.18);
+    box-shadow:0 8px 22px rgba(255,59,48,.18);
 
     transition:
         transform .15s ease,
@@ -799,27 +739,17 @@ select option{
     position:relative;
     overflow:hidden;
 
-    animation:
-        buttonGradient 3s linear infinite;
+    animation:buttonGradient 3s linear infinite;
 }
 
 @keyframes buttonGradient{
-    0%{
-        background-position:0% 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0% 50%;
-    }
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 .btn:hover{
-    box-shadow:
-        0 10px 30px rgba(255,59,48,.30);
+    box-shadow:0 10px 30px rgba(255,59,48,.30);
 }
 
 .btn:active{
@@ -847,18 +777,12 @@ select option{
 
     transform:skewX(-20deg);
 
-    animation:
-        buttonShine 2.5s linear infinite;
+    animation:buttonShine 2.5s linear infinite;
 }
 
 @keyframes buttonShine{
-    0%{
-        left:-120%;
-    }
-
-    45%,100%{
-        left:150%;
-    }
+    0%{left:-120%}
+    45%,100%{left:150%}
 }
 
 /* SENSI GRID */
@@ -909,28 +833,20 @@ select option{
 
     transform:skewX(-20deg);
 
-    animation:
-        statShine 4s linear infinite;
+    animation:statShine 4s linear infinite;
 }
 
 @keyframes statShine{
-    0%,60%{
-        left:-70px;
-    }
-
-    100%{
-        left:130%;
-    }
+    0%,60%{left:-70px}
+    100%{left:130%}
 }
 
 .stat:hover{
     transform:translateY(-3px);
 
-    border-color:
-        rgba(255,174,0,.35);
+    border-color:rgba(255,174,0,.35);
 
-    box-shadow:
-        0 8px 22px rgba(255,59,48,.10);
+    box-shadow:0 8px 22px rgba(255,59,48,.10);
 }
 
 .stat strong{
@@ -941,19 +857,16 @@ select option{
     font-size:21px;
     color:#fff;
 
-    animation:
-        valueGlow 2.2s ease-in-out infinite;
+    animation:valueGlow 2.2s ease-in-out infinite;
 }
 
 @keyframes valueGlow{
     0%,100%{
-        text-shadow:
-            0 0 5px rgba(255,174,0,.15);
+        text-shadow:0 0 5px rgba(255,174,0,.15);
     }
 
     50%{
-        text-shadow:
-            0 0 13px rgba(255,174,0,.42);
+        text-shadow:0 0 13px rgba(255,174,0,.42);
     }
 }
 
@@ -976,22 +889,16 @@ select option{
 @keyframes resultPop{
     from{
         opacity:.2;
-        transform:
-            translateY(15px)
-            scale(.88);
+        transform:translateY(15px) scale(.88);
     }
 
     70%{
-        transform:
-            translateY(-3px)
-            scale(1.03);
+        transform:translateY(-3px) scale(1.03);
     }
 
     to{
         opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
 }
 
@@ -1021,8 +928,7 @@ select option{
 .hud-row:hover{
     transform:translateX(3px);
 
-    border-color:
-        rgba(255,174,0,.22);
+    border-color:rgba(255,174,0,.22);
 }
 
 .hud-name{
@@ -1041,22 +947,13 @@ select option{
 }
 
 .hud-state.successPop{
-    animation:
-        successPop .3s ease;
+    animation:successPop .3s ease;
 }
 
 @keyframes successPop{
-    0%{
-        transform:scale(.7);
-    }
-
-    60%{
-        transform:scale(1.2);
-    }
-
-    100%{
-        transform:scale(1);
-    }
+    0%{transform:scale(.7)}
+    60%{transform:scale(1.2)}
+    100%{transform:scale(1)}
 }
 
 /* SWITCH */
@@ -1098,8 +995,7 @@ select option{
         transform .22s cubic-bezier(.2,.8,.2,1),
         background .2s ease;
 
-    box-shadow:
-        0 2px 5px #000;
+    box-shadow:0 2px 5px #000;
 }
 
 .switch.on{
@@ -1110,35 +1006,27 @@ select option{
             #ffb300
         );
 
-    box-shadow:
-        0 0 13px rgba(255,174,0,.25);
+    box-shadow:0 0 13px rgba(255,174,0,.25);
 }
 
 .switch.on i{
     transform:translateX(22px);
     background:#fff;
 
-    animation:
-        switchPop .22s ease-out;
+    animation:switchPop .22s ease-out;
 }
 
 @keyframes switchPop{
     0%{
-        transform:
-            translateX(22px)
-            scale(.75);
+        transform:translateX(22px) scale(.75);
     }
 
     70%{
-        transform:
-            translateX(22px)
-            scale(1.12);
+        transform:translateX(22px) scale(1.12);
     }
 
     100%{
-        transform:
-            translateX(22px)
-            scale(1);
+        transform:translateX(22px) scale(1);
     }
 }
 
@@ -1154,27 +1042,22 @@ select option{
 
     color:#ffd5dd;
 
-    background:
-        rgba(255,49,92,.06);
+    background:rgba(255,49,92,.06);
 
-    border:
-        1px solid rgba(255,49,92,.2);
+    border:1px solid rgba(255,49,92,.2);
 
     margin-bottom:10px;
 
-    animation:
-        warningPulse 3s ease-in-out infinite;
+    animation:warningPulse 3s ease-in-out infinite;
 }
 
 @keyframes warningPulse{
     0%,100%{
-        box-shadow:
-            0 0 0 rgba(255,49,92,0);
+        box-shadow:0 0 0 rgba(255,49,92,0);
     }
 
     50%{
-        box-shadow:
-            0 0 14px rgba(255,49,92,.12);
+        box-shadow:0 0 14px rgba(255,49,92,.12);
     }
 }
 
@@ -1188,8 +1071,7 @@ select option{
     color:#76717f;
     font-size:10px;
 
-    animation:
-        footerFade 2s ease-in-out infinite alternate;
+    animation:footerFade 2s ease-in-out infinite alternate;
 }
 
 .footer b{
@@ -1197,13 +1079,8 @@ select option{
 }
 
 @keyframes footerFade{
-    from{
-        opacity:.65;
-    }
-
-    to{
-        opacity:1;
-    }
+    from{opacity:.65}
+    to{opacity:1}
 }
 
 /* OVERLAY */
@@ -1221,21 +1098,14 @@ select option{
 
     padding:20px;
 
-    background:
-        rgba(0,0,0,.94);
+    background:rgba(0,0,0,.94);
 
-    animation:
-        overlayFade .35s ease both;
+    animation:overlayFade .35s ease both;
 }
 
 @keyframes overlayFade{
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
+    from{opacity:0}
+    to{opacity:1}
 }
 
 .login{
@@ -1253,11 +1123,9 @@ select option{
 
     border:1px solid rgba(255,255,255,.12);
 
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.88);
+    box-shadow:0 30px 80px rgba(0,0,0,.88);
 
-    animation:
-        loginIn .45s cubic-bezier(.2,.8,.2,1) both;
+    animation:loginIn .45s cubic-bezier(.2,.8,.2,1) both;
 }
 
 .login::before{
@@ -1280,35 +1148,23 @@ select option{
             transparent 70%
         );
 
-    animation:
-        loginGlow 4s ease-in-out infinite;
+    animation:loginGlow 4s ease-in-out infinite;
 }
 
 @keyframes loginGlow{
-    0%,100%{
-        transform:translate(0,0);
-    }
-
-    50%{
-        transform:translate(220px,180px);
-    }
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(220px,180px)}
 }
 
 @keyframes loginIn{
     from{
         opacity:0;
-
-        transform:
-            translateY(25px)
-            scale(.94);
+        transform:translateY(25px) scale(.94);
     }
 
     to{
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
 }
 
@@ -1344,28 +1200,18 @@ select option{
 
     margin-top:9px;
 
-    animation:
-        errorShake .3s ease;
+    animation:errorShake .3s ease;
 }
 
 .error.show{
     display:block;
-    animation:
-        errorShake .3s ease;
+    animation:errorShake .3s ease;
 }
 
 @keyframes errorShake{
-    0%,100%{
-        transform:translateX(0);
-    }
-
-    25%{
-        transform:translateX(-7px);
-    }
-
-    75%{
-        transform:translateX(7px);
-    }
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-7px)}
+    75%{transform:translateX(7px)}
 }
 
 .full-message{
@@ -1376,8 +1222,7 @@ select option{
     font-size:45px;
     margin-bottom:10px;
 
-    animation:
-        iconFloat 2s ease-in-out infinite;
+    animation:iconFloat 2s ease-in-out infinite;
 }
 
 @keyframes iconFloat{
@@ -1431,11 +1276,6 @@ select option{
         height:110px;
     }
 }
-
-/* =====================================================
-   IMPORTANT:
-   DO NOT DISABLE ANIMATION ON MOBILE
-===================================================== */
 </style>
 </head>
 
@@ -1568,6 +1408,11 @@ select option{
         <button
             onclick="showPanel('paid',this)">
             💎 PAID PANEL
+        </button>
+
+        <button
+            onclick="showPanel('notice',this)">
+            📢 NOTICE
         </button>
 
         <button
@@ -1843,6 +1688,26 @@ select option{
 
     </div>
 
+    <!-- NOTICE -->
+
+    <div class="panel" id="notice">
+
+        <div class="section">
+
+            <div class="title">
+                📢 <span>REMOTE NOTICE</span>
+            </div>
+
+            <div
+                class="warning"
+                id="remoteNotice">
+                No new notice.
+            </div>
+
+        </div>
+
+    </div>
+
     <!-- REMOTE -->
 
     <div class="panel" id="remote">
@@ -1903,6 +1768,13 @@ select option{
                 type="text"
                 id="updateMsg"
                 placeholder="Custom update message">
+
+            <label>REMOTE NOTICE</label>
+
+            <input
+                type="text"
+                id="remoteNoticeInput"
+                placeholder="Write notice for all users">
 
             <button
                 class="btn"
@@ -2098,8 +1970,6 @@ function(id,button){
     if(panel){
 
         panel.classList.add("active");
-
-        /* FORCE ANIMATION RESTART */
 
         void panel.offsetWidth;
 
@@ -2307,9 +2177,6 @@ function(){
         .textContent=
         generatedSensi.dpi;
 
-
-    /* RESULT ANIMATION */
-
     const grid=
         document.querySelector(
             ".sensi-grid"
@@ -2350,8 +2217,6 @@ function(btn,stateId){
         state.style.color="#ff5475";
 
     }
-
-    /* STATE ANIMATION */
 
     state.classList.remove(
         "successPop"
@@ -2565,7 +2430,9 @@ onValue(
 );
 
 
-/* REMOTE SETTINGS */
+/* ==========================================
+   REMOTE SETTINGS
+========================================== */
 
 window.updateRemoteSettings=
 async function(){
@@ -2613,6 +2480,13 @@ async function(){
         ||
         "A new version is available.";
 
+    const notice=
+        document.getElementById(
+            "remoteNoticeInput"
+        ).value.trim()
+        ||
+        "No new notice.";
+
     try{
 
         if(newPassword){
@@ -2640,8 +2514,18 @@ async function(){
         );
 
         await set(
+            ref(db,"remoteLock"),
+            locked
+        );
+
+        await set(
             ref(db,"remoteAppLock"),
             locked
+        );
+
+        await set(
+            ref(db,"remoteNotice"),
+            notice
         );
 
         await set(
@@ -2664,6 +2548,47 @@ async function(){
 
     }
 };
+
+
+/* ==========================================
+   REMOTE NOTICE LISTENER
+========================================== */
+
+onValue(
+    ref(db,"remoteNotice"),
+    snapshot=>{
+
+        const notice=
+            document.getElementById(
+                "remoteNotice"
+            );
+
+        if(!notice){
+            return;
+        }
+
+        if(snapshot.exists()){
+
+            notice.textContent=
+                String(snapshot.val());
+
+        }else{
+
+            notice.textContent=
+                "No new notice.";
+
+        }
+
+    },
+    error=>{
+
+        console.error(
+            "Remote notice error:",
+            error
+        );
+
+    }
+);
 
 
 /* REMOTE LOCK */
