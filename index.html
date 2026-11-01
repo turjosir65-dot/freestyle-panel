@@ -2,156 +2,93 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080303">
-<title>FREE STYLE PRO — TURJO X</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10051d">
+<title>FF TRUSTED ID SELLER</title>
 <style>
-:root{--bg:#080303;--card:#160909;--red:#ff3b30;--gold:#ffb300;--pink:#ff1744;--green:#35ff88;--muted:#b9a9a5;--line:#ffffff18}
-*{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;padding:12px;background:radial-gradient(circle at 10% 10%,#42100e 0,transparent 30%),radial-gradient(circle at 90% 35%,#332000 0,transparent 28%),#030000;color:#fff;font:14px Arial,Helvetica,sans-serif;overflow-x:hidden}
-.app{max-width:480px;margin:auto;padding:12px;border:1px solid #ffb30045;border-radius:28px;background:#0b0505ed;box-shadow:0 20px 70px #000b,0 0 30px #ff3b3015}
-.header{text-align:center;padding:22px 12px 18px;border-radius:22px;background:linear-gradient(135deg,#ff3b302a,#ffb30012,#ff174422);border:1px solid var(--line)}
-.logo{font-size:27px;font-weight:1000;letter-spacing:2px;text-shadow:0 0 18px #ffb30070}.subtitle{margin-top:6px;color:var(--muted);font-size:10px;letter-spacing:2px}
-.live{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:7px 12px;border:1px solid #35ff8850;border-radius:30px;color:#bfffdc;font-size:11px}.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green)}
-.nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}
-.nav button{min-height:43px;padding:8px 5px;border:1px solid var(--line);border-radius:13px;color:#ddd;background:#ffffff08;font-weight:800;font-size:10px;cursor:pointer}
-.nav button.active{border-color:#ffb30088;background:linear-gradient(135deg,#ff3b3035,#ffb30020);color:white}
-.panel{display:none}.panel.active{display:block}.section{margin-bottom:11px;padding:15px;border-radius:19px;border:1px solid var(--line);background:linear-gradient(145deg,#1b0b0b,#100707);box-shadow:0 10px 30px #0004}
-.title{font-size:15px;font-weight:900;letter-spacing:.5px;margin-bottom:13px}.title span{color:var(--gold)}
-label{display:block;color:var(--muted);font-size:11px;margin:10px 0 5px}
-input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);outline:none;background:#0c0707;color:#fff;font:inherit}
-input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 12px #ffb30020}select option{background:#120909}
-.btn{width:100%;padding:12px;margin-top:10px;border:0;border-radius:13px;background:linear-gradient(100deg,#a30000,var(--red),var(--gold));color:white;font-weight:900;cursor:pointer}.btn:active{transform:scale(.98)}.btn.secondary{background:#ffffff0b;border:1px solid var(--line)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stat{padding:13px 11px;border:1px solid var(--line);border-radius:14px;background:#0b0707;min-width:0}.stat small{font-size:10px;color:var(--muted)}.stat strong{display:block;margin-top:6px;font-size:21px;overflow-wrap:anywhere}
-.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;margin:8px 0;border-radius:13px;background:#0b0707;border:1px solid var(--line)}.row-name{font-weight:800;font-size:12px}.state{font-size:10px;color:#ff5475;margin-top:4px}
-.switch{width:48px;min-width:48px;height:27px;border:0;border-radius:30px;background:#332a2a;padding:3px;cursor:pointer}.switch i{display:block;width:21px;height:21px;border-radius:50%;background:#999;transition:.2s}.switch.on{background:linear-gradient(90deg,var(--red),var(--gold))}.switch.on i{transform:translateX(21px);background:#fff}
-.warning{padding:11px;border:1px solid #ff547533;border-radius:12px;background:#ff17440c;color:#ffd5dd;font-size:11px;line-height:1.5;margin-bottom:10px}
-.item{padding:12px;margin:8px 0;border:1px solid var(--line);border-radius:13px;background:#0c0707}.item b{display:block;margin-bottom:5px}.item small{color:var(--muted);line-height:1.5}.pill{display:inline-block;margin:3px 4px 3px 0;padding:5px 8px;border-radius:20px;background:#ffb30015;border:1px solid #ffb30033;color:#ffe2a0;font-size:10px}
-.footer{text-align:center;padding:14px 5px 4px;color:#8d8280;font-size:10px;line-height:1.7}
-.overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:#000e}.login{width:100%;max-width:370px;padding:24px;border-radius:24px;background:#130707;border:1px solid #ffffff20;box-shadow:0 25px 70px #000b}.login h2{text-align:center;margin-bottom:7px}.login p{text-align:center;color:var(--muted);font-size:10px;letter-spacing:1.5px;margin-bottom:18px}.error{display:none;color:#ff5475;text-align:center;font-size:11px;margin-top:9px}.error.show{display:block}
-.notice-text{white-space:pre-wrap;overflow-wrap:anywhere}
-.dashboard-notice{display:none;margin:12px 0;padding:16px 15px;border:1px solid #ff42b8;border-radius:17px;background:linear-gradient(135deg,#ff149333,#ff42b81f,#7b126d44);color:#fff0fb;font-size:15px;font-weight:800;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 0 24px #ff149944, inset 0 0 18px #ff42b812;animation:noticeGlow 2s ease-in-out infinite alternate}
-.dashboard-notice .notice-heading{display:block;margin-bottom:7px;color:#ff80d5;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
-@keyframes noticeGlow{from{box-shadow:0 0 14px #ff149933,inset 0 0 12px #ff42b80a}to{box-shadow:0 0 28px #ff149966,inset 0 0 18px #ff42b81a}}
-.logo-button{display:inline-block;font-size:27px;font-weight:1000;letter-spacing:2px;text-shadow:0 0 18px #ffb30070;padding:0;max-width:100%}.pro-key-card{border:1px solid #ffb30080;background:radial-gradient(circle at top,#4b250d 0,#170909 48%,#0b0505 100%);box-shadow:0 0 35px #ffb30020,0 25px 70px #000b;animation:keyPop .22s ease-out}@keyframes keyPop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-@media(max-width:360px){body{padding:7px}.app{padding:8px}.logo{font-size:22px}.logo-button{font-size:22px}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:12px}}
-@media(prefers-reduced-motion:no-preference){.app{animation:enter .5s ease-out}@keyframes enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}}
-
-.cinematic-splash{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;overflow:hidden;background:radial-gradient(circle at center,#40122f 0%,#140718 38%,#030006 78%);animation:splashFade 0.65s ease 2.35s forwards}
-.cinematic-splash:before,.cinematic-splash:after{content:"";position:absolute;width:240px;height:240px;border:1px solid #ff42b855;border-radius:50%;box-shadow:0 0 45px #ff2bd622,inset 0 0 35px #ff2bd611;animation:orbitPulse 2s ease-in-out infinite}
-.cinematic-splash:after{width:310px;height:310px;border-color:#a855f744;animation-delay:.25s}
-.cinematic-orbit{position:absolute;width:190px;height:190px;border:2px solid transparent;border-top-color:#ff65c8;border-right-color:#9d5cff;border-radius:50%;filter:drop-shadow(0 0 9px #ff42b8);animation:spinLogo 1.8s linear infinite}
-.cinematic-mark{position:relative;z-index:1;font-size:48px;color:#ffd6f2;text-shadow:0 0 12px #ff42b8,0 0 35px #9d5cff;animation:markReveal .8s ease both}
-.cinematic-title{position:relative;z-index:1;font-size:clamp(24px,7vw,34px);font-weight:1000;letter-spacing:3px;color:#fff;text-shadow:0 0 12px #ff42b8,0 0 28px #9d5cff;animation:titleReveal .8s ease .15s both}
-.cinematic-title span{color:#ff65c8}
-.cinematic-line{position:relative;z-index:1;width:min(260px,70vw);height:2px;background:linear-gradient(90deg,transparent,#ff65c8,#b78cff,transparent);box-shadow:0 0 14px #ff42b8;animation:lineReveal .9s ease .3s both}
-.cinematic-subtitle{position:relative;z-index:1;color:#e7c8e8;font-size:9px;letter-spacing:3px;text-align:center;animation:titleReveal .8s ease .45s both}
-@keyframes spinLogo{to{transform:rotate(360deg)}}@keyframes orbitPulse{0%,100%{transform:scale(.92);opacity:.4}50%{transform:scale(1.06);opacity:1}}
-@keyframes markReveal{from{opacity:0;transform:scale(.4) rotate(-40deg)}to{opacity:1;transform:scale(1) rotate(0)}}
-@keyframes titleReveal{from{opacity:0;transform:translateY(12px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-@keyframes lineReveal{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
-@keyframes splashFade{to{opacity:0;visibility:hidden;pointer-events:none}}
-@media(prefers-reduced-motion:reduce){.cinematic-splash,.cinematic-splash *{animation-duration:.01ms!important;animation-delay:0ms!important}}
+:root{--bg:#090510;--panel:#140b24;--panel2:#1b1030;--purple:#a020f0;--yellow:#ffd400;--text:#fff;--muted:#c8bdd8;--line:#54227b;--green:#08d477}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#24103c 0,#090510 55%);color:var(--text);font-family:Arial,"Noto Sans Bengali",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}a{color:inherit;text-decoration:none}.top{background:#08040d;border-bottom:1px solid var(--line);padding:9px 4%;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.top span{color:var(--yellow)}.wrap{max-width:1450px;margin:auto;padding:0 14px}.head{display:grid;grid-template-columns:270px 1fr auto auto;gap:16px;align-items:center;padding:17px 0}.brand{font-weight:1000;font-style:italic;font-size:26px;line-height:.98;color:white;text-shadow:2px 2px #6511a8}.brand b{display:block;color:var(--yellow);font-size:32px}.brand small{font-size:11px;letter-spacing:2px;color:#ddd;font-style:normal}.search{display:flex;background:#fff;border-radius:28px;overflow:hidden;height:48px}.search input{border:0;outline:0;padding:0 17px;min-width:0;flex:1;color:#222}.search button,.yellow{background:var(--yellow);color:#100a00;font-weight:900;padding:12px 20px}.pill{border:1px solid #8a58b2;border-radius:14px;padding:13px 16px;background:#170c27;color:white}.cart-count{color:#ff386b;font-weight:bold}.nav{display:flex;align-items:center;gap:5px;border-block:1px solid var(--line);padding:8px 0;overflow-x:auto}.nav button{white-space:nowrap;background:transparent;color:#eee;padding:12px 15px;border-radius:8px}.nav button:hover,.nav button.active{background:#29103e;color:var(--yellow)}.layout{display:grid;grid-template-columns:230px minmax(0,1fr) 180px;gap:12px;margin-top:14px}.side,.trust,.product,.panel{background:linear-gradient(145deg,#180c29,#0e0918);border:1px solid var(--line);border-radius:12px}.side{padding:12px;height:max-content}.side h3{color:var(--yellow);margin:8px 6px 14px}.cat{display:block;width:100%;text-align:left;background:transparent;color:#f4edf9;padding:12px 8px;border-radius:8px}.cat:hover,.cat.active{background:#34134d;color:var(--yellow)}.hero{min-height:300px;border:1px solid #b329ff;border-radius:14px;padding:25px;background:radial-gradient(circle at 20% 50%,#5e13a1,transparent 36%),linear-gradient(115deg,#180b2c,#080510 70%);display:flex;align-items:center;justify-content:space-between;gap:18px;overflow:hidden}.hero .eyebrow{color:var(--yellow);font-weight:bold;letter-spacing:2px}.hero h1{font-size:clamp(30px,4vw,55px);line-height:.98;margin:10px 0;text-shadow:3px 3px #6500a8}.hero h1 span{color:var(--yellow)}.hero p{color:#e4d8ef}.hero .hero-art{font-size:100px;filter:drop-shadow(0 0 25px #a020f0)}.hero .yellow{border-radius:30px;font-size:16px}.trustcol{display:grid;gap:8px}.trust{padding:17px 10px;text-align:center;font-weight:bold}.trust strong{display:block;color:var(--yellow);font-size:25px;margin-bottom:5px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:20px 0 12px}.section-head h2{font-size:22px;margin:0}.section-head h2 span{color:var(--yellow)}.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.product{overflow:hidden;padding:8px;display:flex;flex-direction:column;min-width:0}.product-art{height:135px;border-radius:8px;background:linear-gradient(135deg,#35125d,#101021);display:grid;place-items:center;font-size:58px;position:relative}.tag{position:absolute;top:7px;left:7px;background:#e51b54;border-radius:20px;padding:4px 7px;font-size:10px;font-weight:bold}.product h3{font-size:14px;margin:10px 2px 5px}.product p{font-size:12px;color:var(--muted);margin:0 2px 8px;min-height:30px}.price{color:var(--yellow);font-size:19px;font-weight:900;margin:3px 2px 10px}.price small{color:#9d90aa;text-decoration:line-through;font-size:11px;font-weight:normal}.product button{margin-top:auto;border-radius:7px;padding:10px 5px;background:var(--yellow);font-weight:900}.product button:hover,.yellow:hover{filter:brightness(1.08)}.promo{margin-top:12px;padding:20px;border:1px solid #8d21d2;border-radius:12px;background:linear-gradient(100deg,#2a0c4c,#11071e);display:flex;justify-content:space-between;align-items:center;gap:12px}.promo h3{margin:0 0 6px;color:var(--yellow)}.benefits{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);background:#18092a;border:1px solid var(--line);border-radius:12px;padding:16px;gap:12px;text-align:center}.benefits b{display:block;color:var(--yellow);margin-bottom:5px}.footer{padding:24px 0 35px;text-align:center;color:#a99bb9;font-size:12px}.notice{background:#241137;border:1px solid #63358a;border-radius:9px;padding:12px;margin:12px 0;color:#e8d9f7}.hidden{display:none!important}.modal-bg{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:15px;z-index:20}.modal-bg.show{display:flex}.modal{width:min(440px,100%);max-height:90vh;overflow:auto;background:#140b22;border:1px solid #a020f0;border-radius:15px;padding:20px;box-shadow:0 0 35px #7800b7}.modal h2{margin-top:0}.modal label{display:block;margin:12px 0 6px;color:#d7c6e6;font-size:13px}.modal input,.modal select,.modal textarea{width:100%;padding:12px;border:1px solid #654182;border-radius:8px;background:#090510;color:white;outline:none}.modal .rowbtn{display:flex;gap:8px;margin-top:14px}.modal .rowbtn button{flex:1;border-radius:8px;padding:12px}.close{float:right;background:transparent;color:#fff;font-size:25px}.empty{color:#bcaacb;text-align:center;padding:20px}.mobile-menu{display:none}
+@media(max-width:1000px){.head{grid-template-columns:1fr auto auto}.brand{grid-column:1/-1}.layout{grid-template-columns:190px minmax(0,1fr)}.trustcol{display:none}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.hero .hero-art{font-size:70px}}
+@media(max-width:620px){.wrap{padding:0 9px}.top{font-size:11px}.head{grid-template-columns:1fr auto;gap:10px;padding:13px 0}.brand{grid-column:1/-1;font-size:23px}.brand b{font-size:28px}.search{grid-column:1/-1;grid-row:2;height:43px}.pill{padding:10px;font-size:12px}.nav button{padding:10px;font-size:12px}.layout{display:block}.side{display:none}.hero{min-height:245px;padding:18px}.hero .hero-art{display:none}.hero h1{font-size:36px}.hero p{font-size:13px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product-art{height:105px;font-size:45px}.product h3{font-size:13px}.price{font-size:17px}.benefits{grid-template-columns:repeat(2,1fr);font-size:12px}.section-head h2{font-size:18px}.promo{padding:14px}.promo .yellow{padding:10px}.footer{padding-bottom:80px}.mobile-menu{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:10;background:#10071a;border-top:1px solid #6d2396;justify-content:space-around;padding:10px 4px}.mobile-menu button{background:transparent;color:#eee;font-size:11px}.mobile-menu button span{display:block;font-size:19px;margin-bottom:3px}}
 </style>
 </head>
 <body>
-</div>
-<div class="cinematic-splash" id="cinematicSplash" aria-label="FREE STYLE PRO intro">
-  <div class="cinematic-orbit"></div>
-  <div class="cinematic-mark">✦</div>
-  <div class="cinematic-title">FREE STYLE <span>PRO</span></div>
-  <div class="cinematic-line"></div>
-  <div class="cinematic-subtitle">TURJO X • OFFICIAL GAMING PANEL</div>
-</div>
-<div class="overlay" id="updateOverlay" style="display:none"><div class="login"><h2>🚀 UPDATE REQUIRED</h2><p id="updateMessage">A new version is available.</p><button class="btn" onclick="location.reload()">UPDATE / RELOAD</button></div></div>
-<div class="overlay" id="lockOverlay" style="display:none"><div class="login"><h2>🔒 APP LOCKED</h2><p>Access has been temporarily locked by the administrator.</p></div></div>
-<div class="overlay" id="proKeyOverlay" style="display:none;z-index:120"><div class="login pro-key-card"><div style="text-align:center;font-size:34px;margin-bottom:8px">✦</div><h2 style="color:var(--gold)">FREE STYLE PRO</h2><p>SECURE ACCESS • ENTER YOUR KEY</p><label for="proKeyInput">ACCESS KEY</label><input type="password" id="proKeyInput" placeholder="Enter access key" inputmode="numeric" autocomplete="off"><button class="btn" onclick="unlockRemoteWithKey()">✦ UNLOCK PANEL</button><button class="btn secondary" onclick="closeProKeyPopup()">CANCEL</button><div class="error" id="proKeyError">Incorrect key. Try again.</div></div></div>
-<div class="app">
-<header class="header"><button class="logo logo-button" type="button" onclick="openProKeyPopup()" aria-label="Open Free Style Pro" style="border:0;background:transparent;color:inherit;cursor:pointer">FREE STYLE PRO</button><div class="subtitle">TURJO X • VIP GAMING PANEL</div><div class="live"><span class="live-dot"></span> LIVE USERS: <b id="activeUsers">0</b></div></header>
-<div id="dashboardNotice" class="dashboard-notice" role="status" aria-live="polite"><span class="notice-heading">📢 OFFICIAL NOTICE</span><span id="dashboardNoticeText"></span></div>
-<nav class="nav" aria-label="Main navigation">
-<button class="active" onclick="showPanel('paid',this)">💎 PAID PANEL</button><button id="remoteNavButton" style="display:none" onclick="showPanel('remote',this)">🔐 REMOTE LOCK</button><button onclick="showPanel('support',this)">📞 SUPPORT</button>
+<div class="top"><div>👑 🔥 Welcome to <b>FF TRUSTED ID SELLER</b> — Your Free Fire ID Store!</div><div>Help　|　Track Order　|　About Us　|　<span>WhatsApp support</span></div></div>
+<div class="wrap">
+<header class="head">
+  <a class="brand" href="#" onclick="showHome()"><span>👑 FF TRUSTED</span><b>ID SELLER</b><small>BUY SAFE • PLAY BETTER</small></a>
+  <form class="search" id="searchForm"><input id="searchInput" placeholder="Search Free Fire ID..." aria-label="Search Free Fire IDs"><button>Search</button></form>
+  <button class="pill" onclick="openModal('authModal')">👤 Login / Register</button>
+  <button class="pill" onclick="openCart()">🛒 <span class="cart-count" id="cartCount">0</span></button>
+</header>
+<nav class="nav">
+<button class="active" onclick="filterCategory('All',this)">🏠 Home</button><button onclick="filterCategory('Hot Deals',this)">💎 Hot Deals</button><button onclick="filterCategory('Top IDs',this)">🔥 Top IDs</button><button onclick="filterCategory('Trusted Seller',this)">🛡 Trusted Seller</button><button onclick="filterCategory('Special Offer',this)">🎁 Special Offer</button><button onclick="openModal('supportModal')">🎧 Support</button>
 </nav>
-
-<section class="panel active" id="paid">
-  <div class="section" style="text-align:center">
-    <div class="title" style="font-size:12px;letter-spacing:.3px;margin-bottom:12px">💎 <span>PAID FREE PANEL</span></div>
-    <div style="font-size:11px;color:var(--muted);letter-spacing:1.2px;margin-bottom:8px">OFFICIAL TELEGRAM</div>
-    <a class="btn" style="max-width:280px;margin:0 auto;display:block;text-decoration:none;background:linear-gradient(100deg,#7b2cff,#229ed9,#35c6ff);box-shadow:0 0 18px #229ed955" href="https://t.me/turji" target="_blank" rel="noopener noreferrer">✈️ JOIN</a>
-  </div>
-  <div class="section" style="text-align:center;border:1px solid #ff3cb855;background:linear-gradient(145deg,#1b0718,#100a1d);box-shadow:0 0 22px #ff2bd622">
-    <div style="font-size:17px;font-weight:900;letter-spacing:.6px;color:#ff65c8;text-shadow:0 0 12px #ff2bd655;margin-bottom:8px">🛡️ PAID FREE PANEL</div>
-    <div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:16px">MAIN ID SAFE FOR FREE</div>
-    <a class="btn" href="https://t.me/turji/53" target="_blank" rel="noopener noreferrer" style="display:block;text-decoration:none;max-width:280px;margin:0 auto;background:linear-gradient(100deg,#ff2d9b,#a52bff);box-shadow:0 0 18px #ff2d9b55">⬇️ DOWNLOAD</a>
-    <div style="height:1px;background:#ff65c833;margin:20px 0 14px"></div>
-    <div style="font-size:12px;color:#ff9ddd;letter-spacing:2px;font-weight:800;margin-bottom:10px">SETUP GUIDE</div>
-    <a class="btn" href="https://vt.tiktok.com/ZSgFdMX7u/" target="_blank" rel="noopener noreferrer" style="display:block;text-decoration:none;max-width:280px;margin:0 auto;background:linear-gradient(100deg,#171717,#393939);border:1px solid #ff65c8;box-shadow:0 0 14px #ff2bd622">▶ SETUP</a>
-  </div>
-</section>
-<section class="panel" id="remote"><div class="section"><div class="title">🔐 <span>REMOTE CONTROL</span></div><div class="warning">এই সেটিংস শুধু ওয়েব অ্যাপের অবস্থা নিয়ন্ত্রণ করে; ব্যবহারকারীর পুরো ফোন লক করে না। HTML-এ থাকা সিক্রেট নিরাপদ নয়—Firebase Rules ও server-side admin validation ব্যবহার করুন।</div><label>ADMIN SECRET (LEGACY)</label><input type="password" id="adminSecret" placeholder="Legacy secret"><label>NEW APP PASSWORD</label><input type="password" id="newPassword" placeholder="New login password"><label>COUNTDOWN MINUTES</label><input type="number" id="countdown" min="0" placeholder="0"><label><input type="checkbox" id="forceUpdate" style="width:auto;margin-right:6px"> FORCE UPDATE</label><label><input type="checkbox" id="remoteLock" style="width:auto;margin-right:6px"> REMOTE APP LOCK</label><label>UPDATE MESSAGE</label><input id="updateMsg" placeholder="Custom update message"><label>REMOTE NOTICE</label><input id="remoteNoticeInput" placeholder="Write notice for all users"><button class="btn" onclick="updateRemoteSettings()">⚡ UPDATE REMOTE SETTINGS</button></div></section>
-
-
-
-
-
-<section class="panel" id="support"><div class="section"><div class="title">📞 <span>SUPPORT CENTER</span></div><div class="item"><b>Need help?</b><small>সরাসরি WhatsApp-এ যোগাযোগ করতে নিচের বাটনে চাপ দাও।</small></div><a class="btn" style="display:block;text-align:center;text-decoration:none" href="https://wa.me/8801946730203" target="_blank" rel="noopener noreferrer">💬 WHATSAPP: 01946730203</a><div class="warning" style="margin-top:12px">শুধু অফিসিয়াল সাপোর্টের জন্য এই নম্বরে যোগাযোগ করো।</div></div></section>
-
-<footer class="footer">TURJO X • <b>FREE STYLE PRO</b><br>Premium UI Edition</footer>
+<div class="layout">
+<aside class="side"><h3>▦ Categories</h3>
+<button class="cat active" onclick="filterCategory('All',this)">🎮 All Free Fire IDs</button>
+<button class="cat" onclick="filterCategory('FF Main ID',this)">🎮 FF Main ID　›</button>
+<button class="cat" onclick="filterCategory('FF Old ID',this)">🎮 FF Old ID　›</button>
+<button class="cat" onclick="filterCategory('FF Level 70+',this)">🎮 FF Level 70+　›</button>
+<button class="cat" onclick="filterCategory('FF Evo Bundle ID',this)">🎮 FF Evo Bundle ID　›</button>
+<button class="cat" onclick="filterCategory('FF Rare ID',this)">🎮 FF Rare ID　›</button>
+<button class="cat" onclick="filterCategory('FF Pro Player ID',this)">🎮 FF Pro Player ID　›</button>
+<button class="cat" onclick="filterCategory('FF Guild ID',this)">🎮 FF Guild ID　›</button>
+<button class="cat" onclick="filterCategory('Others',this)">🎮 Others　›</button>
+</aside>
+<main>
+<section class="hero"><div><div class="eyebrow">★ PREMIUM GAMING MARKETPLACE</div><h1>FF TRUSTED<br><span>ID SELLER</span></h1><p>সেরা দামে পছন্দের Free Fire ID খুঁজে নাও!</p><button class="yellow" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">🛒 Shop Now →</button></div><div class="hero-art" aria-hidden="true">👑<br>🎮</div></section>
+<div class="section-head" id="productsSection"><h2>🔥 <span id="sectionTitle">Popular FF IDs</span></h2><button class="pill" onclick="filterCategory('All',null)">View All →</button></div>
+<div class="products" id="products"></div>
+<div id="noResults" class="empty hidden">কোনো ID পাওয়া যায়নি। অন্য নামে সার্চ করুন।</div>
+<section class="promo"><div><h3>🎁 Special Offers</h3><div>নতুন ID দেখুন এবং আপনার পছন্দেরটি বেছে নিন।</div></div><button class="yellow" onclick="filterCategory('Special Offer',null)">Explore →</button></section>
+<div class="notice">🔒 নিরাপত্তা: কেনার আগে ID-এর মালিকানা, অ্যাকাউন্ট ফেরত নেওয়ার ঝুঁকি এবং গেমের প্রযোজ্য নিয়ম যাচাই করুন।</div>
+</main>
+<aside class="trustcol"><div class="trust"><strong>🛡️</strong>Trusted Seller</div><div class="trust"><strong>⚡</strong>Quick Response</div><div class="trust"><strong>🎧</strong>Support</div><div class="trust"><strong>💜</strong>Clear Details</div></aside>
 </div>
-<script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {getDatabase,ref,set,get,onValue,onDisconnect,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+<div class="benefits"><div><b>👑 Trusted Listings</b>Seller details shown</div><div><b>🔐 Safer Checkout</b>Verify before payment</div><div><b>⚡ Fast Support</b>Help when needed</div><div><b>🎧 Customer Care</b>Contact support</div></div>
+<footer class="footer">© <span id="year"></span> FF TRUSTED ID SELLER · Independent marketplace concept. Not affiliated with Garena or Daraz.</footer>
+</div>
+<div class="mobile-menu"><button onclick="showHome()"><span>🏠</span>Home</button><button onclick="filterCategory('All',null)"><span>🎮</span>IDs</button><button onclick="openCart()"><span>🛒</span>Cart</button><button onclick="openModal('authModal')"><span>👤</span>Account</button><button onclick="openModal('supportModal')"><span>🎧</span>Support</button></div>
 
-const firebaseConfig={
- apiKey:"AIzaSyEOuK0eKbfQ6cssJS0doCG-dexMsc1knmFLg",
- authDomain:"mysensiapp.firebaseapp.com",
- databaseURL:"https://mysensiapp-default-rtdb.europe-west1.firebasedatabase.app",
- projectId:"mysensiapp",
- storageBucket:"mysensiapp.appspot.com",
- messagingSenderId:"115975518263",
- appId:"1:115975518263:web:1d08e768bb13c9fd2c67b2",
- measurementId:"G-N68B2MLFH9"
-};
-const app=initializeApp(firebaseConfig),db=getDatabase(app);
-let appPassword="10";
-get(ref(db,"admin")).then(s=>{if(s.exists())appPassword=String(s.val())}).catch(console.error);
+<div class="modal-bg" id="authModal"><div class="modal"><button class="close" onclick="closeModal('authModal')">×</button><h2>Login / Register</h2><p class="muted">এই UI-তে অ্যাকাউন্ট তৈরি করার নমুনা ফর্ম আছে। বাস্তব লগইনের জন্য Firebase/Auth backend লাগবে।</p><label>নাম</label><input id="authName" placeholder="আপনার নাম"><label>ইমেইল</label><input id="authEmail" type="email" placeholder="name@example.com"><label>পাসওয়ার্ড</label><input id="authPassword" type="password" placeholder="কমপক্ষে ৬ অক্ষর"><div class="rowbtn"><button class="yellow" onclick="registerDemo()">Register</button><button class="pill" onclick="registerDemo()">Login UI</button></div><p id="authMsg"></p></div></div>
+<div class="modal-bg" id="cartModal"><div class="modal"><button class="close" onclick="closeModal('cartModal')">×</button><h2>🛒 Your Cart</h2><div id="cartItems"></div><div class="rowbtn"><button class="pill" onclick="clearCart()">Clear Cart</button><button class="yellow" onclick="checkout()">Order Request</button></div><p id="cartMsg"></p></div></div>
+<div class="modal-bg" id="orderModal"><div class="modal"><button class="close" onclick="closeModal('orderModal')">×</button><h2>📦 Order Request</h2><p>আপনার যোগাযোগের তথ্য দিন। পেমেন্ট করার আগে বিক্রেতার পরিচয় ও ID-এর তথ্য যাচাই করুন।</p><label>নাম</label><input id="orderName" placeholder="আপনার নাম"><label>মোবাইল নম্বর</label><input id="orderPhone" inputmode="tel" placeholder="01XXXXXXXXX"><label>পেমেন্ট পদ্ধতি</label><select id="orderMethod"><option>bKash</option><option>Nagad</option><option>Payment on discussion</option></select><label>নোট (ঐচ্ছিক)</label><textarea id="orderNote" rows="2" placeholder="অর্ডার সম্পর্কে লিখুন"></textarea><div class="rowbtn"><button class="pill" onclick="closeModal('orderModal')">Cancel</button><button class="yellow" onclick="submitOrder()">Submit Request</button></div><p id="orderMsg"></p></div></div>
+<div class="modal-bg" id="supportModal"><div class="modal"><button class="close" onclick="closeModal('supportModal')">×</button><h2>🎧 Support</h2><p>আপনার সাপোর্ট নম্বর/WhatsApp লিংক এখানে বসান।</p><label>WhatsApp নম্বর</label><input id="supportNumber" placeholder="8801XXXXXXXXX"><button class="yellow" style="width:100%;margin-top:12px" onclick="openWhatsApp()">Open WhatsApp</button><p id="supportMsg"></p></div></div>
+<div class="modal-bg" id="trackModal"><div class="modal"><button class="close" onclick="closeModal('trackModal')">×</button><h2>Track Order</h2><label>Order ID</label><input id="trackId" placeholder="যেমন FF123456"><button class="yellow" style="width:100%;margin-top:12px" onclick="trackOrder()">Track</button><p id="trackMsg"></p></div></div>
 
-const $=id=>document.getElementById(id);
-function welcomeVoice(){if(!("speechSynthesis"in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance("Welcome to Turjo Freestyle Pro");u.rate=.9;speechSynthesis.speak(u)}
-window.addEventListener("load",()=>{setTimeout(()=>{const splash=$("cinematicSplash");if(splash)splash.remove();},3100)});
-window.showPanel=function(id,button){if(id==="remote"&&!remoteUnlocked){openProKeyPopup();return}document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));$(id)?.classList.add("active");button?.classList.add("active")};
-let remoteUnlocked=false;
-window.openProKeyPopup=function(){
- const overlay=$("proKeyOverlay"); overlay.style.display="flex"; $("proKeyError").classList.remove("show"); $("proKeyInput").value=""; setTimeout(()=>$("proKeyInput").focus(),80);
-};
-window.closeProKeyPopup=function(){$("proKeyOverlay").style.display="none"};
-window.unlockRemoteWithKey=function(){
- if($("proKeyInput").value.trim()==="10"){
-  remoteUnlocked=true; $("remoteNavButton").style.display="block"; closeProKeyPopup();
-  showPanel("remote",$("remoteNavButton"));
- } else { $("proKeyError").classList.add("show"); }
-};
-$("proKeyInput").addEventListener("keydown",e=>{if(e.key==="Enter")unlockRemoteWithKey()});
-
-
-window.openTelegram=function(){window.open("https://t.me/turji","_blank","noopener,noreferrer")};
-window.launchFreeFire=function(){location.href="freefire://";setTimeout(()=>{location.href="intent://#Intent;package=com.dts.freefireth;end"},900)};
-let liveUserId=localStorage.getItem("turjo_live_user_id");if(!liveUserId){liveUserId="user_"+Math.random().toString(36).slice(2)+Date.now();localStorage.setItem("turjo_live_user_id",liveUserId)}
-const liveUserRef=ref(db,"activeUsers/"+liveUserId),connectedRef=ref(db,".info/connected");
-onValue(connectedRef,async s=>{if(s.val()===true){try{await onDisconnect(liveUserRef).remove();await set(liveUserRef,{online:true,lastSeen:serverTimestamp()})}catch(e){console.error("Live user error:",e)}}});
-onValue(ref(db,"activeUsers"),s=>{let count=0;if(s.exists())Object.values(s.val()).forEach(u=>{if(u&&u.online===true)count++});$("activeUsers").textContent=count},e=>console.error("Live count error",e));
-window.updateRemoteSettings=async function(){
- // Legacy compatibility only. This client-side check is not secure; replace with authenticated server-side admin authorization.
- if($("adminSecret").value!=="secret #2"){alert("Invalid admin secret");return}
- const newPassword=$("newPassword").value.trim(),countdown=Number($("countdown").value||0),force=$("forceUpdate").checked,locked=$("remoteLock").checked,message=$("updateMsg").value.trim()||"A new version is available.",notice=$("remoteNoticeInput").value.trim();
- try{if(newPassword){await set(ref(db,"admin"),newPassword);appPassword=newPassword}await set(ref(db,"countdownTimer"),countdown);await set(ref(db,"forceUpdateConfig"),{enabled:force,message});await set(ref(db,"remoteLock"),locked);await set(ref(db,"remoteAppLock"),locked);await set(ref(db,"remoteNotice"),notice);await set(ref(db,"updateSignal"),Date.now());alert("Remote settings updated successfully")}catch(e){console.error(e);alert("Firebase update failed: "+e.message)}
-};
-onValue(ref(db,"remoteNotice"),s=>{const notice=s.exists()?String(s.val()).trim():"";$("dashboardNoticeText").textContent=notice;$("dashboardNotice").style.display=notice?"block":"none"},e=>console.error(e));
-onValue(ref(db,"remoteAppLock"),s=>{$("lockOverlay").style.display=s.val()===true?"flex":"none"},e=>console.error(e));
-onValue(ref(db,"forceUpdateConfig"),s=>{if(!s.exists())return;const d=s.val()||{};if(d.enabled===true){$("updateMessage").textContent=d.message||"A new version is available.";$("updateOverlay").style.display="flex"}else $("updateOverlay").style.display="none"},e=>console.error(e));
-onValue(ref(db,"admin"),s=>{if(s.exists())appPassword=String(s.val())},e=>console.error(e));
-
-
+<script>
+const items=[
+{id:'FF1001',name:'FF Main ID | Level 72+',desc:'Rare Bundle + Evo Gun',price:2499,old:4000,category:'FF Main ID',tags:['Hot Deals','Top IDs','Trusted Seller','Special Offer'],icon:'🦸',label:'Best Seller'},
+{id:'FF1002',name:'FF Old ID | Level 70+',desc:'Rare items included',price:1999,old:3000,category:'FF Old ID',tags:['Hot Deals','Top IDs','Trusted Seller'],icon:'🎖️',label:'Top Rated'},
+{id:'FF1003',name:'FF Pro Player ID',desc:'Grandmaster account',price:3499,old:5500,category:'FF Pro Player ID',tags:['Top IDs','Trusted Seller'],icon:'⚔️',label:'Super Deal'},
+{id:'FF1004',name:'FF Evo Bundle ID',desc:'Rare gun + bundle',price:4999,old:7000,category:'FF Evo Bundle ID',tags:['Hot Deals','Special Offer'],icon:'💎',label:'Limited Time'},
+{id:'FF1005',name:'FF Rare ID',desc:'Rare outfit collection',price:1599,old:2200,category:'FF Rare ID',tags:['Hot Deals'],icon:'👑',label:'Rare Find'},
+{id:'FF1006',name:'FF Guild ID',desc:'Guild-ready account',price:999,old:1400,category:'FF Guild ID',tags:['Special Offer'],icon:'🛡️',label:'Good Deal'},
+{id:'FF1007',name:'FF Main ID | Level 65+',desc:'Bundles and emotes',price:1299,old:1800,category:'FF Main ID',tags:['Trusted Seller'],icon:'🎮',label:'Popular'},
+{id:'FF1008',name:'FF Level 70+',desc:'High level account',price:1899,old:2600,category:'FF Level 70+',tags:['Top IDs','Special Offer'],icon:'🔥',label:'Level 70+'}
+];
+let category='All',cart=[],orders=[];
+const money=n=>'৳'+Number(n).toLocaleString('en-BD');
+function renderProducts(){const q=document.getElementById('searchInput').value.trim().toLowerCase();let filtered=items.filter(x=>(category==='All'||x.category===category||x.tags.includes(category))&&(!q||(x.name+' '+x.desc+' '+x.id+' '+x.category).toLowerCase().includes(q)));document.getElementById('products').innerHTML=filtered.map(x=>`<article class="product"><div class="product-art"><span class="tag">${x.label}</span>${x.icon}</div><h3>${x.name}</h3><p>${x.desc}<br><small>ID: ${x.id}</small></p><div class="price">${money(x.price)} <small>${money(x.old)}</small></div><button onclick="addToCart('${x.id}')">🛒 Add to Cart</button></article>`).join('');document.getElementById('noResults').classList.toggle('hidden',filtered.length>0);document.getElementById('sectionTitle').textContent=category==='All'?'Popular FF IDs':category}
+function filterCategory(c,el){category=c;document.querySelectorAll('.nav button,.cat').forEach(b=>b.classList.remove('active'));if(el)el.classList.add('active');renderProducts();document.getElementById('productsSection').scrollIntoView({behavior:'smooth',block:'start'})}
+function showHome(){filterCategory('All',null);window.scrollTo({top:0,behavior:'smooth'})}
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();renderProducts();document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})});
+function openModal(id){document.getElementById(id).classList.add('show')}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+document.querySelectorAll('.modal-bg').forEach(bg=>bg.addEventListener('click',e=>{if(e.target===bg)bg.classList.remove('show')}));
+function addToCart(id){const x=items.find(i=>i.id===id);if(!cart.some(i=>i.id===id))cart.push(x);document.getElementById('cartCount').textContent=cart.length;renderCart();openModal('cartModal')}
+function renderCart(){const box=document.getElementById('cartItems');if(!cart.length){box.innerHTML='<div class="empty">আপনার কার্ট খালি।</div>';return}box.innerHTML=cart.map(x=>`<div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #49305e;padding:10px 0"><span>${x.name}<br><small>${x.id}</small></span><b style="color:var(--yellow)">${money(x.price)}</b><button class="pill" onclick="removeCart('${x.id}')">×</button></div>`).join('')+`<h3>Total: <span style="color:var(--yellow)">${money(cart.reduce((s,x)=>s+x.price,0))}</span></h3>`}
+function removeCart(id){cart=cart.filter(x=>x.id!==id);document.getElementById('cartCount').textContent=cart.length;renderCart()}
+function clearCart(){cart=[];document.getElementById('cartCount').textContent='0';renderCart();document.getElementById('cartMsg').textContent='Cart cleared.'}
+function openCart(){renderCart();openModal('cartModal')}
+function checkout(){if(!cart.length){document.getElementById('cartMsg').textContent='আগে একটি ID কার্টে যোগ করুন।';return}closeModal('cartModal');openModal('orderModal')}
+function submitOrder(){const name=document.getElementById('orderName').value.trim(),phone=document.getElementById('orderPhone').value.trim();if(!name||!/^01[3-9]\d{8}$/.test(phone)){document.getElementById('orderMsg').textContent='সঠিক নাম ও ১১ সংখ্যার বাংলাদেশি মোবাইল নম্বর দিন।';return}const id='FF'+Date.now().toString().slice(-8);orders.push({id,name,phone,method:document.getElementById('orderMethod').value,note:document.getElementById('orderNote').value,items:cart.map(x=>x.name),total:cart.reduce((s,x)=>s+x.price,0),status:'Request received'});document.getElementById('orderMsg').textContent='অর্ডার রিকোয়েস্ট তৈরি হয়েছে। Order ID: '+id+' — এটি শুধু এই ব্রাউজার সেশনে রাখা হয়েছে; বিক্রেতাকে আলাদাভাবে পাঠাতে হবে।';cart=[];document.getElementById('cartCount').textContent='0';renderCart()}
+function registerDemo(){const name=document.getElementById('authName').value.trim(),email=document.getElementById('authEmail').value.trim(),pass=document.getElementById('authPassword').value;if(!name||!email||pass.length<6){document.getElementById('authMsg').textContent='নাম, সঠিক ইমেইল এবং অন্তত ৬ অক্ষরের পাসওয়ার্ড দিন।';return}document.getElementById('authMsg').textContent='ফর্ম ঠিক আছে। বাস্তব অ্যাকাউন্ট তৈরির জন্য Firebase Authentication যুক্ত করতে হবে।'}
+function openWhatsApp(){let n=document.getElementById('supportNumber').value.replace(/\D/g,'');if(n.startsWith('0'))n='88'+n;if(!/^8801[3-9]\d{8}$/.test(n)){document.getElementById('supportMsg').textContent='সঠিক WhatsApp নম্বর দিন (8801XXXXXXXXX)।';return}window.open('https://wa.me/'+n,'_blank','noopener')}
+function trackOrder(){const id=document.getElementById('trackId').value.trim();const o=orders.find(x=>x.id.toLowerCase()===id.toLowerCase());document.getElementById('trackMsg').textContent=o?'Status: '+o.status+' | Total: '+money(o.total):'এই সেশনে অর্ডারটি পাওয়া যায়নি। বাস্তব ট্র্যাকিংয়ের জন্য ডেটাবেস লাগবে।'}
+document.querySelectorAll('.top').forEach(el=>el.addEventListener('click',e=>{if(e.target.textContent.includes('Track Order'))openModal('trackModal');else if(e.target.textContent.includes('Help')||e.target.textContent.includes('Contact'))openModal('supportModal')}));
+document.getElementById('year').textContent=new Date().getFullYear();renderProducts();
 </script>
 </body>
 </html>
